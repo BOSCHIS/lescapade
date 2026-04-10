@@ -6,11 +6,13 @@ $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
 use App\Controller\HomeController;
+use App\Controller\MenuController;
 
 $url = parse_url($_SERVER['REQUEST_URI']);
 $path = $url['path'] ?? '/';
 
 $homeController = new HomeController();
+$menuController = new MenuController();
 
 switch ($path) {
     case '/':
@@ -19,6 +21,12 @@ switch ($path) {
     case '/LESCAPADE/public/':
     case '/LESCAPADE/public/index.php':
         $homeController->index();
+        break;
+
+    case '/menu':
+    case '/lescapade/public/menu':
+    case '/LESCAPADE/public/menu':
+        $menuController->index();
         break;
 
     default:

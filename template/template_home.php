@@ -1,3 +1,14 @@
+<?php
+$heroImage = '/assets/images/header/restaurant_header.webp';
+$heroHeight = '850px';
+$heroObjectPosition = 'center top';
+$heroTitleMarginTop = '90px';
+$heroTitleMaxWidth = '420px';
+$heroSubtitleMaxWidth = '460px';
+$heroTitle = "Bienvenue au<br />restaurant l'Escapade";
+$heroSubtitle = "Cuisine traditionnelle<br />au plein coeur de Cahors";
+?>
+
 !DOCTYPE html>
 <html lang="fr">
 
@@ -144,7 +155,7 @@
                     </button>
             </div>
             <div class="button-wrapper">
-                <a href="#" class="button_menu">Voir la carte</a>
+                <a href="/menu" class="button_menu">Voir la carte</a>
             </div>
 
             <!-- fin caroussel -->

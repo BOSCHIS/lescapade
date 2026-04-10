@@ -1,3 +1,15 @@
+<?php
+$heroImage = $heroImage ?? '/assets/images/header/restaurant_header.webp';
+$heroTitle = $heroTitle ?? "Bienvenue au<br />restaurant l'Escapade";
+$heroSubtitle = $heroSubtitle ?? "Cuisine traditionnelle<br />au plein coeur de Cahors";
+
+$heroHeight = $heroHeight ?? '900px';
+$heroObjectPosition = $heroObjectPosition ?? 'center';
+$heroTitleMarginTop = $heroTitleMarginTop ?? '130px';
+$heroTitleMaxWidth = $heroTitleMaxWidth ?? '390px';
+$heroSubtitleMaxWidth = $heroSubtitleMaxWidth ?? '430px';
+?>
+
 <header class="site-header">
 
     <!-- NAVBAR -->
@@ -12,11 +24,11 @@
 
         <div class="navbar__content">
             <ul class="navbar__links">
-                <li><a href="#" class="active">Accueil</a></li>
-                <li><a href="#">La Carte</a></li>
-                <li><a href="#">Plat du jour</a></li>
-                <li><a href="#">Plat du samedi</a></li>
-                <li><a href="#">Notre histoire</a></li>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/menu">La Carte</a></li>
+                <li><a href="/plat-du-jour">Plat du jour</a></li>
+                <li><a href="/plat-du-samedi">Plat du samedi</a></li>
+                <li><a href="/histoire">Notre histoire</a></li>
             </ul>
 
             <a href="#" class="navbar__cta">Réserver - Nous contacter</a>
@@ -24,21 +36,35 @@
     </nav>
 
     <!-- HERO -->
-    <section class="hero">
-        <img class="hero__bg" src="/assets/images/header/restaurant_header.webp" alt="Photo du restaurant" />
+    <section
+        class="hero"
+        style="
+            --hero-height: <?= htmlspecialchars($heroHeight, ENT_QUOTES, 'UTF-8') ?>;
+            --hero-object-position: <?= htmlspecialchars($heroObjectPosition, ENT_QUOTES, 'UTF-8') ?>;
+            --hero-title-margin-top: <?= htmlspecialchars($heroTitleMarginTop, ENT_QUOTES, 'UTF-8') ?>;
+            --hero-title-max-width: <?= htmlspecialchars($heroTitleMaxWidth, ENT_QUOTES, 'UTF-8') ?>;
+            --hero-subtitle-max-width: <?= htmlspecialchars($heroSubtitleMaxWidth, ENT_QUOTES, 'UTF-8') ?>;
+        ">
+        <img
+            class="hero__bg"
+            src="<?= htmlspecialchars($heroImage, ENT_QUOTES, 'UTF-8') ?>"
+            alt="Photo du restaurant" />
 
         <div class="hero__overlay"></div>
 
         <div class="hero__content">
-            <div class="hero__title-box">
-                <h1>Bienvenue au<br />restaurant l'Escapade</h1>
-            </div>
+            <?php if (!empty($heroTitle)) : ?>
+                <div class="hero__title-box">
+                    <h1><?= $heroTitle ?></h1>
+                </div>
+            <?php endif; ?>
 
-            <div class="hero__subtitle">
-                <p>Cuisine traditionnelle<br />au plein coeur de Cahors</p>
-            </div>
+            <?php if (!empty($heroSubtitle)) : ?>
+                <div class="hero__subtitle">
+                    <p><?= $heroSubtitle ?></p>
+                </div>
+            <?php endif; ?>
         </div>
-
     </section>
 
 </header>
@@ -47,7 +73,9 @@
     const toggleBtn = document.querySelector(".navbar__toggle");
     const navContent = document.querySelector(".navbar__content");
 
-    toggleBtn.addEventListener("click", () => {
-        navContent.classList.toggle("open");
-    });
+    if (toggleBtn && navContent) {
+        toggleBtn.addEventListener("click", () => {
+            navContent.classList.toggle("open");
+        });
+    }
 </script>
