@@ -1,3 +1,12 @@
+<?php
+$heroImage = '/assets/images/header/hero_menu.webp';
+$heroHeight = '590px';
+$heroObjectPosition = 'center';
+$heroTitleMarginTop = '90px';
+$heroTitleMaxWidth = '420px';
+$heroSubtitleMaxWidth = '460px';
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -12,59 +21,88 @@
 
 <body>
 
-    <?php
-    $heroImage = '/assets/images/header/hero_menu.webp';
-    $heroHeight = '600px';
-    $heroObjectPosition = 'center center';
-    $heroTitleMarginTop = '90px';
-    $heroTitle = "";
-    $heroSubtitle = "";
-    ?>
-
     <?php include __DIR__ . '/component/navbar.php'; ?>
 
-    <main class="page-carte">
-        <section class="carte-section container">
-
-            <div class="section-title">
-                <span>Restaurant L'Escapade</span>
-                <h2>Notre carte</h2>
+    <main class="menu-page">
+        <section class="menu-page__intro">
+            <div class="container">
+                <span class="menu-page__subtitle">Restaurant L'Escapade</span>
+                <h1 class="menu-page__title">Notre carte</h1>
+                <p class="menu-page__text">
+                    Découvrez une cuisine bistrot généreuse, des produits du terroir
+                    et des assiettes pensées pour le plaisir, le partage et la convivialité.
+                </p>
             </div>
+        </section>
 
-            <?php if (!empty($menuByCategory)) : ?>
-                <?php foreach ($menuByCategory as $categoryName => $items) : ?>
-                    <section class="carte-category">
-                        <h3><?= htmlspecialchars($categoryName, ENT_QUOTES, 'UTF-8') ?></h3>
+        <section class="menu-page__content">
+            <div class="container">
 
-                        <div class="carte-items">
-                            <?php foreach ($items as $item) : ?>
-                                <article class="carte-item">
-                                    <div class="carte-item__left">
-                                        <h4>
-                                            <?= htmlspecialchars($item['title_menu'], ENT_QUOTES, 'UTF-8') ?>
-                                        </h4>
+                <?php if (!empty($menuByCategory)) : ?>
+                    <?php foreach ($menuByCategory as $categoryName => $items) : ?>
+                        <?php if (!empty($items)) : ?>
+                            <section class="menu-category">
+                                <div class="menu-category__header">
+                                    <h2><?= htmlspecialchars($categoryName, ENT_QUOTES, 'UTF-8') ?></h2>
+                                </div>
 
-                                        <?php if (!empty($item['description_menu'])) : ?>
-                                            <p>
-                                                <?= htmlspecialchars($item['description_menu'], ENT_QUOTES, 'UTF-8') ?>
-                                            </p>
-                                        <?php endif; ?>
-                                    </div>
+                                <div class="menu-category__list">
+                                    <?php foreach ($items as $item) : ?>
+                                        <article class="menu-entry">
+                                            <div class="menu-entry__main">
+                                                <div class="menu-entry__top">
 
-                                    <?php if (!is_null($item['price_menu'])) : ?>
-                                        <span class="carte-item__price">
-                                            <?= number_format((float) $item['price_menu'], 2, ',', ' ') ?> €
-                                        </span>
-                                    <?php endif; ?>
-                                </article>
-                            <?php endforeach; ?>
+                                                    <?php if (!empty($item['title_menu'])) : ?>
+                                                        <h3 class="menu-entry__title">
+                                                            <?= htmlspecialchars($item['title_menu'], ENT_QUOTES, 'UTF-8') ?>
+                                                        </h3>
+                                                    <?php endif; ?>
+
+                                                    <?php if (!is_null($item['price_menu']) && $item['price_menu'] !== '') : ?>
+                                                        <span class="menu-entry__price">
+                                                            <?= number_format((float) $item['price_menu'], 2, ',', ' ') ?> €
+                                                        </span>
+                                                    <?php endif; ?>
+
+                                                </div>
+
+                                                <?php if (!empty($item['description_menu'])) : ?>
+                                                    <p class="menu-entry__description">
+                                                        <?= nl2br(htmlspecialchars($item['description_menu'], ENT_QUOTES, 'UTF-8')) ?>
+                                                    </p>
+                                                <?php endif; ?>
+
+                                                <?php if (!empty($item['extra_menu'])) : ?>
+                                                    <div class="menu-entry__extra">
+                                                        <?= nl2br(htmlspecialchars($item['extra_menu'], ENT_QUOTES, 'UTF-8')) ?>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </article>
+                                    <?php endforeach; ?>
+                                </div>
+                            </section>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <section class="menu-category">
+                        <div class="menu-category__header">
+                            <h2>La carte arrive bientôt</h2>
+                        </div>
+
+                        <div class="menu-category__list">
+                            <article class="menu-entry">
+                                <div class="menu-entry__main">
+                                    <p class="menu-entry__description">
+                                        Notre carte est en cours de préparation.
+                                    </p>
+                                </div>
+                            </article>
                         </div>
                     </section>
-                <?php endforeach; ?>
-            <?php else : ?>
-                <p class="carte-empty">La carte sera bientôt disponible.</p>
-            <?php endif; ?>
+                <?php endif; ?>
 
+            </div>
         </section>
     </main>
 

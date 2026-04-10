@@ -22,6 +22,7 @@ class MenuRepository
                 m.id_menu,
                 m.title_menu,
                 m.description_menu,
+                m.extra_menu,
                 m.price_menu,
                 c.id_category,
                 c.name_category
@@ -42,5 +43,50 @@ class MenuRepository
         $stmt->execute();
 
         return $stmt->fetchAll();
+    }
+
+    public function findAllMenuGroupedByCategory(): array
+    {
+        $sql = "
+            SELECT
+                c.id_category,
+                c.name_category,
+                c.order_category,
+                m.id_menu,
+                m.title_menu,
+                m.description_menu,
+                m.extra_menu,
+                m.price_menu,
+                m.order_menu
+            FROM category c
+            LEFT JOIN menu m ON m.category_id = c.id_category
+            ORDER BY c.order_category ASC, m.order_menu ASC, m.id_menu ASC
+        ";
+
+        $stmt = $this->pdo->query($sql);
+        $rows = $stmt->fetchAll();
+
+        $menuByCategory = [];
+
+        foreach ($rows as $row) {
+            $categoryName = $row['name_category'];
+
+            if (!isset($menuByCategory[$categoryName])) {
+                $menuByCategory[$categoryName] = [];
+            }
+
+            if (!empty($row['id_menu'])) {
+                $menuByCategory[$categoryName][] = [
+                    'id_menu' => $row['id_menu'],
+                    'title_menu' => $row['title_menu'],
+                    'description_menu' => $row['description_menu'],
+                    'extra_menu' => $row['extra_menu'],
+                    'price_menu' => $row['price_menu'],
+                    'order_menu' => $row['order_menu'],
+                ];
+            }
+        }
+
+        return $menuByCategory;
     }
 }
