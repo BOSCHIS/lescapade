@@ -1,5 +1,18 @@
 <?php
 
+$secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
+
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'domain' => '',
+    'secure' => $secure,
+    'httponly' => true,
+    'samesite' => 'Lax',
+]);
+
+session_start();
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -7,12 +20,16 @@ $dotenv->load();
 
 use App\Controller\HomeController;
 use App\Controller\MenuController;
+use App\Controller\Admin\AdminAuthController;
+use App\Controller\Admin\AdminDashboardController;
 
 $url = parse_url($_SERVER['REQUEST_URI']);
 $path = $url['path'] ?? '/';
 
 $homeController = new HomeController();
 $menuController = new MenuController();
+$adminAuthController = new AdminAuthController();
+$adminDashboardController = new AdminDashboardController();
 
 switch ($path) {
     case '/':
@@ -27,6 +44,24 @@ switch ($path) {
     case '/lescapade/public/menu':
     case '/LESCAPADE/public/menu':
         $menuController->index();
+        break;
+
+    case '/admin':
+    case '/lescapade/public/admin':
+    case '/LESCAPADE/public/admin':
+        $adminDashboardController->index();
+        break;
+
+    case '/admin/login':
+    case '/lescapade/public/admin/login':
+    case '/LESCAPADE/public/admin/login':
+        $adminAuthController->login();
+        break;
+
+    case '/admin/logout':
+    case '/lescapade/public/admin/logout':
+    case '/LESCAPADE/public/admin/logout':
+        $adminAuthController->logout();
         break;
 
     default:

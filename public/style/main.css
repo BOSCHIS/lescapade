@@ -1489,3 +1489,216 @@ img {
         font-size: 0.95rem;
     }
 }
+
+
+/* =========================================================
+   ADMIN AUTH
+========================================================= */
+
+.admin-auth-page {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #f6f0e6 0%, #efe6d7 100%);
+}
+
+.admin-auth {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.admin-auth__card {
+    width: 100%;
+    max-width: 520px;
+    background: rgba(255, 250, 243, 0.95);
+    border: 1px solid rgba(166, 124, 0, 0.12);
+    border-radius: 24px;
+    padding: 2.2rem 2rem;
+    box-shadow: 0 12px 30px rgba(59, 36, 22, 0.10);
+}
+
+.admin-auth__logo {
+    text-align: center;
+    margin-bottom: 1.2rem;
+}
+
+.admin-auth__logo img {
+    max-width: 120px;
+}
+
+.admin-auth__subtitle {
+    display: block;
+    text-align: center;
+    color: #a67c00;
+    text-transform: uppercase;
+    letter-spacing: 0.12rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+}
+
+.admin-auth__title {
+    text-align: center;
+    margin-bottom: 1.6rem;
+    color: #2f1d12;
+}
+
+.admin-auth__error {
+    margin-bottom: 1rem;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    background: #f7dede;
+    color: #7a1f1f;
+    font-weight: 600;
+}
+
+.admin-auth__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.admin-auth__field label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #2f1d12;
+    font-weight: 600;
+}
+
+.admin-auth__field input {
+    width: 100%;
+    border: 1px solid rgba(59, 36, 22, 0.15);
+    border-radius: 14px;
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    background: #fffdf9;
+}
+
+.admin-auth__button {
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 999px;
+    padding: 0.95rem 1.4rem;
+    background: linear-gradient(135deg, #a67c00, #c79a1b);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.admin-auth__button:hover {
+    transform: translateY(-1px);
+    opacity: 0.96;
+}
+
+/* =========================================================
+   ADMIN DASHBOARD
+========================================================= */
+
+.admin-dashboard-page {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #f6f0e6 0%, #efe6d7 100%);
+}
+
+.admin-dashboard {
+    padding: 3rem 1rem;
+}
+
+.admin-dashboard__container {
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.admin-dashboard__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.admin-dashboard__subtitle {
+    display: inline-block;
+    margin-bottom: 0.6rem;
+    color: #a67c00;
+    text-transform: uppercase;
+    letter-spacing: 0.14rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.admin-dashboard__header h1 {
+    margin: 0 0 0.6rem 0;
+    color: #2f1d12;
+}
+
+.admin-dashboard__header p {
+    margin: 0;
+    color: #5b4739;
+}
+
+.admin-dashboard__logout {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.2rem;
+    border-radius: 999px;
+    background: #2f1d12;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.admin-dashboard__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+}
+
+.admin-dashboard__card {
+    display: block;
+    padding: 1.6rem;
+    border-radius: 22px;
+    background: rgba(255, 250, 243, 0.95);
+    border: 1px solid rgba(166, 124, 0, 0.12);
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(59, 36, 22, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.admin-dashboard__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 30px rgba(59, 36, 22, 0.12);
+}
+
+.admin-dashboard__card span {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    color: #a67c00;
+    font-weight: 700;
+    letter-spacing: 0.08rem;
+}
+
+.admin-dashboard__card h2 {
+    margin-bottom: 0.7rem;
+    color: #2f1d12;
+    font-size: 1.4rem;
+}
+
+.admin-dashboard__card p {
+    margin: 0;
+    color: #5b4739;
+    line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+    .admin-dashboard__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-dashboard__header {
+        flex-direction: column;
+    }
+}
