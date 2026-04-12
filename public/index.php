@@ -72,6 +72,48 @@ switch ($path) {
         $adminMenuController->index();
         break;
 
+    case '/admin/menu/create':
+    case '/lescapade/public/admin/menu/create':
+    case '/LESCAPADE/public/admin/menu/create':
+        $adminMenuController->create();
+        break;
+
+    case '/admin/menu/store':
+    case '/lescapade/public/admin/menu/store':
+    case '/LESCAPADE/public/admin/menu/store':
+        $adminMenuController->store();
+        break;
+
+    case '/admin/menu/edit':
+    case '/lescapade/public/admin/menu/edit':
+    case '/LESCAPADE/public/admin/menu/edit':
+        $adminMenuController->edit();
+        break;
+
+    case '/admin/menu/update':
+    case '/lescapade/public/admin/menu/update':
+    case '/LESCAPADE/public/admin/menu/update':
+        $adminMenuController->update();
+        break;
+
+    case '/admin/menu/delete':
+    case '/lescapade/public/admin/menu/delete':
+    case '/LESCAPADE/public/admin/menu/delete':
+        $adminMenuController->delete();
+        break;
+
+    case '/admin/menu/move-up':
+    case '/lescapade/public/admin/menu/move-up':
+    case '/LESCAPADE/public/admin/menu/move-up':
+        $adminMenuController->moveUp();
+        break;
+
+    case '/admin/menu/move-down':
+    case '/lescapade/public/admin/menu/move-down':
+    case '/LESCAPADE/public/admin/menu/move-down':
+        $adminMenuController->moveDown();
+        break;
+
     default:
         http_response_code(404);
         echo '<h1>404 - Page non trouvée</h1>';

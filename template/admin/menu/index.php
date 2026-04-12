@@ -93,13 +93,34 @@
                                             </td>
 
                                             <td class="text-end">
-                                                <div class="d-inline-flex gap-2">
+                                                <div class="d-flex justify-content-end gap-2 flex-wrap">
+                                                    <form method="POST" action="/admin/menu/move-up" class="d-inline">
+                                                        <?= \App\Utils\Csrf::input() ?>
+                                                        <input type="hidden" name="id_menu" value="<?= (int) $menu['id_menu'] ?>">
+                                                        <button type="submit" class="btn btn-sm btn-outline-primary">
+                                                            ⬆️
+                                                        </button>
+                                                    </form>
+
+                                                    <form method="POST" action="/admin/menu/move-down" class="d-inline">
+                                                        <?= \App\Utils\Csrf::input() ?>
+                                                        <input type="hidden" name="id_menu" value="<?= (int) $menu['id_menu'] ?>">
+                                                        <button type="submit" class="btn btn-sm btn-outline-primary">
+                                                            ⬇️
+                                                        </button>
+                                                    </form>
+
                                                     <a href="/admin/menu/edit?id=<?= (int) $menu['id_menu'] ?>" class="btn btn-sm btn-outline-secondary">
                                                         Modifier
                                                     </a>
-                                                    <a href="/admin/menu/delete?id=<?= (int) $menu['id_menu'] ?>" class="btn btn-sm btn-outline-danger">
-                                                        Supprimer
-                                                    </a>
+
+                                                    <form method="POST" action="/admin/menu/delete" onsubmit="return confirm('Supprimer ce plat ?');" class="d-inline">
+                                                        <?= \App\Utils\Csrf::input() ?>
+                                                        <input type="hidden" name="id_menu" value="<?= (int) $menu['id_menu'] ?>">
+                                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                            Supprimer
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
