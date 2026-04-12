@@ -33,10 +33,10 @@
                     <p>Créer, modifier, supprimer et réordonner les plats.</p>
                 </a>
 
-                <a href="#" class="admin-dashboard__card">
+                <a href="/admin/day" class="admin-dashboard__card">
                     <span>02</span>
                     <h2>Plat du jour</h2>
-                    <p>Ajouter le plat du jour avec son image et sa date.</p>
+                    <p>Ajouter, modifier et supprimer le plat du jour avec son image.</p>
                 </a>
 
                 <a href="#" class="admin-dashboard__card">

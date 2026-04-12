@@ -23,6 +23,7 @@ use App\Controller\MenuController;
 use App\Controller\Admin\AdminAuthController;
 use App\Controller\Admin\AdminDashboardController;
 use App\Controller\Admin\AdminMenuController;
+use App\Controller\Admin\AdminDayController;
 
 $url = parse_url($_SERVER['REQUEST_URI']);
 $path = $url['path'] ?? '/';
@@ -32,6 +33,7 @@ $menuController = new MenuController();
 $adminAuthController = new AdminAuthController();
 $adminDashboardController = new AdminDashboardController();
 $adminMenuController = new AdminMenuController();
+$adminDayController = new AdminDayController();
 
 switch ($path) {
     case '/':
@@ -112,6 +114,42 @@ switch ($path) {
     case '/lescapade/public/admin/menu/move-down':
     case '/LESCAPADE/public/admin/menu/move-down':
         $adminMenuController->moveDown();
+        break;
+
+    case '/admin/day':
+    case '/lescapade/public/admin/day':
+    case '/LESCAPADE/public/admin/day':
+        $adminDayController->index();
+        break;
+
+    case '/admin/day/create':
+    case '/lescapade/public/admin/day/create':
+    case '/LESCAPADE/public/admin/day/create':
+        $adminDayController->create();
+        break;
+
+    case '/admin/day/store':
+    case '/lescapade/public/admin/day/store':
+    case '/LESCAPADE/public/admin/day/store':
+        $adminDayController->store();
+        break;
+
+    case '/admin/day/edit':
+    case '/lescapade/public/admin/day/edit':
+    case '/LESCAPADE/public/admin/day/edit':
+        $adminDayController->edit();
+        break;
+
+    case '/admin/day/update':
+    case '/lescapade/public/admin/day/update':
+    case '/LESCAPADE/public/admin/day/update':
+        $adminDayController->update();
+        break;
+
+    case '/admin/day/delete':
+    case '/lescapade/public/admin/day/delete':
+    case '/LESCAPADE/public/admin/day/delete':
+        $adminDayController->delete();
         break;
 
     default:
