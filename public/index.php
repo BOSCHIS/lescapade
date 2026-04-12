@@ -22,6 +22,7 @@ use App\Controller\HomeController;
 use App\Controller\MenuController;
 use App\Controller\Admin\AdminAuthController;
 use App\Controller\Admin\AdminDashboardController;
+use App\Controller\Admin\AdminMenuController;
 
 $url = parse_url($_SERVER['REQUEST_URI']);
 $path = $url['path'] ?? '/';
@@ -30,6 +31,7 @@ $homeController = new HomeController();
 $menuController = new MenuController();
 $adminAuthController = new AdminAuthController();
 $adminDashboardController = new AdminDashboardController();
+$adminMenuController = new AdminMenuController();
 
 switch ($path) {
     case '/':
@@ -62,6 +64,12 @@ switch ($path) {
     case '/lescapade/public/admin/logout':
     case '/LESCAPADE/public/admin/logout':
         $adminAuthController->logout();
+        break;
+
+    case '/admin/menu':
+    case '/lescapade/public/admin/menu':
+    case '/LESCAPADE/public/admin/menu':
+        $adminMenuController->index();
         break;
 
     default:

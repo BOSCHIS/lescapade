@@ -27,7 +27,7 @@
             </div>
 
             <div class="admin-dashboard__grid">
-                <a href="#" class="admin-dashboard__card">
+                <a href="/admin/menu" class="admin-dashboard__card">
                     <span>01</span>
                     <h2>Gérer la carte</h2>
                     <p>Créer, modifier, supprimer et réordonner les plats.</p>

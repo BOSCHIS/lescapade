@@ -89,4 +89,26 @@ class MenuRepository
 
         return $menuByCategory;
     }
+
+    public function findAllWithCategory(): array
+    {
+        $sql = "
+            SELECT
+                m.id_menu,
+                m.title_menu,
+                m.description_menu,
+                m.extra_menu,
+                m.price_menu,
+                m.order_menu,
+                m.category_id,
+                c.name_category
+            FROM menu m
+            INNER JOIN category c ON c.id_category = m.category_id
+            ORDER BY c.order_category ASC, m.order_menu ASC, m.id_menu ASC
+        ";
+
+        $stmt = $this->pdo->query($sql);
+
+        return $stmt->fetchAll();
+    }
 }
