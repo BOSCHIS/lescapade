@@ -6,7 +6,7 @@ $heroTitleMarginTop = '90px';
 $heroTitleMaxWidth = '420px';
 $heroSubtitleMaxWidth = '460px';
 $heroTitle = "Bienvenue au<br />restaurant l'Escapade";
-$heroSubtitle = "Cuisine traditionnelle<br />au plein coeur de Cahors";
+$heroSubtitle = "Cuisine traditionnelle au <br />plein coeur de Cahors";
 
 $dayDateFormatted = '';
 if (!empty($currentDay['date_day'])) {

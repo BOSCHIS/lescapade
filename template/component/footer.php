@@ -31,4 +31,8 @@
             </a>
         </div>
     </div>
+    <div class="footer__legal">
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/confidentialite">Confidentialité</a>
+    </div>
 </footer>
