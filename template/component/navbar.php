@@ -43,7 +43,7 @@ $heroSubtitleOffsetY = $heroSubtitleOffsetY ?? '20px';
             <li><a href="/histoire" class="<?= $currentPage === '/histoire' ? 'active' : '' ?>">Notre histoire</a></li>
         </ul>
 
-        <a href="#" class="navbar__cta">Réserver - Nous contacter</a>
+        <a href="/contact" class="navbar__cta">Réserver - Nous contacter</a>
         </div>
     </nav>
 

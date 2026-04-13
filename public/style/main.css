@@ -119,7 +119,7 @@ img {
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    margin-left: 80px;
+    margin-left: 70px;
 }
 
 .navbar__branding {
@@ -174,7 +174,9 @@ img {
     background-color: var(--color-gold);
     color: #1d1208;
     font-weight: 700;
-    padding: 12px 22px;
+    padding: 22px 20px;
+    margin-bottom: 18px;
+    font-size: 1.2rem;
     border-radius: 20px;
     box-shadow: 0 6px 12px var(--color-shadow);
     text-align: center;
@@ -2005,4 +2007,218 @@ img {
 .saturday-feature-card__button:hover {
     background: #2d180d;
     color: #ffffff;
+}
+
+/* Page HISTORY - Notre histoire ---------------------------- */
+
+.container {
+    h1 {
+        font-size: clamp(2rem, 5vw, 2.6rem);
+        font-style: italic;
+        color: #2f1d12;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+}
+
+/* =========================
+   PAGE CONTACT / RÉSERVATION
+========================= */
+.contact-page {
+    padding: 80px 24px 110px;
+    background: linear-gradient(180deg, #f7f1ea 0%, #efe5d9 100%);
+}
+
+.contact-page__container {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.contact-intro-card {
+    background: #f8f3ec;
+    box-shadow: 0 14px 34px rgba(49, 49, 49, 0.14);
+    padding: 52px 56px;
+    margin-bottom: 34px;
+}
+
+.contact-intro-card__content {
+    max-width: 900px;
+}
+
+.contact-intro-card__badge {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: #d9a227;
+    color: #2f1b12;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.contact-intro-card h1 {
+    margin: 0 0 18px;
+    font-size: clamp(2.2rem, 4vw, 4rem);
+    line-height: 1.05;
+    color: #2f1b12;
+}
+
+.contact-intro-card p {
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: #4c392f;
+}
+
+.contact-intro-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.contact-intro-card__phone,
+.contact-intro-card__mail,
+.contact-info-card__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 14px 22px;
+    border-radius: 14px;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+.contact-intro-card__phone,
+.contact-info-card__button {
+    background: #d9a227;
+    color: #2f1b12;
+}
+
+.contact-intro-card__phone:hover,
+.contact-info-card__button:hover {
+    background: #c38e1b;
+    transform: translateY(-1px);
+    color: #2f1b12;
+}
+
+.contact-intro-card__mail {
+    background: #3f2416;
+    color: #ffffff;
+}
+
+.contact-intro-card__mail:hover {
+    background: #2d180d;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    margin-bottom: 28px;
+}
+
+.contact-info-card {
+    background: #f8f3ec;
+    box-shadow: 0 14px 34px rgba(49, 49, 49, 0.12);
+    padding: 40px 38px;
+    height: 100%;
+}
+
+.contact-info-card__label {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #8a6a4f;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.contact-info-card h2 {
+    margin: 0 0 16px;
+    color: #2f1b12;
+    font-size: 2rem;
+}
+
+.contact-info-card p {
+    margin: 0 0 16px;
+    color: #4c392f;
+    font-size: 1.08rem;
+    line-height: 1.85;
+}
+
+.contact-hours {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contact-hours__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(63, 36, 22, 0.12);
+}
+
+.contact-hours__row span:first-child {
+    font-weight: 700;
+    color: #2f1b12;
+}
+
+.contact-hours__row span:last-child {
+    text-align: right;
+    color: #4c392f;
+    line-height: 1.7;
+}
+
+.contact-list {
+    margin: 0 0 16px 18px;
+    padding: 0;
+    color: #4c392f;
+    line-height: 1.9;
+}
+
+@media (max-width: 980px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-intro-card {
+        padding: 38px 28px;
+    }
+
+    .contact-info-card {
+        padding: 30px 24px;
+    }
+}
+
+@media (max-width: 760px) {
+    .contact-page {
+        padding: 50px 16px 80px;
+    }
+
+    .contact-hours__row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .contact-hours__row span:last-child {
+        text-align: left;
+    }
+
+    .contact-intro-card__actions {
+        flex-direction: column;
+    }
+
+    .contact-intro-card__phone,
+    .contact-intro-card__mail,
+    .contact-info-card__button {
+        width: 100%;
+    }
 }

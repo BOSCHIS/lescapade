@@ -7,7 +7,7 @@
         <div class="footer__col">
             <h3>Contactez-nous</h3>
             <p>05 65 22 11 52</p>
-            <p>contact@lescapade.fr</p>
+            <p>lescapade46@outlook.fr</p>
         </div>
 
         <div class="footer__col footer__brand">

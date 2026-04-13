@@ -22,6 +22,8 @@ use App\Controller\HomeController;
 use App\Controller\MenuController;
 use App\Controller\DayController;
 use App\Controller\SaturdayController;
+use App\Controller\HistoryController;
+use App\Controller\ContactController;
 use App\Controller\Admin\AdminAuthController;
 use App\Controller\Admin\AdminDashboardController;
 use App\Controller\Admin\AdminMenuController;
@@ -35,6 +37,8 @@ $homeController = new HomeController();
 $menuController = new MenuController();
 $dayController = new DayController();
 $saturdayController = new SaturdayController();
+$historyController = new HistoryController();
+$contactController = new ContactController();
 $adminAuthController = new AdminAuthController();
 $adminDashboardController = new AdminDashboardController();
 $adminMenuController = new AdminMenuController();
@@ -66,6 +70,21 @@ switch ($path) {
     case '/lescapade/public/plat-du-samedi':
     case '/LESCAPADE/public/plat-du-samedi':
         $saturdayController->index();
+        break;
+
+    case '/histoire':
+    case '/lescapade/public/histoire':
+    case '/LESCAPADE/public/histoire':
+        $historyController->index();
+        break;
+
+    case '/contact':
+    case '/reservation':
+    case '/lescapade/public/contact':
+    case '/lescapade/public/reservation':
+    case '/LESCAPADE/public/contact':
+    case '/LESCAPADE/public/reservation':
+        $contactController->index();
         break;
 
     case '/admin':
