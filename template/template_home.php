@@ -7,9 +7,26 @@ $heroTitleMaxWidth = '420px';
 $heroSubtitleMaxWidth = '460px';
 $heroTitle = "Bienvenue au<br />restaurant l'Escapade";
 $heroSubtitle = "Cuisine traditionnelle<br />au plein coeur de Cahors";
-?>
 
-!DOCTYPE html>
+$dayDateFormatted = '';
+if (!empty($currentDay['date_day'])) {
+    $timestamp = strtotime($currentDay['date_day']);
+    $daysFr = [
+        'Sunday' => 'Dimanche',
+        'Monday' => 'Lundi',
+        'Tuesday' => 'Mardi',
+        'Wednesday' => 'Mercredi',
+        'Thursday' => 'Jeudi',
+        'Friday' => 'Vendredi',
+        'Saturday' => 'Samedi',
+    ];
+
+    $dayNameEn = date('l', $timestamp);
+    $dayNameFr = $daysFr[$dayNameEn] ?? $dayNameEn;
+    $dayDateFormatted = $dayNameFr . ' ' . date('d/m/Y', $timestamp);
+}
+?>
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -43,18 +60,38 @@ $heroSubtitle = "Cuisine traditionnelle<br />au plein coeur de Cahors";
                         <div class="special-ticket__main">
                             <span class="special-ticket__badge">Le plat du jour</span>
 
-                            <h2 class="special-ticket__title">
-                                Pavé de saumon poêlé, sauce à la crème fraîche
-                            </h2>
+                            <?php if (!empty($currentDay)) : ?>
+                                <h2 class="special-ticket__title">
+                                    <?= htmlspecialchars($currentDay['title_day'], ENT_QUOTES, 'UTF-8') ?>
+                                </h2>
 
-                            <span class="special-ticket__price">15,90 €</span>
+                                <span class="special-ticket__price">
+                                    <?= number_format((float) $currentDay['price_day'], 2, ',', ' ') ?> €
+                                </span>
+                            <?php else : ?>
+                                <h2 class="special-ticket__title">
+                                    Le plat du jour arrive bientôt
+                                </h2>
+
+                                <span class="special-ticket__price">—</span>
+                            <?php endif; ?>
                         </div>
 
                         <div class="special-ticket__side">
-                            <span class="special-ticket__date">Lundi 31/03/2026</span>
+                            <span class="special-ticket__date">
+                                <?= !empty($dayDateFormatted)
+                                    ? htmlspecialchars($dayDateFormatted, ENT_QUOTES, 'UTF-8')
+                                    : 'Bientôt disponible' ?>
+                            </span>
 
                             <div class="special-ticket__dish-image">
-                                <img src="/assets/images/plat_jour/pave_saumon.jpg" alt="Photo du plat du jour">
+                                <?php if (!empty($currentDay['image_day'])) : ?>
+                                    <img
+                                        src="<?= htmlspecialchars($currentDay['image_day'], ENT_QUOTES, 'UTF-8') ?>"
+                                        alt="<?= htmlspecialchars($currentDay['title_day'], ENT_QUOTES, 'UTF-8') ?>">
+                                <?php else : ?>
+                                    <img src="/assets/images/deco/card2.png" alt="Plat du jour bientôt disponible">
+                                <?php endif; ?>
                             </div>
 
                             <a href="/plat-du-jour" class="special-ticket__button">
@@ -142,60 +179,62 @@ $heroSubtitle = "Cuisine traditionnelle<br />au plein coeur de Cahors";
                             </p>
                             <div class="menu-card-simple__visual"></div>
                         </div>
-                    <?php endif; ?>
+                    </div>
+                <?php endif; ?>
 
+            </div>
+
+            <button class="multi-carousel-control-prev" id="prevBtn" type="button">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+
+            <button class="multi-carousel-control-next" id="nextBtn" type="button">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+
+        <div class="button-wrapper">
+            <a href="/menu" class="button_menu">Voir la carte</a>
+        </div>
+
+        <!-- fin caroussel -->
+
+        <!-- philosophie -->
+        <section class="home-philosophy">
+            <div class="container">
+                <article class="philosophy-card">
+                    <div class="philosophy-card__ornament philosophy-card__ornament--top"></div>
+
+                    <span class="philosophy-card__subtitle">L’âme de L’Escapade</span>
+                    <h2>Notre philosophie</h2>
+
+                    <div class="philosophy-card__content">
+                        <p>
+                            Fiers de nos racines cadurciennes, nous avons repris cette emblématique adresse
+                            dans le but de faire perdurer l’histoire de ce lieu. Nous nous efforcerons de mettre
+                            en avant des produits de notre territoire dans l’esprit bistrot.
+                        </p>
+
+                        <p>
+                            Favoriser les circuits courts, aller à la rencontre de nos artisans, de nos éleveurs
+                            et de nos viticulteurs, telle est notre philosophie.
+                        </p>
+
+                        <p>
+                            La cuisine est un moment de convivialité au sein de notre famille, c’est ce que nous
+                            souhaitons partager avec vous.
+                        </p>
                     </div>
 
-                    <button class="multi-carousel-control-prev" id="prevBtn" type="button">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    </button>
+                    <div class="philosophy-card__signature">
+                        <span>Thomas et Alexandre</span>
+                    </div>
 
-                    <button class="multi-carousel-control-next" id="nextBtn" type="button">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    </button>
+                    <div class="philosophy-card__ornament philosophy-card__ornament--bottom"></div>
+                </article>
             </div>
-            <div class="button-wrapper">
-                <a href="/menu" class="button_menu">Voir la carte</a>
-            </div>
-
-            <!-- fin caroussel -->
-
-            <!-- philosophie -->
-            <section class="home-philosophy">
-                <div class="container">
-                    <article class="philosophy-card">
-                        <div class="philosophy-card__ornament philosophy-card__ornament--top"></div>
-
-                        <span class="philosophy-card__subtitle">L’âme de L’Escapade</span>
-                        <h2>Notre philosophie</h2>
-
-                        <div class="philosophy-card__content">
-                            <p>
-                                Fiers de nos racines cadurciennes, nous avons repris cette emblématique adresse
-                                dans le but de faire perdurer l’histoire de ce lieu. Nous nous efforcerons de mettre
-                                en avant des produits de notre territoire dans l’esprit bistrot.
-                            </p>
-
-                            <p>
-                                Favoriser les circuits courts, aller à la rencontre de nos artisans, de nos éleveurs
-                                et de nos viticulteurs, telle est notre philosophie.
-                            </p>
-
-                            <p>
-                                La cuisine est un moment de convivialité au sein de notre famille, c’est ce que nous
-                                souhaitons partager avec vous.
-                            </p>
-                        </div>
-
-                        <div class="philosophy-card__signature">
-                            <span>Thomas et Alexandre</span>
-                        </div>
-
-                        <div class="philosophy-card__ornament philosophy-card__ornament--bottom"></div>
-                    </article>
-                </div>
-            </section>
-            <!-- fin philosophie -->
+        </section>
+        <!-- fin philosophie -->
 
     </main>
 

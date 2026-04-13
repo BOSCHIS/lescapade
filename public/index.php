@@ -20,6 +20,7 @@ $dotenv->load();
 
 use App\Controller\HomeController;
 use App\Controller\MenuController;
+use App\Controller\DayController;
 use App\Controller\Admin\AdminAuthController;
 use App\Controller\Admin\AdminDashboardController;
 use App\Controller\Admin\AdminMenuController;
@@ -30,6 +31,7 @@ $path = $url['path'] ?? '/';
 
 $homeController = new HomeController();
 $menuController = new MenuController();
+$dayController = new DayController();
 $adminAuthController = new AdminAuthController();
 $adminDashboardController = new AdminDashboardController();
 $adminMenuController = new AdminMenuController();
@@ -48,6 +50,12 @@ switch ($path) {
     case '/lescapade/public/menu':
     case '/LESCAPADE/public/menu':
         $menuController->index();
+        break;
+
+    case '/plat-du-jour':
+    case '/lescapade/public/plat-du-jour':
+    case '/LESCAPADE/public/plat-du-jour':
+        $dayController->index();
         break;
 
     case '/admin':

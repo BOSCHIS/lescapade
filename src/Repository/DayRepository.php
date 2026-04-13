@@ -28,6 +28,43 @@ class DayRepository
         return $stmt->fetchAll();
     }
 
+    public function findAllForFront(string $today): array
+    {
+        $sql = "
+            SELECT
+                id_day,
+                date_day,
+                image_day,
+                title_day,
+                description_day,
+                price_day,
+                administrator_id
+            FROM day
+            ORDER BY
+                CASE
+                    WHEN date_day >= :today_case THEN 0
+                    ELSE 1
+                END ASC,
+                CASE
+                    WHEN date_day >= :today_future THEN date_day
+                    ELSE NULL
+                END ASC,
+                CASE
+                    WHEN date_day < :today_past THEN date_day
+                    ELSE NULL
+                END DESC,
+                id_day DESC
+        ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':today_case', $today, PDO::PARAM_STR);
+        $stmt->bindValue(':today_future', $today, PDO::PARAM_STR);
+        $stmt->bindValue(':today_past', $today, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
     public function findById(int $idDay): array|false
     {
         $sql = "
@@ -49,6 +86,61 @@ class DayRepository
         $stmt->execute();
 
         return $stmt->fetch();
+    }
+
+    public function findByDate(string $dateDay): array|false
+    {
+        $sql = "
+            SELECT
+                id_day,
+                date_day,
+                image_day,
+                title_day,
+                description_day,
+                price_day,
+                administrator_id
+            FROM day
+            WHERE date_day = :date_day
+            LIMIT 1
+        ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':date_day', $dateDay, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
+
+    public function findLatest(): array|false
+    {
+        $sql = "
+            SELECT
+                id_day,
+                date_day,
+                image_day,
+                title_day,
+                description_day,
+                price_day,
+                administrator_id
+            FROM day
+            ORDER BY date_day DESC, id_day DESC
+            LIMIT 1
+        ";
+
+        $stmt = $this->pdo->query($sql);
+
+        return $stmt->fetch();
+    }
+
+    public function findCurrentOrLatest(string $dateDay): array|false
+    {
+        $day = $this->findByDate($dateDay);
+
+        if ($day) {
+            return $day;
+        }
+
+        return $this->findLatest();
     }
 
     public function insert(

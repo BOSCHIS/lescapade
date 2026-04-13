@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Database\Mysql;
 use App\Repository\MenuRepository;
+use App\Repository\DayRepository;
 
 class HomeController
 {
@@ -14,6 +15,7 @@ class HomeController
         $pdo = Mysql::connectBdd();
 
         $menuRepository = new MenuRepository($pdo);
+        $dayRepository = new DayRepository($pdo);
 
         // Catégories autorisées dans le carrousel
         // Le choix repose sur les ID techniques, pas sur l'ordre d'affichage.
@@ -23,6 +25,9 @@ class HomeController
             $carouselCategoryIds,
             8
         );
+
+        $today = date('Y-m-d');
+        $currentDay = $dayRepository->findCurrentOrLatest($today);
 
         include __DIR__ . '/../../template/template_home.php';
     }
