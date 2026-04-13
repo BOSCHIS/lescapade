@@ -39,10 +39,10 @@
                     <p>Ajouter, modifier et supprimer le plat du jour avec son image.</p>
                 </a>
 
-                <a href="#" class="admin-dashboard__card">
+                <a href="/admin/saturday" class="admin-dashboard__card">
                     <span>03</span>
                     <h2>Plat du samedi</h2>
-                    <p>Gérer le plat du samedi avec son visuel dédié.</p>
+                    <p>Ajouter, modifier et supprimer le plat du samedi avec son image.</p>
                 </a>
             </div>
         </div>

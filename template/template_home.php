@@ -25,6 +25,24 @@ if (!empty($currentDay['date_day'])) {
     $dayNameFr = $daysFr[$dayNameEn] ?? $dayNameEn;
     $dayDateFormatted = $dayNameFr . ' ' . date('d/m/Y', $timestamp);
 }
+
+$saturdayDateFormatted = '';
+if (!empty($currentSaturday['date_saturday'])) {
+    $timestamp = strtotime($currentSaturday['date_saturday']);
+    $daysFr = [
+        'Sunday' => 'Dimanche',
+        'Monday' => 'Lundi',
+        'Tuesday' => 'Mardi',
+        'Wednesday' => 'Mercredi',
+        'Thursday' => 'Jeudi',
+        'Friday' => 'Vendredi',
+        'Saturday' => 'Samedi',
+    ];
+
+    $dayNameEn = date('l', $timestamp);
+    $dayNameFr = $daysFr[$dayNameEn] ?? $dayNameEn;
+    $saturdayDateFormatted = $dayNameFr . ' ' . date('d/m/Y', $timestamp);
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -111,18 +129,38 @@ if (!empty($currentDay['date_day'])) {
                         <div class="special-ticket__main">
                             <span class="special-ticket__badge">Le plat du samedi</span>
 
-                            <h2 class="special-ticket__title">
-                                Confit de canard et pommes de terre sautées
-                            </h2>
+                            <?php if (!empty($currentSaturday)) : ?>
+                                <h2 class="special-ticket__title">
+                                    <?= htmlspecialchars($currentSaturday['title_saturday'], ENT_QUOTES, 'UTF-8') ?>
+                                </h2>
 
-                            <span class="special-ticket__price">16,50 €</span>
+                                <span class="special-ticket__price">
+                                    <?= number_format((float) $currentSaturday['price_saturday'], 2, ',', ' ') ?> €
+                                </span>
+                            <?php else : ?>
+                                <h2 class="special-ticket__title">
+                                    Le plat du samedi arrive bientôt
+                                </h2>
+
+                                <span class="special-ticket__price">—</span>
+                            <?php endif; ?>
                         </div>
 
                         <div class="special-ticket__side">
-                            <span class="special-ticket__date">Samedi 05/04/2026</span>
+                            <span class="special-ticket__date">
+                                <?= !empty($saturdayDateFormatted)
+                                    ? htmlspecialchars($saturdayDateFormatted, ENT_QUOTES, 'UTF-8')
+                                    : 'Bientôt disponible' ?>
+                            </span>
 
                             <div class="special-ticket__dish-image">
-                                <img src="/assets/images/plat_samedi/confit_canard.jpg" alt="Photo du plat du samedi">
+                                <?php if (!empty($currentSaturday['image_saturday'])) : ?>
+                                    <img
+                                        src="<?= htmlspecialchars($currentSaturday['image_saturday'], ENT_QUOTES, 'UTF-8') ?>"
+                                        alt="<?= htmlspecialchars($currentSaturday['title_saturday'], ENT_QUOTES, 'UTF-8') ?>">
+                                <?php else : ?>
+                                    <img src="/assets/images/deco/card2.png" alt="Plat du samedi bientôt disponible">
+                                <?php endif; ?>
                             </div>
 
                             <a href="/plat-du-samedi" class="special-ticket__button">

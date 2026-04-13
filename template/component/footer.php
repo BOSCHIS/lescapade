@@ -6,7 +6,7 @@
     <div class="footer__content">
         <div class="footer__col">
             <h3>Contactez-nous</h3>
-            <p>05 65 00 00 00</p>
+            <p>05 65 22 11 52</p>
             <p>contact@lescapade.fr</p>
         </div>
 
@@ -19,6 +19,16 @@
             <h3>Adresse</h3>
             <p>227 Rue Président Wilson</p>
             <p>46000 Cahors</p>
+        </div>
+        <div class="footer__col footer__social">
+            <h3>Suivez-nous</h3>
+            <a href="https://www.facebook.com/profile.php?id=61572417827056"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                aria-label="Facebook L'Escapade">
+                <img src="/assets/images/footer/logo_facebook.webp" alt="Facebook L'Escapade" />
+            </a>
         </div>
     </div>
 </footer>

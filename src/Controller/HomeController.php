@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Database\Mysql;
 use App\Repository\MenuRepository;
 use App\Repository\DayRepository;
+use App\Repository\SaturdayRepository;
 
 class HomeController
 {
@@ -16,9 +17,8 @@ class HomeController
 
         $menuRepository = new MenuRepository($pdo);
         $dayRepository = new DayRepository($pdo);
+        $saturdayRepository = new SaturdayRepository($pdo);
 
-        // Catégories autorisées dans le carrousel
-        // Le choix repose sur les ID techniques, pas sur l'ordre d'affichage.
         $carouselCategoryIds = [1, 2, 4, 5, 8];
 
         $carouselItems = $menuRepository->findRandomCarouselItemsByCategoryIds(
@@ -28,6 +28,7 @@ class HomeController
 
         $today = date('Y-m-d');
         $currentDay = $dayRepository->findCurrentOrLatest($today);
+        $currentSaturday = $saturdayRepository->findNearestForHome($today);
 
         include __DIR__ . '/../../template/template_home.php';
     }

@@ -618,23 +618,13 @@ img {
     border-radius: 14px;
     transition: 0.2s ease;
     text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
 }
 
 .special-ticket__button:hover {
     background: #c38e1b;
     transform: translateY(-1px);
 }
-
-/* BOUTON SAMEDI */
-.special-ticket--saturday .special-ticket__button {
-    background: #3f2416;
-    color: #ffffff;
-}
-
-.special-ticket--saturday .special-ticket__button:hover {
-    background: #2d180d;
-}
-
 
 @media (max-width: 1350px) {
     .special-ticket {
@@ -1382,8 +1372,7 @@ img {
 ========================= */
 .site-footer {
     position: relative;
-    margin-top: 80px;
-    padding: 70px 20px 35px;
+    padding: 70px 20px 15px;
 
     background-image: url("/assets/images/header/background1a.png");
     background-size: cover;
@@ -1414,11 +1403,9 @@ img {
 /* CONTENU */
 .footer__content {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 /* COLONNES */
@@ -1447,9 +1434,31 @@ img {
     color: white;
 }
 
-.footer__brand p {
-    font-size: 1rem;
-    opacity: 0.9;
+
+.footer__brand {
+    flex: 0 0 100%;
+    text-align: center;
+    order: -1;
+    margin-top: -5px;
+    margin-bottom: 20px;
+}
+
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.social-link img {
+    width: 42px;
+    height: auto;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.social-link:hover img {
+    transform: scale(1.08);
 }
 
 /* =========================
@@ -1925,4 +1934,20 @@ img {
     .day-empty-state {
         padding: 34px 22px;
     }
+}
+
+/* Page SATURDAY - Plat du samedi ---------------------------- */
+.saturday-feature-card__badge {
+    background: #3f2416;
+    color: #ffffff;
+}
+
+.saturday-feature-card__button {
+    background: #d9a227;
+    color: #3f2416;
+}
+
+.saturday-feature-card__button:hover {
+    background: #2d180d;
+    color: #ffffff;
 }

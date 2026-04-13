@@ -21,10 +21,12 @@ $dotenv->load();
 use App\Controller\HomeController;
 use App\Controller\MenuController;
 use App\Controller\DayController;
+use App\Controller\SaturdayController;
 use App\Controller\Admin\AdminAuthController;
 use App\Controller\Admin\AdminDashboardController;
 use App\Controller\Admin\AdminMenuController;
 use App\Controller\Admin\AdminDayController;
+use App\Controller\Admin\AdminSaturdayController;
 
 $url = parse_url($_SERVER['REQUEST_URI']);
 $path = $url['path'] ?? '/';
@@ -32,10 +34,12 @@ $path = $url['path'] ?? '/';
 $homeController = new HomeController();
 $menuController = new MenuController();
 $dayController = new DayController();
+$saturdayController = new SaturdayController();
 $adminAuthController = new AdminAuthController();
 $adminDashboardController = new AdminDashboardController();
 $adminMenuController = new AdminMenuController();
 $adminDayController = new AdminDayController();
+$adminSaturdayController = new AdminSaturdayController();
 
 switch ($path) {
     case '/':
@@ -56,6 +60,12 @@ switch ($path) {
     case '/lescapade/public/plat-du-jour':
     case '/LESCAPADE/public/plat-du-jour':
         $dayController->index();
+        break;
+
+    case '/plat-du-samedi':
+    case '/lescapade/public/plat-du-samedi':
+    case '/LESCAPADE/public/plat-du-samedi':
+        $saturdayController->index();
         break;
 
     case '/admin':
@@ -158,6 +168,42 @@ switch ($path) {
     case '/lescapade/public/admin/day/delete':
     case '/LESCAPADE/public/admin/day/delete':
         $adminDayController->delete();
+        break;
+
+    case '/admin/saturday':
+    case '/lescapade/public/admin/saturday':
+    case '/LESCAPADE/public/admin/saturday':
+        $adminSaturdayController->index();
+        break;
+
+    case '/admin/saturday/create':
+    case '/lescapade/public/admin/saturday/create':
+    case '/LESCAPADE/public/admin/saturday/create':
+        $adminSaturdayController->create();
+        break;
+
+    case '/admin/saturday/store':
+    case '/lescapade/public/admin/saturday/store':
+    case '/LESCAPADE/public/admin/saturday/store':
+        $adminSaturdayController->store();
+        break;
+
+    case '/admin/saturday/edit':
+    case '/lescapade/public/admin/saturday/edit':
+    case '/LESCAPADE/public/admin/saturday/edit':
+        $adminSaturdayController->edit();
+        break;
+
+    case '/admin/saturday/update':
+    case '/lescapade/public/admin/saturday/update':
+    case '/LESCAPADE/public/admin/saturday/update':
+        $adminSaturdayController->update();
+        break;
+
+    case '/admin/saturday/delete':
+    case '/lescapade/public/admin/saturday/delete':
+    case '/LESCAPADE/public/admin/saturday/delete':
+        $adminSaturdayController->delete();
         break;
 
     default:
