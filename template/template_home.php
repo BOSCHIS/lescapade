@@ -108,7 +108,7 @@ if (!empty($currentSaturday['date_saturday'])) {
                                         src="<?= htmlspecialchars($currentDay['image_day'], ENT_QUOTES, 'UTF-8') ?>"
                                         alt="<?= htmlspecialchars($currentDay['title_day'], ENT_QUOTES, 'UTF-8') ?>">
                                 <?php else : ?>
-                                    <img src="/assets/images/deco/card2.png" alt="Plat du jour bientôt disponible">
+                                    <img src="/assets/images/deco/day_default.webp" alt="Plat du jour bientôt disponible">
                                 <?php endif; ?>
                             </div>
 

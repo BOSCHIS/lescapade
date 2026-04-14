@@ -59,7 +59,8 @@ $heroSubtitle = "";
                                             alt="<?= htmlspecialchars($day['title_day'], ENT_QUOTES, 'UTF-8') ?>">
                                     <?php else : ?>
                                         <div class="day-feature-card__visual-placeholder">
-                                            L'Escapade
+                                            <source>
+                                            <img src="/assets/images/deco/day_default.webp" alt="Plat du jour bientôt disponible">
                                         </div>
                                     <?php endif; ?>
                                 </div>

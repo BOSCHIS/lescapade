@@ -38,14 +38,31 @@ $heroSubtitle = "";
                         </p>
 
                         <div class="contact-intro-card__actions">
-                            <a href="tel:+33565000000" class="contact-intro-card__phone">
+                            <a href="tel:+33565221152" class="contact-intro-card__phone">
                                 📞 05 65 22 11 52
                             </a>
 
-                            <a href="mailto:contact@lescapade.fr" class="contact-intro-card__mail">
+                            <a href="mailto:lescapade46@outlook.fr" class="contact-intro-card__mail">
                                 ✉️ lescapade46@outlook.fr
                             </a>
                         </div>
+                        <section class="contact-pets-card">
+                            <div class="contact-pets-card__content">
+                                <span class="contact-pets-card__badge">Animaux de compagnie 🐾</span>
+                                <h2>Vos compagnons sont les bienvenus</h2>
+
+                                <p>
+                                    Chez L’Escapade, nous acceptons avec plaisir les animaux de compagnie.
+                                    Les chiens calmes et tenus à proximité de votre table sont les bienvenus.
+                                </p>
+
+                                <p>
+                                    🐾 N’hésitez pas à nous le préciser lors de votre réservation afin
+                                    que nous puissions vous installer au mieux.
+                                </p>
+                            </div>
+                        </section>
+
                     </div>
                 </section>
 
@@ -104,8 +121,8 @@ $heroSubtitle = "";
                         </p>
 
                         <ul class="contact-list">
-                            <li>Entre 12h et 14h</li>
-                            <li>À partir de 19h</li>
+                            <li>Entre 12h30 et 14h (30 minutes gratuites)</li>
+                            <li>À partir de 18h30</li>
                             <li>Toute la journée le dimanche</li>
                         </ul>
 
@@ -113,6 +130,7 @@ $heroSubtitle = "";
                             Des places sont disponibles Rue Président Wilson et dans les rues adjacentes,
                             à quelques mètres du restaurant.
                         </p>
+
                     </article>
 
                     <article class="contact-info-card">
@@ -127,7 +145,7 @@ $heroSubtitle = "";
                             Pour toute demande particulière, le plus simple est de nous contacter par téléphone.
                         </p>
 
-                        <a href="tel:+33565000000" class="contact-info-card__button">
+                        <a href="tel:+33565221152" class="contact-info-card__button">
                             📞 Réserver maintenant
                         </a>
                     </article>

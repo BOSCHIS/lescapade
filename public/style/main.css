@@ -2222,3 +2222,28 @@ img {
         width: 100%;
     }
 }
+
+.contact-pets-card {
+    margin-top: 45px;
+}
+
+.contact-pets-card__badge {
+    display: inline-block;
+    color: #2f1b12;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.contact-pets-card h2 {
+    margin: 0 0 14px;
+    font-size: 2rem;
+    color: #2f1b12;
+}
+
+.contact-pets-card p {
+    margin: 0 0 12px;
+    font-size: 1.08rem;
+    line-height: 1.85;
+    color: #4c392f;
+}

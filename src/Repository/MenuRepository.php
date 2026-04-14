@@ -135,6 +135,52 @@ class MenuRepository
         return $stmt->fetch();
     }
 
+    private function getMaxOrderInCategory(int $categoryId): int
+    {
+        $sql = "
+            SELECT MAX(order_menu) AS max_order
+            FROM menu
+            WHERE category_id = :category_id
+        ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':category_id', $categoryId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        return isset($result['max_order']) && $result['max_order'] !== null
+            ? (int) $result['max_order']
+            : 0;
+    }
+
+    private function normalizeInsertOrder(int $orderMenu, int $categoryId): int
+    {
+        $orderMenu = max(1, $orderMenu);
+        $maxOrder = $this->getMaxOrderInCategory($categoryId);
+
+        return min($orderMenu, $maxOrder + 1);
+    }
+
+    private function normalizeUpdateOrder(
+        int $orderMenu,
+        int $newCategoryId,
+        int $currentCategoryId,
+        int $currentOrderMenu
+    ): int {
+        $orderMenu = max(1, $orderMenu);
+        $maxOrder = $this->getMaxOrderInCategory($newCategoryId);
+
+        if ($newCategoryId === $currentCategoryId) {
+            // Dans la même catégorie, la position max est le max existant
+            // puisqu’on déplace un élément déjà présent.
+            return min($orderMenu, max(1, $maxOrder));
+        }
+
+        // Dans une nouvelle catégorie, on peut aller à la fin => max + 1
+        return min($orderMenu, $maxOrder + 1);
+    }
+
     public function insert(
         string $titleMenu,
         ?string $descriptionMenu,
@@ -143,34 +189,57 @@ class MenuRepository
         int $orderMenu,
         int $categoryId
     ): void {
-        $sql = "
-            INSERT INTO menu (
-                title_menu,
-                description_menu,
-                extra_menu,
-                price_menu,
-                order_menu,
-                category_id
-            ) VALUES (
-                :title_menu,
-                :description_menu,
-                :extra_menu,
-                :price_menu,
-                :order_menu,
-                :category_id
-            )
-        ";
+        $orderMenu = $this->normalizeInsertOrder($orderMenu, $categoryId);
 
-        $stmt = $this->pdo->prepare($sql);
+        $this->pdo->beginTransaction();
 
-        $stmt->bindValue(':title_menu', $titleMenu, PDO::PARAM_STR);
-        $stmt->bindValue(':description_menu', $descriptionMenu, $descriptionMenu === null ? PDO::PARAM_NULL : PDO::PARAM_STR);
-        $stmt->bindValue(':extra_menu', $extraMenu, $extraMenu === null ? PDO::PARAM_NULL : PDO::PARAM_STR);
-        $stmt->bindValue(':price_menu', $priceMenu);
-        $stmt->bindValue(':order_menu', $orderMenu, PDO::PARAM_INT);
-        $stmt->bindValue(':category_id', $categoryId, PDO::PARAM_INT);
+        try {
+            $shiftSql = "
+                UPDATE menu
+                SET order_menu = order_menu + 1
+                WHERE category_id = :category_id
+                  AND order_menu >= :order_menu
+            ";
 
-        $stmt->execute();
+            $shiftStmt = $this->pdo->prepare($shiftSql);
+            $shiftStmt->bindValue(':category_id', $categoryId, PDO::PARAM_INT);
+            $shiftStmt->bindValue(':order_menu', $orderMenu, PDO::PARAM_INT);
+            $shiftStmt->execute();
+
+            $sql = "
+                INSERT INTO menu (
+                    title_menu,
+                    description_menu,
+                    extra_menu,
+                    price_menu,
+                    order_menu,
+                    category_id
+                ) VALUES (
+                    :title_menu,
+                    :description_menu,
+                    :extra_menu,
+                    :price_menu,
+                    :order_menu,
+                    :category_id
+                )
+            ";
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindValue(':title_menu', $titleMenu, PDO::PARAM_STR);
+            $stmt->bindValue(':description_menu', $descriptionMenu, $descriptionMenu === null ? PDO::PARAM_NULL : PDO::PARAM_STR);
+            $stmt->bindValue(':extra_menu', $extraMenu, $extraMenu === null ? PDO::PARAM_NULL : PDO::PARAM_STR);
+            $stmt->bindValue(':price_menu', $priceMenu);
+            $stmt->bindValue(':order_menu', $orderMenu, PDO::PARAM_INT);
+            $stmt->bindValue(':category_id', $categoryId, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            $this->pdo->commit();
+        } catch (\Throwable $e) {
+            $this->pdo->rollBack();
+            throw $e;
+        }
     }
 
     public function update(
@@ -182,41 +251,160 @@ class MenuRepository
         int $orderMenu,
         int $categoryId
     ): void {
-        $sql = "
-            UPDATE menu
-            SET
-                title_menu = :title_menu,
-                description_menu = :description_menu,
-                extra_menu = :extra_menu,
-                price_menu = :price_menu,
-                order_menu = :order_menu,
-                category_id = :category_id
-            WHERE id_menu = :id_menu
-        ";
+        $currentMenu = $this->findById($idMenu);
 
-        $stmt = $this->pdo->prepare($sql);
+        if (!$currentMenu) {
+            return;
+        }
 
-        $stmt->bindValue(':id_menu', $idMenu, PDO::PARAM_INT);
-        $stmt->bindValue(':title_menu', $titleMenu, PDO::PARAM_STR);
-        $stmt->bindValue(':description_menu', $descriptionMenu, $descriptionMenu === null ? PDO::PARAM_NULL : PDO::PARAM_STR);
-        $stmt->bindValue(':extra_menu', $extraMenu, $extraMenu === null ? PDO::PARAM_NULL : PDO::PARAM_STR);
-        $stmt->bindValue(':price_menu', $priceMenu);
-        $stmt->bindValue(':order_menu', $orderMenu, PDO::PARAM_INT);
-        $stmt->bindValue(':category_id', $categoryId, PDO::PARAM_INT);
+        $currentCategoryId = (int) $currentMenu['category_id'];
+        $currentOrderMenu = (int) $currentMenu['order_menu'];
 
-        $stmt->execute();
+        $orderMenu = $this->normalizeUpdateOrder(
+            $orderMenu,
+            $categoryId,
+            $currentCategoryId,
+            $currentOrderMenu
+        );
+
+        $this->pdo->beginTransaction();
+
+        try {
+            if ($categoryId === $currentCategoryId) {
+                if ($orderMenu < $currentOrderMenu) {
+                    // Le plat monte
+                    $sql = "
+                        UPDATE menu
+                        SET order_menu = order_menu + 1
+                        WHERE category_id = :category_id
+                          AND id_menu != :id_menu
+                          AND order_menu >= :new_order
+                          AND order_menu < :current_order
+                    ";
+
+                    $stmt = $this->pdo->prepare($sql);
+                    $stmt->bindValue(':category_id', $categoryId, PDO::PARAM_INT);
+                    $stmt->bindValue(':id_menu', $idMenu, PDO::PARAM_INT);
+                    $stmt->bindValue(':new_order', $orderMenu, PDO::PARAM_INT);
+                    $stmt->bindValue(':current_order', $currentOrderMenu, PDO::PARAM_INT);
+                    $stmt->execute();
+                } elseif ($orderMenu > $currentOrderMenu) {
+                    // Le plat descend
+                    $sql = "
+                        UPDATE menu
+                        SET order_menu = order_menu - 1
+                        WHERE category_id = :category_id
+                          AND id_menu != :id_menu
+                          AND order_menu <= :new_order
+                          AND order_menu > :current_order
+                    ";
+
+                    $stmt = $this->pdo->prepare($sql);
+                    $stmt->bindValue(':category_id', $categoryId, PDO::PARAM_INT);
+                    $stmt->bindValue(':id_menu', $idMenu, PDO::PARAM_INT);
+                    $stmt->bindValue(':new_order', $orderMenu, PDO::PARAM_INT);
+                    $stmt->bindValue(':current_order', $currentOrderMenu, PDO::PARAM_INT);
+                    $stmt->execute();
+                }
+            } else {
+                // On referme le trou dans l’ancienne catégorie
+                $closeOldSql = "
+                    UPDATE menu
+                    SET order_menu = order_menu - 1
+                    WHERE category_id = :old_category_id
+                      AND order_menu > :old_order_menu
+                ";
+
+                $closeOldStmt = $this->pdo->prepare($closeOldSql);
+                $closeOldStmt->bindValue(':old_category_id', $currentCategoryId, PDO::PARAM_INT);
+                $closeOldStmt->bindValue(':old_order_menu', $currentOrderMenu, PDO::PARAM_INT);
+                $closeOldStmt->execute();
+
+                // On décale les éléments de la nouvelle catégorie
+                $openNewSql = "
+                    UPDATE menu
+                    SET order_menu = order_menu + 1
+                    WHERE category_id = :new_category_id
+                      AND order_menu >= :new_order_menu
+                ";
+
+                $openNewStmt = $this->pdo->prepare($openNewSql);
+                $openNewStmt->bindValue(':new_category_id', $categoryId, PDO::PARAM_INT);
+                $openNewStmt->bindValue(':new_order_menu', $orderMenu, PDO::PARAM_INT);
+                $openNewStmt->execute();
+            }
+
+            $sql = "
+                UPDATE menu
+                SET
+                    title_menu = :title_menu,
+                    description_menu = :description_menu,
+                    extra_menu = :extra_menu,
+                    price_menu = :price_menu,
+                    order_menu = :order_menu,
+                    category_id = :category_id
+                WHERE id_menu = :id_menu
+            ";
+
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindValue(':id_menu', $idMenu, PDO::PARAM_INT);
+            $stmt->bindValue(':title_menu', $titleMenu, PDO::PARAM_STR);
+            $stmt->bindValue(':description_menu', $descriptionMenu, $descriptionMenu === null ? PDO::PARAM_NULL : PDO::PARAM_STR);
+            $stmt->bindValue(':extra_menu', $extraMenu, $extraMenu === null ? PDO::PARAM_NULL : PDO::PARAM_STR);
+            $stmt->bindValue(':price_menu', $priceMenu);
+            $stmt->bindValue(':order_menu', $orderMenu, PDO::PARAM_INT);
+            $stmt->bindValue(':category_id', $categoryId, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            $this->pdo->commit();
+        } catch (\Throwable $e) {
+            $this->pdo->rollBack();
+            throw $e;
+        }
     }
 
     public function delete(int $idMenu): void
     {
-        $sql = "
-            DELETE FROM menu
-            WHERE id_menu = :id_menu
-        ";
+        $currentMenu = $this->findById($idMenu);
 
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':id_menu', $idMenu, PDO::PARAM_INT);
-        $stmt->execute();
+        if (!$currentMenu) {
+            return;
+        }
+
+        $categoryId = (int) $currentMenu['category_id'];
+        $orderMenu = (int) $currentMenu['order_menu'];
+
+        $this->pdo->beginTransaction();
+
+        try {
+            $deleteSql = "
+                DELETE FROM menu
+                WHERE id_menu = :id_menu
+            ";
+
+            $deleteStmt = $this->pdo->prepare($deleteSql);
+            $deleteStmt->bindValue(':id_menu', $idMenu, PDO::PARAM_INT);
+            $deleteStmt->execute();
+
+            $reorderSql = "
+                UPDATE menu
+                SET order_menu = order_menu - 1
+                WHERE category_id = :category_id
+                  AND order_menu > :order_menu
+            ";
+
+            $reorderStmt = $this->pdo->prepare($reorderSql);
+            $reorderStmt->bindValue(':category_id', $categoryId, PDO::PARAM_INT);
+            $reorderStmt->bindValue(':order_menu', $orderMenu, PDO::PARAM_INT);
+            $reorderStmt->execute();
+
+            $this->pdo->commit();
+        } catch (\Throwable $e) {
+            $this->pdo->rollBack();
+            throw $e;
+        }
     }
 
     public function findPreviousInCategory(int $categoryId, int $orderMenu, int $idMenu): array|false
