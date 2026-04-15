@@ -314,3 +314,32 @@ if (scrollTopBtn) {
         });
     });
 }
+
+// Menu burger
+const navbarToggle = document.querySelector(".navbar__toggle");
+const navbarContent = document.querySelector(".navbar__content");
+
+if (navbarToggle && navbarContent) {
+    navbarToggle.addEventListener("click", () => {
+        const isOpen = navbarContent.classList.toggle("open");
+        navbarToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    const navbarLinks = navbarContent.querySelectorAll("a");
+
+    navbarLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            if (window.innerWidth <= 980) {
+                navbarContent.classList.remove("open");
+                navbarToggle.setAttribute("aria-expanded", "false");
+            }
+        });
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 980) {
+            navbarContent.classList.remove("open");
+            navbarToggle.setAttribute("aria-expanded", "false");
+        }
+    });
+}
