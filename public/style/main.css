@@ -784,7 +784,7 @@ img {
 .multi-carousel-container {
     position: relative;
     overflow: hidden;
-    max-width: 98%;
+    max-width: 100%;
     margin: 3rem auto 0 auto;
     padding: 0 3.5rem;
     cursor: grab;
@@ -837,11 +837,11 @@ img {
 }
 
 .multi-carousel-control-prev {
-    left: 8px;
+    left: 50px;
 }
 
 .multi-carousel-control-next {
-    right: 8px;
+    right: 90px;
 }
 
 /* Curseur carousel */
@@ -1516,6 +1516,37 @@ img {
 
 .footer__legal a:hover {
     opacity: 0.6;
+}
+
+.scroll-top-btn {
+    position: fixed;
+    right: 28px;
+    bottom: 28px;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    background: #d9a227;
+    color: black;
+    font-size: 1.8rem;
+    font-weight: bolder;
+    cursor: pointer;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.25s ease;
+    z-index: 999;
+}
+
+.scroll-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+    background: #b38014;
 }
 
 /* =========================

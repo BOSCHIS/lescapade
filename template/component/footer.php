@@ -35,4 +35,8 @@
         <a href="/mentions-legales">Mentions légales</a>
         <a href="/confidentialite">Confidentialité</a>
     </div>
+
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Retour en haut">
+        ↑
+    </button>
 </footer>
