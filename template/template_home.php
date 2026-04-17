@@ -57,6 +57,12 @@ if (!empty($currentSaturday['date_saturday'])) {
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
 </head>
 
 <body>
@@ -244,7 +250,7 @@ if (!empty($currentSaturday['date_saturday'])) {
         <!-- début caroussel carte -->
 
         <div class="multi-carousel-container" data-carousel="menu-preview">
-            <h2>Aperçu de la carte🍴</h2>
+            <h2>Aperçu de la carte🍴 <span>(sur place ou à emporter)</span></h2>
             <div class="multi-carousel-inner">
 
                 <?php if (!empty($carouselItems)) : ?>

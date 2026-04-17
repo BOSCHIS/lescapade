@@ -17,6 +17,12 @@ $heroSubtitleMaxWidth = '460px';
 
     <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style/main.css">
+
+    <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
 </head>
 
 <body>
@@ -27,7 +33,7 @@ $heroSubtitleMaxWidth = '460px';
         <section class="menu-page__intro">
             <div class="container">
                 <span class="menu-page__subtitle">Restaurant L'Escapade</span>
-                <h1 class="menu-page__title">Notre carte</h1>
+                <h1 class="menu-page__title">Notre carte </br><span>(sur place et à emporter)</span></h1>
                 <p class="menu-page__text">
                     Découvrez une cuisine bistrot généreuse, des produits du terroir
                     et des assiettes pensées pour le plaisir, le partage et la convivialité.
