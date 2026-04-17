@@ -174,8 +174,79 @@ if (!empty($currentSaturday['date_saturday'])) {
 
         </section>
 
-        <!-- début caroussel -->
+        <!-- Carrousel avec des éléments dynamiques (exemple de plats du menu)---------------------------- -->
+        <div class="container-fluid">
+
+            <div class="multi-carousel-container" id="multiCarousel">
+                <h2>À découvrir dans nos assiettes 🍴</h2>
+                <div class="multi-carousel-inner" id="carouselInner">
+                    <!-- Original items only -->
+                    <div class="multi-carousel-item" data-index="0">
+                        <div class="img-container">
+                            <img src="/assets/images/home/1.webp" alt="Image 1">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-item" data-index="1">
+                        <div class="img-container">
+                            <img src="/assets/images/home/2.webp" alt="Image 2">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-item" data-index="2">
+                        <div class="img-container">
+                            <img src="/assets/images/home/3.webp" alt="Image 3">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-item" data-index="3">
+                        <div class="img-container">
+                            <img src="/assets/images/home/4.webp" alt="Image 4">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-item" data-index="4">
+                        <div class="img-container">
+                            <img src="/assets/images/home/5.webp" alt="Image 5">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-item" data-index="5">
+                        <div class="img-container">
+                            <img src="/assets/images/home/6.webp" alt="Image 6">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-item" data-index="6">
+                        <div class="img-container">
+                            <img src="/assets/images/home/7.webp" alt="Image 7">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-item" data-index="7">
+                        <div class="img-container">
+                            <img src="/assets/images/home/8.webp" alt="Image 8">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-item" data-index="8">
+                        <div class="img-container">
+                            <img src="/assets/images/home/9.webp" alt="Image 9">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-item" data-index="10">
+                        <div class="img-container">
+                            <img src="/assets/images/home/10.webp" alt="Image 10">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="multi-carousel-control-prev" id="prevBtn">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="multi-carousel-control-next" id="nextBtn">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+
+
+        <!-- début caroussel carte -->
+
         <div class="multi-carousel-container" id="multiCarousel">
+            <h2>Aperçu de la carte🍴</h2>
             <div class="multi-carousel-inner" id="carouselInner">
 
                 <?php if (!empty($carouselItems)) : ?>
@@ -236,6 +307,44 @@ if (!empty($currentSaturday['date_saturday'])) {
         </div>
 
         <!-- fin caroussel -->
+
+        <!-- Carrousel photos restaurant---------------------------- -->
+        <div class="container-fluid">
+
+            <div class="multi-carousel-container" id="multiCarousel">
+                <h2>Le restaurant L'Escapade</h2>
+                <div class="multi-carousel-inner" id="carouselInner">
+                    <!-- Original items only -->
+                    <div class="multi-carousel-item" data-index="0">
+                        <div class="img-container">
+                            <img src="/assets/images/home/restaurant1.jpg" alt="Image 1">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-item" data-index="1">
+                        <div class="img-container">
+                            <img src="/assets/images/home/restaurant2.jpg" alt="Image 2">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-item" data-index="2">
+                        <div class="img-container">
+                            <img src="/assets/images/home/restaurant3.jpg" alt="Image 3">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-item" data-index="3">
+                        <div class="img-container">
+                            <img src="/assets/images/home/restaurant4.jpg" alt="Image 4">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="multi-carousel-control-prev" id="prevBtn">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="multi-carousel-control-next" id="nextBtn">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
 
         <!-- philosophie -->
         <section class="home-philosophy">

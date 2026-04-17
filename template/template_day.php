@@ -91,7 +91,7 @@ $heroSubtitle = "";
                                             <?= number_format((float) $day['price_day'], 2, ',', ' ') ?> €
                                         </span>
 
-                                        <a href="#" class="day-feature-card__button">
+                                        <a href="/contact" class="day-feature-card__button">
                                             Réserver
                                         </a>
                                     </div>
