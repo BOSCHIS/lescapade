@@ -176,11 +176,9 @@ if (!empty($currentSaturday['date_saturday'])) {
 
         <!-- Carrousel avec des éléments dynamiques (exemple de plats du menu)---------------------------- -->
         <div class="container-fluid">
-
-            <div class="multi-carousel-container" id="multiCarousel">
+            <div class="multi-carousel-container" data-carousel="home-dishes">
                 <h2>À découvrir dans nos assiettes 🍴</h2>
-                <div class="multi-carousel-inner" id="carouselInner">
-                    <!-- Original items only -->
+                <div class="multi-carousel-inner">
                     <div class="multi-carousel-item" data-index="0">
                         <div class="img-container">
                             <img src="/assets/images/home/1.webp" alt="Image 1">
@@ -233,10 +231,10 @@ if (!empty($currentSaturday['date_saturday'])) {
                     </div>
                 </div>
 
-                <button class="multi-carousel-control-prev" id="prevBtn">
+                <button class="multi-carousel-control-prev" type="button" aria-label="Précédent">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </button>
-                <button class="multi-carousel-control-next" id="nextBtn">
+                <button class="multi-carousel-control-next" type="button" aria-label="Suivant">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </button>
             </div>
@@ -245,9 +243,9 @@ if (!empty($currentSaturday['date_saturday'])) {
 
         <!-- début caroussel carte -->
 
-        <div class="multi-carousel-container" id="multiCarousel">
+        <div class="multi-carousel-container" data-carousel="menu-preview">
             <h2>Aperçu de la carte🍴</h2>
-            <div class="multi-carousel-inner" id="carouselInner">
+            <div class="multi-carousel-inner">
 
                 <?php if (!empty($carouselItems)) : ?>
                     <?php foreach ($carouselItems as $index => $item) : ?>
@@ -293,11 +291,11 @@ if (!empty($currentSaturday['date_saturday'])) {
 
             </div>
 
-            <button class="multi-carousel-control-prev" id="prevBtn" type="button">
+            <button class="multi-carousel-control-prev" type="button" aria-label="Précédent">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             </button>
 
-            <button class="multi-carousel-control-next" id="nextBtn" type="button">
+            <button class="multi-carousel-control-next" type="button" aria-label="Suivant">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
             </button>
         </div>
@@ -310,11 +308,9 @@ if (!empty($currentSaturday['date_saturday'])) {
 
         <!-- Carrousel photos restaurant---------------------------- -->
         <div class="container-fluid">
-
-            <div class="multi-carousel-container" id="multiCarousel">
+            <div class="multi-carousel-container" data-carousel="restaurant-photos">
                 <h2>Le restaurant L'Escapade</h2>
-                <div class="multi-carousel-inner" id="carouselInner">
-                    <!-- Original items only -->
+                <div class="multi-carousel-inner">
                     <div class="multi-carousel-item" data-index="0">
                         <div class="img-container">
                             <img src="/assets/images/home/restaurant1.jpg" alt="Image 1">
@@ -336,11 +332,10 @@ if (!empty($currentSaturday['date_saturday'])) {
                         </div>
                     </div>
                 </div>
-
-                <button class="multi-carousel-control-prev" id="prevBtn">
+                <button class="multi-carousel-control-prev" type="button" aria-label="Précédent">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </button>
-                <button class="multi-carousel-control-next" id="nextBtn">
+                <button class="multi-carousel-control-next" type="button" aria-label="Suivant">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </button>
             </div>

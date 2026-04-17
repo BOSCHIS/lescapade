@@ -10,37 +10,54 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// carousel
-document.addEventListener("DOMContentLoaded", function () {
-    // Configuration - dynamic based on screen size
-    let itemsPerSlide = window.innerWidth < 720 ? 1 : 3; // Responsive items per slide
-    const totalItems = 9; // Total real items (without clones)
-    let slideBy = window.innerWidth < 720 ? 1 : 1; // How many items to advance/retreat per click
+// =========================
+// CARROUSELS MULTIPLES
+// =========================
+const carouselContainers = document.querySelectorAll(".multi-carousel-container[data-carousel]");
 
-    // DOM elements
-    const carousel = document.getElementById("multiCarousel");
-    const carouselInner = document.getElementById("carouselInner");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
+carouselContainers.forEach((carousel) => {
+    const carouselInner = carousel.querySelector(".multi-carousel-inner");
+    const prevBtn = carousel.querySelector(".multi-carousel-control-prev");
+    const nextBtn = carousel.querySelector(".multi-carousel-control-next");
 
-    // Function to update configuration based on screen size
-    function updateConfig() {
-        const isMobile = window.innerWidth < 720;
-        itemsPerSlide = isMobile ? 1 : 3;
-        slideBy = isMobile ? 1 : 1;
+    if (!carouselInner || !prevBtn || !nextBtn) {
+        return;
     }
 
-    // Dynamically add clone elements
+    let itemsPerSlide = window.innerWidth < 720 ? 1 : 3;
+    let slideBy = 1;
+    let isAnimating = false;
+    let isDragging = false;
+    let startX = 0;
+    let startPosition = 0;
+    let position = 0;
+    let currentIndex = 0;
+    let autoAdvanceInterval = null;
+    let userActivityTimeout = null;
+
+    function getOriginalItems() {
+        return Array.from(carouselInner.querySelectorAll(".multi-carousel-item:not(.clone)"));
+    }
+
+    function getTotalItems() {
+        return getOriginalItems().length;
+    }
+
+    function updateConfig() {
+        itemsPerSlide = window.innerWidth < 720 ? 1 : 3;
+        slideBy = 1;
+    }
+
     function initializeClones() {
-        const originalItems = Array.from(
-            document.querySelectorAll(".multi-carousel-item:not(.clone)")
-        );
+        const originalItems = getOriginalItems();
 
-        // Clear existing clones
-        document.querySelectorAll(".clone").forEach((clone) => clone.remove());
+        carouselInner.querySelectorAll(".clone").forEach((clone) => clone.remove());
 
-        // Prepend clones of last items
-        const lastClones = originalItems
+        if (originalItems.length === 0) {
+            return;
+        }
+
+        const prependClones = originalItems
             .slice(-itemsPerSlide)
             .map((item) => {
                 const clone = item.cloneNode(true);
@@ -48,49 +65,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 return clone;
             })
             .reverse();
-        lastClones.forEach((clone) => carouselInner.prepend(clone));
 
-        // Append clones of first items
-        const firstClones = originalItems.slice(0, itemsPerSlide).map((item) => {
-            const clone = item.cloneNode(true);
-            clone.classList.add("clone");
-            return clone;
-        });
-        firstClones.forEach((clone) => carouselInner.append(clone));
+        prependClones.forEach((clone) => carouselInner.prepend(clone));
+
+        const appendClones = originalItems
+            .slice(0, itemsPerSlide)
+            .map((item) => {
+                const clone = item.cloneNode(true);
+                clone.classList.add("clone");
+                return clone;
+            });
+
+        appendClones.forEach((clone) => carouselInner.append(clone));
     }
 
-    // Calculate and set the height for carousel items (without heading dependency)
-    function setCarouselHeight() {
-        // Calculate available height without depending on heading element
-        const windowHeight = window.innerHeight;
-        const carouselContainer = carousel.closest(".container-fluid");
-
-        // Get the carousel container's offset from top
-        const containerRect = carouselContainer
-            ? carouselContainer.getBoundingClientRect()
-            : { top: 0 };
-        const availableHeight = windowHeight - containerRect.top - 100; // 100px for padding/margins
-
-        // Set a minimum height to ensure carousel is always visible
-        const carouselHeight = Math.max(availableHeight, 300);
-
-        document.documentElement.style.setProperty(
-            "--carousel-height",
-            `${carouselHeight}px`
-        );
-    }
-
-    // Initial setup
-    updateConfig();
-    initializeClones();
-    setCarouselHeight();
-
-    // Start with the first real set of images
-    let currentIndex = 0; // Index of current visible center image (0 to totalItems-1)
-    let position = itemsPerSlide; // Real position considering clones
-    let isAnimating = false;
-
-    // Update carousel position
     function updateCarouselPosition(animate = true) {
         if (animate) {
             carouselInner.style.transition = "transform 0.5s ease";
@@ -102,78 +90,65 @@ document.addEventListener("DOMContentLoaded", function () {
         carouselInner.style.transform = `translateX(${translateX}%)`;
     }
 
-    // Initialize position
-    updateCarouselPosition(false);
+    function initializeCarousel() {
+        updateConfig();
+        initializeClones();
 
-    // Handle transition end
-    carouselInner.addEventListener("transitionend", function () {
-        isAnimating = false;
-
-        // Handle infinite loop logic
-        if (position >= totalItems + itemsPerSlide) {
-            position = itemsPerSlide + (position - (totalItems + itemsPerSlide));
-            updateCarouselPosition(false);
-        } else if (position < itemsPerSlide) {
-            position = totalItems + position;
-            updateCarouselPosition(false);
+        if (getTotalItems() === 0) {
+            return;
         }
 
-        currentIndex = (position - itemsPerSlide) % totalItems;
-    });
+        position = itemsPerSlide;
+        currentIndex = 0;
+        updateCarouselPosition(false);
 
-    // Navigation functions
+        const carouselImages = carousel.querySelectorAll("img");
+        carouselImages.forEach((img) => {
+            img.addEventListener("dragstart", (e) => e.preventDefault());
+            img.style.pointerEvents = "none";
+        });
+    }
+
     function next() {
-        if (isAnimating) return;
+        if (isAnimating || getTotalItems() === 0) return;
         isAnimating = true;
         position += slideBy;
-        updateCarouselPosition();
+        updateCarouselPosition(true);
     }
 
     function prev() {
-        if (isAnimating) return;
+        if (isAnimating || getTotalItems() === 0) return;
         isAnimating = true;
         position -= slideBy;
-        updateCarouselPosition();
+        updateCarouselPosition(true);
     }
 
-    // Event listeners for buttons
-    nextBtn.addEventListener("click", next);
-    prevBtn.addEventListener("click", prev);
+    function startAutoAdvance() {
+        clearInterval(autoAdvanceInterval);
+        autoAdvanceInterval = setInterval(() => {
+            next();
+        }, 5000);
+    }
 
-    // Mouse drag functionality
-    let isDragging = false;
-    let startX = 0;
-    let startPosition = 0;
+    function resetAutoAdvanceTimer() {
+        clearTimeout(userActivityTimeout);
+        clearInterval(autoAdvanceInterval);
+        userActivityTimeout = setTimeout(() => {
+            startAutoAdvance();
+        }, 10000);
+    }
 
-    // Prevent image drag
-    const carouselImages = document.querySelectorAll("#carouselInner img");
-    carouselImages.forEach((img) => {
-        img.addEventListener("dragstart", (e) => {
-            e.preventDefault();
-        });
-        img.style.pointerEvents = "none";
-    });
-
-    carousel.addEventListener("mousedown", startDrag);
-    carousel.addEventListener("touchstart", startDrag, { passive: true });
-
-    carousel.addEventListener("mousemove", drag);
-    carousel.addEventListener("touchmove", drag, { passive: true });
-
-    carousel.addEventListener("mouseup", endDrag);
-    carousel.addEventListener("touchend", endDrag);
-    carousel.addEventListener("mouseleave", endDrag);
+    function registerUserActivity() {
+        resetAutoAdvanceTimer();
+    }
 
     function startDrag(e) {
-        if (e.target.tagName === "IMG") {
-            e.preventDefault();
-        }
-
-        if (isAnimating) return;
+        if (isAnimating || getTotalItems() === 0) return;
 
         isDragging = true;
         startX = e.type.includes("mouse") ? e.clientX : e.touches[0].clientX;
         startPosition = position;
+
         carousel.classList.add("dragging");
         carouselInner.style.transition = "none";
         document.body.style.cursor = "grabbing";
@@ -205,6 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
             : e.changedTouches
                 ? e.changedTouches[0].clientX
                 : startX;
+
         const walk = ((x - startX) / carousel.offsetWidth) * itemsPerSlide;
 
         if (walk > 0.2) {
@@ -212,57 +188,50 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (walk < -0.2) {
             next();
         } else {
-            updateCarouselPosition();
+            updateCarouselPosition(true);
         }
 
         registerUserActivity();
     }
 
-    // Keyboard navigation
-    document.addEventListener("keydown", function (e) {
-        if (
-            carousel.offsetParent === null ||
-            document.activeElement.tagName === "INPUT" ||
-            document.activeElement.tagName === "TEXTAREA" ||
-            document.activeElement.isContentEditable
-        ) {
+    carouselInner.addEventListener("transitionend", () => {
+        const totalItems = getTotalItems();
+        isAnimating = false;
+
+        if (totalItems === 0) {
             return;
         }
 
-        switch (e.key) {
-            case "ArrowLeft":
-                e.preventDefault();
-                prev();
-                registerUserActivity();
-                break;
-            case "ArrowRight":
-                e.preventDefault();
-                next();
-                registerUserActivity();
-                break;
+        if (position >= totalItems + itemsPerSlide) {
+            position = itemsPerSlide + (position - (totalItems + itemsPerSlide));
+            updateCarouselPosition(false);
+        } else if (position < itemsPerSlide) {
+            position = totalItems + position;
+            updateCarouselPosition(false);
         }
+
+        currentIndex = ((position - itemsPerSlide) % totalItems + totalItems) % totalItems;
     });
 
-    // Auto-advance system
-    let autoAdvanceInterval;
-    let userActivityTimeout;
+    nextBtn.addEventListener("click", () => {
+        next();
+        registerUserActivity();
+    });
 
-    function startAutoAdvance() {
-        clearInterval(autoAdvanceInterval);
-        autoAdvanceInterval = setInterval(next, 5000);
-    }
+    prevBtn.addEventListener("click", () => {
+        prev();
+        registerUserActivity();
+    });
 
-    function resetAutoAdvanceTimer() {
-        clearTimeout(userActivityTimeout);
-        clearInterval(autoAdvanceInterval);
-        userActivityTimeout = setTimeout(startAutoAdvance, 10000);
-    }
+    carousel.addEventListener("mousedown", startDrag);
+    carousel.addEventListener("touchstart", startDrag, { passive: true });
 
-    function registerUserActivity() {
-        resetAutoAdvanceTimer();
-    }
+    carousel.addEventListener("mousemove", drag);
+    carousel.addEventListener("touchmove", drag, { passive: true });
 
-    startAutoAdvance();
+    carousel.addEventListener("mouseup", endDrag);
+    carousel.addEventListener("touchend", endDrag);
+    carousel.addEventListener("mouseleave", endDrag);
 
     carousel.addEventListener("mouseenter", () => {
         clearInterval(autoAdvanceInterval);
@@ -275,25 +244,45 @@ document.addEventListener("DOMContentLoaded", function () {
     carousel.addEventListener("click", registerUserActivity);
     carousel.addEventListener("wheel", registerUserActivity);
 
-    // Handle window resize
-    window.addEventListener("resize", function () {
+    document.addEventListener("keydown", (e) => {
+        if (carousel.offsetParent === null) return;
+
+        if (
+            document.activeElement.tagName === "INPUT" ||
+            document.activeElement.tagName === "TEXTAREA" ||
+            document.activeElement.isContentEditable
+        ) {
+            return;
+        }
+
+        if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            prev();
+            registerUserActivity();
+        }
+
+        if (e.key === "ArrowRight") {
+            e.preventDefault();
+            next();
+            registerUserActivity();
+        }
+    });
+
+    initializeCarousel();
+    startAutoAdvance();
+
+    window.addEventListener("resize", () => {
         const wasMobile = itemsPerSlide === 1;
         updateConfig();
-        setCarouselHeight();
+        const isMobile = itemsPerSlide === 1;
 
-        // Only reinitialize if mobile state changed
-        if (
-            (wasMobile && itemsPerSlide > 1) ||
-            (!wasMobile && itemsPerSlide === 1)
-        ) {
-            initializeClones();
-            position = itemsPerSlide; // Reset position
+        if (wasMobile !== isMobile) {
+            initializeCarousel();
+        } else {
             updateCarouselPosition(false);
         }
     });
 });
-
-// Fin du carousel
 
 // Scroll to top button
 const scrollTopBtn = document.getElementById("scrollTopBtn");

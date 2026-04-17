@@ -1092,6 +1092,12 @@ img {
     margin: 3rem 0;
 }
 
+/* Carousel photos restaurant  */
+.multi-carousel-container[data-carousel="restaurant-photos"] .img-container {
+    width: 600px;
+    height: 800px;
+}
+
 @media (max-width: 992px) {
     .menu-card-simple {
         min-height: 320px;
