@@ -1,0 +1,11 @@
+vendor/
+composer.lock
+env.php
+*.png
+*.jpg
+*.jpeg
+*.bmp
+.env
+*.log
+bdd.sql
+node_modules/
