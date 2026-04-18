@@ -1,12 +1,15 @@
 <?php
+
+use App\Utils\Lang;
+
 $heroImage = '/assets/images/header/restaurant_header.webp';
 $heroHeight = '850px';
 $heroObjectPosition = 'center top';
 $heroTitleMarginTop = '90px';
 $heroTitleMaxWidth = '420px';
 $heroSubtitleMaxWidth = '460px';
-$heroTitle = "Bienvenue au<br />restaurant l'Escapade";
-$heroSubtitle = "Cuisine traditionnelle au <br />plein coeur de Cahors";
+$heroTitle = Lang::translate('home.hero_title');
+$heroSubtitle = Lang::translate('home.hero_subtitle');
 
 $dayDateFormatted = '';
 if (!empty($currentDay['date_day'])) {
@@ -45,12 +48,12 @@ if (!empty($currentSaturday['date_saturday'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?= htmlspecialchars(Lang::getLocale(), ENT_QUOTES, 'UTF-8') ?>">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - L'Escapade</title>
+    <title><?= htmlspecialchars(Lang::translate('nav.home'), ENT_QUOTES, 'UTF-8') ?> - L'Escapade</title>
 
     <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style/main.css">
@@ -82,7 +85,7 @@ if (!empty($currentSaturday['date_saturday'])) {
 
                     <div class="special-ticket__content">
                         <div class="special-ticket__main">
-                            <span class="special-ticket__badge">Le plat du jour</span>
+                            <span class="special-ticket__badge"><?= htmlspecialchars(Lang::translate('home.day.badge'), ENT_QUOTES, 'UTF-8') ?></span>
 
                             <?php if (!empty($currentDay)) : ?>
                                 <h2 class="special-ticket__title">
@@ -94,7 +97,7 @@ if (!empty($currentSaturday['date_saturday'])) {
                                 </span>
                             <?php else : ?>
                                 <h2 class="special-ticket__title">
-                                    Le plat du jour arrive bientôt
+                                    <?= htmlspecialchars(Lang::translate('home.day.soon'), ENT_QUOTES, 'UTF-8') ?>
                                 </h2>
 
                                 <span class="special-ticket__price">—</span>
@@ -105,7 +108,7 @@ if (!empty($currentSaturday['date_saturday'])) {
                             <span class="special-ticket__date">
                                 <?= !empty($dayDateFormatted)
                                     ? htmlspecialchars($dayDateFormatted, ENT_QUOTES, 'UTF-8')
-                                    : 'Bientôt disponible' ?>
+                                    : htmlspecialchars(Lang::translate('home.day.available_soon'), ENT_QUOTES, 'UTF-8') ?>
                             </span>
 
                             <div class="special-ticket__dish-image">
@@ -119,7 +122,7 @@ if (!empty($currentSaturday['date_saturday'])) {
                             </div>
 
                             <a href="/plat-du-jour" class="special-ticket__button">
-                                Voir les détails
+                                <?= htmlspecialchars(Lang::translate('home.day.details'), ENT_QUOTES, 'UTF-8') ?>
                             </a>
                         </div>
                     </div>
@@ -133,7 +136,7 @@ if (!empty($currentSaturday['date_saturday'])) {
 
                     <div class="special-ticket__content">
                         <div class="special-ticket__main">
-                            <span class="special-ticket__badge">Le plat du samedi</span>
+                            <span class="special-ticket__badge"><?= htmlspecialchars(Lang::translate('home.saturday.badge'), ENT_QUOTES, 'UTF-8') ?></span>
 
                             <?php if (!empty($currentSaturday)) : ?>
                                 <h2 class="special-ticket__title">
@@ -145,7 +148,7 @@ if (!empty($currentSaturday['date_saturday'])) {
                                 </span>
                             <?php else : ?>
                                 <h2 class="special-ticket__title">
-                                    Le plat du samedi arrive bientôt
+                                    <?= htmlspecialchars(Lang::translate('home.saturday.soon'), ENT_QUOTES, 'UTF-8') ?>
                                 </h2>
 
                                 <span class="special-ticket__price">—</span>
@@ -156,7 +159,7 @@ if (!empty($currentSaturday['date_saturday'])) {
                             <span class="special-ticket__date">
                                 <?= !empty($saturdayDateFormatted)
                                     ? htmlspecialchars($saturdayDateFormatted, ENT_QUOTES, 'UTF-8')
-                                    : 'Bientôt disponible' ?>
+                                    : htmlspecialchars(Lang::translate('home.saturday.available_soon'), ENT_QUOTES, 'UTF-8') ?>
                             </span>
 
                             <div class="special-ticket__dish-image">
@@ -170,7 +173,7 @@ if (!empty($currentSaturday['date_saturday'])) {
                             </div>
 
                             <a href="/plat-du-samedi" class="special-ticket__button">
-                                Voir les détails
+                                <?= htmlspecialchars(Lang::translate('home.saturday.details'), ENT_QUOTES, 'UTF-8') ?>
                             </a>
                         </div>
                     </div>
@@ -183,7 +186,7 @@ if (!empty($currentSaturday['date_saturday'])) {
         <!-- Carrousel avec des éléments dynamiques (exemple de plats du menu)---------------------------- -->
         <div class="container-fluid">
             <div class="multi-carousel-container" data-carousel="home-dishes">
-                <h2>À découvrir dans nos assiettes 🍴</h2>
+                <h2><?= htmlspecialchars(Lang::translate('home.carousel.dishes'), ENT_QUOTES, 'UTF-8') ?></h2>
                 <div class="multi-carousel-inner">
                     <div class="multi-carousel-item" data-index="0">
                         <div class="img-container">
@@ -246,11 +249,13 @@ if (!empty($currentSaturday['date_saturday'])) {
             </div>
         </div>
 
-
         <!-- début caroussel carte -->
 
         <div class="multi-carousel-container" data-carousel="menu-preview">
-            <h2>Aperçu de la carte🍴 <span>(sur place ou à emporter)</span></h2>
+            <h2>
+                <?= htmlspecialchars(Lang::translate('home.carousel.menu'), ENT_QUOTES, 'UTF-8') ?>
+                <span><?= htmlspecialchars(Lang::translate('home.carousel.menu.extra'), ENT_QUOTES, 'UTF-8') ?></span>
+            </h2>
             <div class="multi-carousel-inner">
 
                 <?php if (!empty($carouselItems)) : ?>
@@ -286,9 +291,9 @@ if (!empty($currentSaturday['date_saturday'])) {
                     <div class="multi-carousel-item" data-index="0">
                         <div class="menu-card-simple">
                             <span class="menu-card-simple__category">L'Escapade</span>
-                            <h3 class="menu-card-simple__title">La carte arrive bientôt</h3>
+                            <h3 class="menu-card-simple__title"><?= htmlspecialchars(Lang::translate('home.carousel.empty.title'), ENT_QUOTES, 'UTF-8') ?></h3>
                             <p class="menu-card-simple__description">
-                                Nos suggestions gourmandes seront bientôt affichées ici.
+                                <?= htmlspecialchars(Lang::translate('home.carousel.empty.text'), ENT_QUOTES, 'UTF-8') ?>
                             </p>
                             <div class="menu-card-simple__visual"></div>
                         </div>
@@ -307,7 +312,7 @@ if (!empty($currentSaturday['date_saturday'])) {
         </div>
 
         <div class="button-wrapper">
-            <a href="/menu" class="button_menu">Voir la carte</a>
+            <a href="/menu" class="button_menu"><?= htmlspecialchars(Lang::translate('home.menu.button'), ENT_QUOTES, 'UTF-8') ?></a>
         </div>
 
         <!-- fin caroussel -->
@@ -315,7 +320,7 @@ if (!empty($currentSaturday['date_saturday'])) {
         <!-- Carrousel photos restaurant---------------------------- -->
         <div class="container-fluid">
             <div class="multi-carousel-container" data-carousel="restaurant-photos">
-                <h2>Le restaurant L'Escapade</h2>
+                <h2><?= htmlspecialchars(Lang::translate('home.carousel.restaurant'), ENT_QUOTES, 'UTF-8') ?></h2>
                 <div class="multi-carousel-inner">
                     <div class="multi-carousel-item" data-index="0">
                         <div class="img-container">
@@ -353,25 +358,15 @@ if (!empty($currentSaturday['date_saturday'])) {
                 <article class="philosophy-card">
                     <div class="philosophy-card__ornament philosophy-card__ornament--top"></div>
 
-                    <span class="philosophy-card__subtitle">L’âme de L’Escapade</span>
-                    <h2>Notre philosophie</h2>
+                    <span class="philosophy-card__subtitle"><?= htmlspecialchars(Lang::translate('home.philosophy.subtitle'), ENT_QUOTES, 'UTF-8') ?></span>
+                    <h2><?= htmlspecialchars(Lang::translate('home.philosophy.title'), ENT_QUOTES, 'UTF-8') ?></h2>
 
                     <div class="philosophy-card__content">
-                        <p>
-                            Fiers de nos racines cadurciennes, nous avons repris cette emblématique adresse
-                            dans le but de faire perdurer l’histoire de ce lieu. Nous nous efforcerons de mettre
-                            en avant des produits de notre territoire dans l’esprit bistrot.
-                        </p>
+                        <p><?= htmlspecialchars(Lang::translate('home.philosophy.p1'), ENT_QUOTES, 'UTF-8') ?></p>
 
-                        <p>
-                            Favoriser les circuits courts, aller à la rencontre de nos artisans, de nos éleveurs
-                            et de nos viticulteurs, telle est notre philosophie.
-                        </p>
+                        <p><?= htmlspecialchars(Lang::translate('home.philosophy.p2'), ENT_QUOTES, 'UTF-8') ?></p>
 
-                        <p>
-                            La cuisine est un moment de convivialité au sein de notre famille, c’est ce que nous
-                            souhaitons partager avec vous.
-                        </p>
+                        <p><?= htmlspecialchars(Lang::translate('home.philosophy.p3'), ENT_QUOTES, 'UTF-8') ?></p>
                     </div>
 
                     <div class="philosophy-card__signature">

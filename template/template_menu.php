@@ -1,4 +1,7 @@
 <?php
+
+use App\Utils\Lang;
+
 $heroImage = '/assets/images/header/hero_menu.webp';
 $heroHeight = '590px';
 $heroObjectPosition = 'center';
@@ -8,12 +11,12 @@ $heroSubtitleMaxWidth = '460px';
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?= htmlspecialchars(Lang::getLocale(), ENT_QUOTES, 'UTF-8') ?>">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Carte - L'Escapade</title>
+    <title><?= htmlspecialchars(Lang::translate('nav.menu'), ENT_QUOTES, 'UTF-8') ?> - L'Escapade</title>
 
     <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style/main.css">
@@ -32,11 +35,13 @@ $heroSubtitleMaxWidth = '460px';
     <main class="menu-page">
         <section class="menu-page__intro">
             <div class="container">
-                <span class="menu-page__subtitle">Restaurant L'Escapade</span>
-                <h1 class="menu-page__title">Notre carte </br><span>(sur place et à emporter)</span></h1>
+                <span class="menu-page__subtitle"><?= htmlspecialchars(Lang::translate('menu.subtitle'), ENT_QUOTES, 'UTF-8') ?></span>
+                <h1 class="menu-page__title">
+                    <?= htmlspecialchars(Lang::translate('menu.title'), ENT_QUOTES, 'UTF-8') ?><br>
+                    <span><?= htmlspecialchars(Lang::translate('menu.title.extra'), ENT_QUOTES, 'UTF-8') ?></span>
+                </h1>
                 <p class="menu-page__text">
-                    Découvrez une cuisine bistrot généreuse, des produits du terroir
-                    et des assiettes pensées pour le plaisir, le partage et la convivialité.
+                    <?= htmlspecialchars(Lang::translate('menu.intro'), ENT_QUOTES, 'UTF-8') ?>
                 </p>
             </div>
         </section>
@@ -93,14 +98,14 @@ $heroSubtitleMaxWidth = '460px';
                 <?php else : ?>
                     <section class="menu-category">
                         <div class="menu-category__header">
-                            <h2>La carte arrive bientôt</h2>
+                            <h2><?= htmlspecialchars(Lang::translate('menu.empty.title'), ENT_QUOTES, 'UTF-8') ?></h2>
                         </div>
 
                         <div class="menu-category__list">
                             <article class="menu-entry">
                                 <div class="menu-entry__main">
                                     <p class="menu-entry__description">
-                                        Notre carte est en cours de préparation.
+                                        <?= htmlspecialchars(Lang::translate('menu.empty.text'), ENT_QUOTES, 'UTF-8') ?>
                                     </p>
                                 </div>
                             </article>

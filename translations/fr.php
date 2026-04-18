@@ -1,0 +1,131 @@
+<?php
+
+return [
+    'nav.home' => 'Accueil',
+    'nav.menu' => 'La Carte',
+    'nav.day' => 'Plat du jour',
+    'nav.saturday' => 'Plat du samedi',
+    'nav.history' => 'Notre histoire',
+    'nav.contact' => 'Réserver - Nous contacter',
+
+    'lang.french' => 'Français',
+    'lang.english' => 'English',
+    'lang.spanish' => 'Español',
+
+    'home.hero_title' => "Bienvenue au<br />restaurant l'Escapade",
+    'home.hero_subtitle' => 'Cuisine traditionnelle au <br />plein coeur de Cahors',
+
+    'home.day.badge' => 'Le plat du jour',
+    'home.day.soon' => 'Le plat du jour arrive bientôt',
+    'home.day.details' => 'Voir les détails',
+    'home.day.available_soon' => 'Bientôt disponible',
+
+    'home.saturday.badge' => 'Le plat du samedi',
+    'home.saturday.soon' => 'Le plat du samedi arrive bientôt',
+    'home.saturday.details' => 'Voir les détails',
+    'home.saturday.available_soon' => 'Bientôt disponible',
+
+    'home.carousel.dishes' => 'À découvrir dans nos assiettes 🍴',
+    'home.carousel.menu' => 'Aperçu de la carte🍴',
+    'home.carousel.restaurant' => "Le restaurant L'Escapade",
+    'home.carousel.menu.extra' => '(sur place ou à emporter)',
+    'home.carousel.empty.title' => 'La carte arrive bientôt',
+    'home.carousel.empty.text' => 'Nos suggestions gourmandes seront bientôt affichées ici.',
+    'home.menu.button' => 'Voir la carte',
+
+    'home.philosophy.subtitle' => "L’âme de L’Escapade",
+    'home.philosophy.title' => 'Notre philosophie',
+
+    'home.philosophy.p1' => "Fiers de nos racines cadurciennes, nous avons repris cette emblématique adresse dans le but de faire perdurer l’histoire de ce lieu. Nous nous efforcerons de mettre en avant des produits de notre territoire dans l’esprit bistrot.",
+    'home.philosophy.p2' => "Favoriser les circuits courts, aller à la rencontre de nos artisans, de nos éleveurs et de nos viticulteurs, telle est notre philosophie.",
+    'home.philosophy.p3' => "La cuisine est un moment de convivialité au sein de notre famille, c’est ce que nous souhaitons partager avec vous.",
+
+
+    'history.heading' => 'Entre transmission, territoire et convivialité...',
+    'history.philosophy.subtitle' => "L’âme de L’Escapade",
+    'history.philosophy.title' => 'Notre philosophie',
+    'history.philosophy.p1' => "Fiers de nos racines cadurciennes, nous avons repris cette emblématique adresse dans le but de faire perdurer l’histoire de ce lieu. Nous nous efforcerons de mettre en avant des produits de notre territoire dans l’esprit bistrot.",
+    'history.philosophy.p2' => "Favoriser les circuits courts, aller à la rencontre de nos artisans, de nos éleveurs et de nos viticulteurs, telle est notre philosophie.",
+    'history.philosophy.p3' => "La cuisine est un moment de convivialité au sein de notre famille, c’est ce que nous souhaitons partager avec vous.",
+    'history.signature' => 'Thomas et Alexandre',
+
+    'history.values.product.subtitle' => 'Le produit avant tout',
+    'history.values.product.title' => 'Une cuisine guidée par la saison et le terroir',
+    'history.values.product.p1' => "Notre cuisine commence toujours par le produit. Nous travaillons au rythme des saisons, en privilégiant des ingrédients frais, simples et sincères, qui ont du goût et une histoire. Ici, pas de détour inutile : nous cherchons avant tout à respecter ce que la nature nous offre.",
+    'history.values.product.p2' => "Le Sud-Ouest est une terre généreuse. Entre le Lot, le Quercy et les environs, nous avons la chance d’être entourés de producteurs passionnés, dont le travail mérite d’être mis en valeur dans chaque assiette.",
+
+    'history.values.producers.subtitle' => 'Les producteurs',
+    'history.values.producers.title' => 'Des rencontres qui donnent du sens à notre cuisine',
+    'history.values.producers.p1' => "Nous attachons une importance particulière aux circuits courts et aux relations humaines. Derrière chaque produit, il y a un visage, un savoir-faire, une exigence. C’est cette proximité avec les producteurs qui nourrit notre cuisine au quotidien.",
+    'history.values.producers.p2' => "Éleveurs, maraîchers, artisans ou viticulteurs… nous aimons aller à leur rencontre, comprendre leur travail et partager avec eux une même vision : celle d’une cuisine vraie, respectueuse et profondément ancrée dans son territoire.",
+
+    'history.values.experience.subtitle' => 'L’expérience',
+    'history.values.experience.title' => 'Un moment simple, chaleureux et sincère',
+    'history.values.experience.p1' => "L’Escapade, c’est avant tout un lieu de vie. Nous souhaitons que chacun puisse s’y sentir bien, comme à la maison, autour d’un bon repas. La convivialité fait partie intégrante de notre identité, aussi importante que ce que l’on retrouve dans l’assiette.",
+    'history.values.experience.p2' => "Que ce soit pour un déjeuner rapide ou un moment plus long entre amis ou en famille, nous mettons tout en œuvre pour vous offrir une expérience simple, chaleureuse et authentique, fidèle à l’esprit bistrot que nous défendons.",
+
+    'menu.subtitle' => "Restaurant L'Escapade",
+    'menu.title' => 'Notre carte',
+    'menu.title.extra' => '(sur place et à emporter)',
+    'menu.intro' => 'Découvrez une cuisine bistrot généreuse, des produits du terroir et des assiettes pensées pour le plaisir, le partage et la convivialité.',
+    'menu.empty.title' => 'La carte arrive bientôt',
+    'menu.empty.text' => 'Notre carte est en cours de préparation.',
+
+
+    'day.badge' => 'Le plat du jour',
+    'day.book' => 'Réserver',
+    'day.image_fallback_alt' => 'Plat du jour bientôt disponible',
+    'day.empty.title' => 'Aucun plat du jour n’est disponible pour le moment',
+    'day.empty.text' => 'Notre suggestion du jour sera bientôt mise en ligne.',
+    'day.empty.button' => 'Voir la carte',
+
+    'saturday.badge' => 'Le plat du samedi',
+    'saturday.book' => 'Réserver',
+    'saturday.image_fallback_text' => "L'Escapade",
+    'saturday.empty.title' => 'Aucun plat du samedi n’est disponible pour le moment',
+    'saturday.empty.text' => 'Notre suggestion du samedi sera bientôt mise en ligne.',
+    'saturday.empty.button' => 'Voir la carte',
+
+    'contact.badge' => 'Réserver votre table',
+    'contact.title' => 'Contactez-nous directement',
+    'contact.intro' => 'Pour réserver une table, obtenir un renseignement ou préparer votre venue, nous vous invitons à nous appeler directement. Nous serons ravis de vous répondre.',
+
+    'contact.pets.badge' => 'Animaux de compagnie 🐾',
+    'contact.pets.title' => 'Vos compagnons sont les bienvenus',
+    'contact.pets.p1' => 'Chez L’Escapade, nous acceptons avec plaisir les animaux de compagnie. Les chiens calmes et tenus à proximité de votre table sont les bienvenus.',
+    'contact.pets.p2' => '🐾 N’hésitez pas à nous le préciser lors de votre réservation afin que nous puissions vous installer au mieux.',
+
+    'contact.address.label' => 'Adresse',
+    'contact.address.title' => 'Nous trouver',
+    'contact.address.button' => '📍 Voir l’itinéraire',
+
+    'contact.hours.label' => 'Horaires',
+    'contact.hours.title' => 'Horaires d’ouverture',
+    'contact.hours.mon_thu' => 'Lundi au jeudi',
+    'contact.hours.friday' => 'Vendredi',
+    'contact.hours.saturday' => 'Samedi',
+    'contact.hours.sunday' => 'Dimanche',
+    'contact.hours.closed' => 'Fermé',
+
+    'contact.parking.label' => 'Stationnement',
+    'contact.parking.title' => 'Stationnement gratuit',
+    'contact.parking.p1' => 'Le stationnement est gratuit à proximité du restaurant sur certaines plages horaires.',
+    'contact.parking.li1' => 'Entre 12h30 et 14h (30 minutes gratuites)',
+    'contact.parking.li2' => 'À partir de 18h30',
+    'contact.parking.li3' => 'Toute la journée le dimanche',
+    'contact.parking.p2' => 'Des places sont disponibles Rue Président Wilson et dans les rues adjacentes, à quelques mètres du restaurant.',
+
+    'contact.groups.label' => 'Groupes & événements',
+    'contact.groups.title' => 'Repas de groupe',
+    'contact.groups.p1' => 'Nous accueillons également vos repas de groupe, anniversaires, repas d’entreprise et moments de convivialité.',
+    'contact.groups.p2' => 'Pour toute demande particulière, le plus simple est de nous contacter par téléphone.',
+    'contact.groups.button' => '📞 Réserver maintenant',
+
+    'footer.contact' => 'Contactez-nous',
+    'footer.address' => 'Adresse',
+    'footer.follow_us' => 'Suivez-nous',
+    'footer.tagline' => 'Restaurant traditionnel à Cahors',
+    'footer.legal' => 'Mentions légales',
+    'footer.privacy' => 'Confidentialité',
+    'footer.back_to_top' => 'Retour en haut',
+];

@@ -1,4 +1,7 @@
 <?php
+
+use App\Utils\Lang;
+
 $heroImage = '/assets/images/header/hero_history.webp';
 $heroHeight = '780px';
 $heroObjectPosition = 'center center';
@@ -9,12 +12,12 @@ $heroTitle = "";
 $heroSubtitle = "";
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?= htmlspecialchars(Lang::getLocale(), ENT_QUOTES, 'UTF-8') ?>">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notre histoire - L'Escapade</title>
+    <title><?= htmlspecialchars(Lang::translate('nav.history'), ENT_QUOTES, 'UTF-8') ?> - L'Escapade</title>
 
     <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style/main.css">
@@ -38,86 +41,54 @@ $heroSubtitle = "";
 
             <section class="home-philosophy">
                 <div class="container">
-                    <h1>Entre transmission, territoire et convivialité...</h1>
+                    <h1><?= htmlspecialchars(Lang::translate('history.heading'), ENT_QUOTES, 'UTF-8') ?></h1>
+
                     <article class="philosophy-card">
                         <div class="philosophy-card__ornament philosophy-card__ornament--top"></div>
 
-                        <span class="philosophy-card__subtitle">L’âme de L’Escapade</span>
-                        <h2>Notre philosophie</h2>
+                        <span class="philosophy-card__subtitle"><?= htmlspecialchars(Lang::translate('history.philosophy.subtitle'), ENT_QUOTES, 'UTF-8') ?></span>
+                        <h2><?= htmlspecialchars(Lang::translate('history.philosophy.title'), ENT_QUOTES, 'UTF-8') ?></h2>
 
                         <div class="philosophy-card__content">
-                            <p>
-                                Fiers de nos racines cadurciennes, nous avons repris cette emblématique adresse
-                                dans le but de faire perdurer l’histoire de ce lieu. Nous nous efforcerons de mettre
-                                en avant des produits de notre territoire dans l’esprit bistrot.
-                            </p>
+                            <p><?= htmlspecialchars(Lang::translate('history.philosophy.p1'), ENT_QUOTES, 'UTF-8') ?></p>
 
-                            <p>
-                                Favoriser les circuits courts, aller à la rencontre de nos artisans, de nos éleveurs
-                                et de nos viticulteurs, telle est notre philosophie.
-                            </p>
+                            <p><?= htmlspecialchars(Lang::translate('history.philosophy.p2'), ENT_QUOTES, 'UTF-8') ?></p>
 
-                            <p>
-                                La cuisine est un moment de convivialité au sein de notre famille, c’est ce que nous
-                                souhaitons partager avec vous.
-                            </p>
+                            <p><?= htmlspecialchars(Lang::translate('history.philosophy.p3'), ENT_QUOTES, 'UTF-8') ?></p>
                         </div>
 
                         <div class="philosophy-card__signature">
-                            <span>Thomas et Alexandre</span>
+                            <span><?= htmlspecialchars(Lang::translate('history.signature'), ENT_QUOTES, 'UTF-8') ?></span>
                         </div>
 
                         <div class="philosophy-card__ornament philosophy-card__ornament--bottom"></div>
                     </article>
                 </div>
             </section>
+
             <section class="history-values">
                 <div class="container">
                     <div class="history-values__grid">
 
                         <article class="history-values__card">
-                            <span class="history-values__subtitle">Le produit avant tout</span>
-                            <h2>Une cuisine guidée par la saison et le terroir</h2>
-                            <p>
-                                Notre cuisine commence toujours par le produit. Nous travaillons au rythme des saisons,
-                                en privilégiant des ingrédients frais, simples et sincères, qui ont du goût et une histoire.
-                                Ici, pas de détour inutile : nous cherchons avant tout à respecter ce que la nature nous offre.
-                            </p>
-                            <p>
-                                Le Sud-Ouest est une terre généreuse. Entre le Lot, le Quercy et les environs,
-                                nous avons la chance d’être entourés de producteurs passionnés, dont le travail mérite
-                                d’être mis en valeur dans chaque assiette.
-                            </p>
+                            <span class="history-values__subtitle"><?= htmlspecialchars(Lang::translate('history.values.product.subtitle'), ENT_QUOTES, 'UTF-8') ?></span>
+                            <h2><?= htmlspecialchars(Lang::translate('history.values.product.title'), ENT_QUOTES, 'UTF-8') ?></h2>
+                            <p><?= htmlspecialchars(Lang::translate('history.values.product.p1'), ENT_QUOTES, 'UTF-8') ?></p>
+                            <p><?= htmlspecialchars(Lang::translate('history.values.product.p2'), ENT_QUOTES, 'UTF-8') ?></p>
                         </article>
 
                         <article class="history-values__card">
-                            <span class="history-values__subtitle">Les producteurs</span>
-                            <h2>Des rencontres qui donnent du sens à notre cuisine</h2>
-                            <p>
-                                Nous attachons une importance particulière aux circuits courts et aux relations humaines.
-                                Derrière chaque produit, il y a un visage, un savoir-faire, une exigence. C’est cette proximité
-                                avec les producteurs qui nourrit notre cuisine au quotidien.
-                            </p>
-                            <p>
-                                Éleveurs, maraîchers, artisans ou viticulteurs… nous aimons aller à leur rencontre,
-                                comprendre leur travail et partager avec eux une même vision : celle d’une cuisine vraie,
-                                respectueuse et profondément ancrée dans son territoire.
-                            </p>
+                            <span class="history-values__subtitle"><?= htmlspecialchars(Lang::translate('history.values.producers.subtitle'), ENT_QUOTES, 'UTF-8') ?></span>
+                            <h2><?= htmlspecialchars(Lang::translate('history.values.producers.title'), ENT_QUOTES, 'UTF-8') ?></h2>
+                            <p><?= htmlspecialchars(Lang::translate('history.values.producers.p1'), ENT_QUOTES, 'UTF-8') ?></p>
+                            <p><?= htmlspecialchars(Lang::translate('history.values.producers.p2'), ENT_QUOTES, 'UTF-8') ?></p>
                         </article>
 
                         <article class="history-values__card">
-                            <span class="history-values__subtitle">L’expérience</span>
-                            <h2>Un moment simple, chaleureux et sincère</h2>
-                            <p>
-                                L’Escapade, c’est avant tout un lieu de vie. Nous souhaitons que chacun puisse s’y sentir bien,
-                                comme à la maison, autour d’un bon repas. La convivialité fait partie intégrante de notre identité,
-                                aussi importante que ce que l’on retrouve dans l’assiette.
-                            </p>
-                            <p>
-                                Que ce soit pour un déjeuner rapide ou un moment plus long entre amis ou en famille,
-                                nous mettons tout en œuvre pour vous offrir une expérience simple, chaleureuse et authentique,
-                                fidèle à l’esprit bistrot que nous défendons.
-                            </p>
+                            <span class="history-values__subtitle"><?= htmlspecialchars(Lang::translate('history.values.experience.subtitle'), ENT_QUOTES, 'UTF-8') ?></span>
+                            <h2><?= htmlspecialchars(Lang::translate('history.values.experience.title'), ENT_QUOTES, 'UTF-8') ?></h2>
+                            <p><?= htmlspecialchars(Lang::translate('history.values.experience.p1'), ENT_QUOTES, 'UTF-8') ?></p>
+                            <p><?= htmlspecialchars(Lang::translate('history.values.experience.p2'), ENT_QUOTES, 'UTF-8') ?></p>
                         </article>
 
                     </div>

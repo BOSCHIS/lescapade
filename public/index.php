@@ -24,11 +24,17 @@ use App\Controller\DayController;
 use App\Controller\SaturdayController;
 use App\Controller\HistoryController;
 use App\Controller\ContactController;
+use App\Controller\LanguageController;
 use App\Controller\Admin\AdminAuthController;
 use App\Controller\Admin\AdminDashboardController;
 use App\Controller\Admin\AdminMenuController;
 use App\Controller\Admin\AdminDayController;
 use App\Controller\Admin\AdminSaturdayController;
+use App\Utils\Lang;
+
+if (empty($_SESSION['locale'])) {
+    Lang::setLocale('fr');
+}
 
 $url = parse_url($_SERVER['REQUEST_URI']);
 $path = $url['path'] ?? '/';
@@ -39,6 +45,7 @@ $dayController = new DayController();
 $saturdayController = new SaturdayController();
 $historyController = new HistoryController();
 $contactController = new ContactController();
+$languageController = new LanguageController();
 $adminAuthController = new AdminAuthController();
 $adminDashboardController = new AdminDashboardController();
 $adminMenuController = new AdminMenuController();
@@ -85,6 +92,12 @@ switch ($path) {
     case '/LESCAPADE/public/contact':
     case '/LESCAPADE/public/reservation':
         $contactController->index();
+        break;
+
+    case '/lang':
+    case '/lescapade/public/lang':
+    case '/LESCAPADE/public/lang':
+        $languageController->switch();
         break;
 
     case '/admin':

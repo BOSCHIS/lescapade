@@ -171,6 +171,101 @@ img {
 }
 
 /* =========================
+   ACTIONS NAVBAR (langue + CTA)
+========================= */
+.navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+}
+
+/* =========================
+   LANGUAGE SWITCHER
+========================= */
+.language-switcher {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.language-switcher__current {
+    width: 65px;
+    height: 65px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.language-switcher__current:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.language-switcher__current img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.language-switcher__menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 180px;
+    background: #fffaf3;
+    border: 1px solid rgba(166, 124, 0, 0.16);
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(59, 36, 22, 0.16);
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.22s ease, visibility 0.22s ease, transform 0.22s ease;
+    z-index: 1200;
+    pointer-events: none;
+}
+
+.language-switcher.open .language-switcher__menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    transform: translate(50%, 0);
+}
+
+.language-switcher__option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #2f1d12;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.language-switcher__option:hover,
+.language-switcher__option.active {
+    background: rgba(217, 162, 39, 0.15);
+    color: #2f1d12;
+}
+
+.language-switcher__option img {
+    width: 22px;
+    height: 22px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* =========================
    CTA NAVBAR
 ========================= */
 .navbar__cta {
@@ -321,7 +416,7 @@ img {
     }
 }
 
-@media (max-width: 1550px) {
+@media (max-width: 1625px) {
     .navbar__content {
         margin-left: 30px;
     }
@@ -368,7 +463,7 @@ img {
 /* =========================
    TABLETTE / BURGER
 ========================= */
-@media (max-width: 1430px) {
+@media (max-width: 1520px) {
     .navbar {
         height: 78px;
         padding: 0 14px;
@@ -484,6 +579,30 @@ img {
 
     .hero__subtitle p {
         font-size: 1.1rem;
+    }
+
+    .navbar__actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+    }
+
+    .language-switcher {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .language-switcher__menu {
+        right: 50%;
+        transform: translate(50%, 8px);
+    }
+
+    .language-switcher:hover .language-switcher__menu,
+    .language-switcher:focus-within .language-switcher__menu {
+        transform: translate(50%, 0);
     }
 }
 
@@ -1546,7 +1665,7 @@ img {
 .menu-entry__extra {
     margin-top: 0.7rem;
     color: #3f2d21;
-    font-size: 0.98rem;
+    font-size: 1.2rem;
     line-height: 1.65;
     font-style: italic;
     font-weight: 600;

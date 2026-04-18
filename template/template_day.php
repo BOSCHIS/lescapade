@@ -1,4 +1,7 @@
 <?php
+
+use App\Utils\Lang;
+
 $heroImage = '/assets/images/header/hero_day.webp';
 $heroHeight = '720px';
 $heroObjectPosition = 'center center';
@@ -7,15 +10,25 @@ $heroTitleMaxWidth = '420px';
 $heroSubtitleMaxWidth = '460px';
 $heroTitle = "";
 $heroSubtitle = "";
+
+$locale = Lang::getLocale();
+
+$dateLocales = [
+    'fr' => 'fr_FR',
+    'en' => 'en_GB',
+    'es' => 'es_ES',
+];
+
+$intlLocale = $dateLocales[$locale] ?? 'fr_FR';
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?= htmlspecialchars($locale, ENT_QUOTES, 'UTF-8') ?>">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plat du jour - L'Escapade</title>
+    <title><?= htmlspecialchars(Lang::translate('nav.day'), ENT_QUOTES, 'UTF-8') ?> - L'Escapade</title>
 
     <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style/main.css">
@@ -45,7 +58,7 @@ $heroSubtitle = "";
                             if ($timestamp) {
                                 $date = new DateTime($day['date_day']);
                                 $formatter = new IntlDateFormatter(
-                                    'fr_FR',
+                                    $intlLocale,
                                     IntlDateFormatter::FULL,
                                     IntlDateFormatter::NONE,
                                     'Europe/Paris',
@@ -53,7 +66,8 @@ $heroSubtitle = "";
                                     'EEEE dd/MM/yyyy'
                                 );
 
-                                $dayDateFormatted = ucfirst($formatter->format($date));
+                                $formattedDate = $formatter->format($date);
+                                $dayDateFormatted = $formattedDate !== false ? ucfirst($formattedDate) : '';
                             }
                             ?>
 
@@ -65,14 +79,13 @@ $heroSubtitle = "";
                                             alt="<?= htmlspecialchars($day['title_day'], ENT_QUOTES, 'UTF-8') ?>">
                                     <?php else : ?>
                                         <div class="day-feature-card__visual-placeholder">
-                                            <source>
-                                            <img src="/assets/images/deco/day_default.webp" alt="Plat du jour bientôt disponible">
+                                            <img src="/assets/images/deco/day_default.webp" alt="<?= htmlspecialchars(Lang::translate('day.image_fallback_alt'), ENT_QUOTES, 'UTF-8') ?>">
                                         </div>
                                     <?php endif; ?>
                                 </div>
 
                                 <div class="day-feature-card__content">
-                                    <span class="day-feature-card__badge">Le plat du jour</span>
+                                    <span class="day-feature-card__badge"><?= htmlspecialchars(Lang::translate('day.badge'), ENT_QUOTES, 'UTF-8') ?></span>
 
                                     <?php if (!empty($dayDateFormatted)) : ?>
                                         <div class="day-feature-card__meta">
@@ -98,7 +111,7 @@ $heroSubtitle = "";
                                         </span>
 
                                         <a href="/contact" class="day-feature-card__button">
-                                            Réserver
+                                            <?= htmlspecialchars(Lang::translate('day.book'), ENT_QUOTES, 'UTF-8') ?>
                                         </a>
                                     </div>
                                 </div>
@@ -107,10 +120,10 @@ $heroSubtitle = "";
                     </div>
                 <?php else : ?>
                     <section class="day-empty-state">
-                        <span class="day-empty-state__badge">Le plat du jour</span>
-                        <h1>Aucun plat du jour n’est disponible pour le moment</h1>
-                        <p>Notre suggestion du jour sera bientôt mise en ligne.</p>
-                        <a href="/menu" class="day-feature-card__button">Voir la carte</a>
+                        <span class="day-empty-state__badge"><?= htmlspecialchars(Lang::translate('day.badge'), ENT_QUOTES, 'UTF-8') ?></span>
+                        <h1><?= htmlspecialchars(Lang::translate('day.empty.title'), ENT_QUOTES, 'UTF-8') ?></h1>
+                        <p><?= htmlspecialchars(Lang::translate('day.empty.text'), ENT_QUOTES, 'UTF-8') ?></p>
+                        <a href="/menu" class="day-feature-card__button"><?= htmlspecialchars(Lang::translate('day.empty.button'), ENT_QUOTES, 'UTF-8') ?></a>
                     </section>
                 <?php endif; ?>
 

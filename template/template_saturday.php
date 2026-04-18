@@ -1,4 +1,7 @@
 <?php
+
+use App\Utils\Lang;
+
 $heroImage = '/assets/images/header/hero_saturday.webp';
 $heroHeight = '830px';
 $heroObjectPosition = 'center center';
@@ -7,15 +10,25 @@ $heroTitleMaxWidth = '420px';
 $heroSubtitleMaxWidth = '520px';
 $heroTitle = "";
 $heroSubtitle = "";
+
+$locale = Lang::getLocale();
+
+$dateLocales = [
+    'fr' => 'fr_FR',
+    'en' => 'en_GB',
+    'es' => 'es_ES',
+];
+
+$intlLocale = $dateLocales[$locale] ?? 'fr_FR';
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?= htmlspecialchars($locale, ENT_QUOTES, 'UTF-8') ?>">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plat du samedi - L'Escapade</title>
+    <title><?= htmlspecialchars(Lang::translate('nav.saturday'), ENT_QUOTES, 'UTF-8') ?> - L'Escapade</title>
 
     <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style/main.css">
@@ -45,7 +58,7 @@ $heroSubtitle = "";
                             if ($timestamp) {
                                 $date = new DateTime($saturday['date_saturday']);
                                 $formatter = new IntlDateFormatter(
-                                    'fr_FR',
+                                    $intlLocale,
                                     IntlDateFormatter::FULL,
                                     IntlDateFormatter::NONE,
                                     'Europe/Paris',
@@ -53,7 +66,8 @@ $heroSubtitle = "";
                                     'EEEE dd/MM/yyyy'
                                 );
 
-                                $dateFormatted = ucfirst($formatter->format($date));
+                                $formattedDate = $formatter->format($date);
+                                $dateFormatted = $formattedDate !== false ? ucfirst($formattedDate) : '';
                             }
                             ?>
                             <article class="day-feature-card day-feature-card--list saturday-feature-card">
@@ -64,13 +78,13 @@ $heroSubtitle = "";
                                             alt="<?= htmlspecialchars($saturday['title_saturday'], ENT_QUOTES, 'UTF-8') ?>">
                                     <?php else : ?>
                                         <div class="day-feature-card__visual-placeholder">
-                                            L'Escapade
+                                            <?= htmlspecialchars(Lang::translate('saturday.image_fallback_text'), ENT_QUOTES, 'UTF-8') ?>
                                         </div>
                                     <?php endif; ?>
                                 </div>
 
                                 <div class="day-feature-card__content">
-                                    <span class="day-feature-card__badge saturday-feature-card__badge">Le plat du samedi</span>
+                                    <span class="day-feature-card__badge saturday-feature-card__badge"><?= htmlspecialchars(Lang::translate('saturday.badge'), ENT_QUOTES, 'UTF-8') ?></span>
 
                                     <?php if (!empty($dateFormatted)) : ?>
                                         <div class="day-feature-card__meta">
@@ -96,7 +110,7 @@ $heroSubtitle = "";
                                         </span>
 
                                         <a href="/contact" class="day-feature-card__button saturday-feature-card__button">
-                                            Réserver
+                                            <?= htmlspecialchars(Lang::translate('saturday.book'), ENT_QUOTES, 'UTF-8') ?>
                                         </a>
                                     </div>
                                 </div>
@@ -105,10 +119,10 @@ $heroSubtitle = "";
                     </div>
                 <?php else : ?>
                     <section class="day-empty-state">
-                        <span class="day-empty-state__badge">Le plat du samedi</span>
-                        <h1>Aucun plat du samedi n’est disponible pour le moment</h1>
-                        <p>Notre suggestion du samedi sera bientôt mise en ligne.</p>
-                        <a href="/menu" class="day-feature-card__button">Voir la carte</a>
+                        <span class="day-empty-state__badge"><?= htmlspecialchars(Lang::translate('saturday.badge'), ENT_QUOTES, 'UTF-8') ?></span>
+                        <h1><?= htmlspecialchars(Lang::translate('saturday.empty.title'), ENT_QUOTES, 'UTF-8') ?></h1>
+                        <p><?= htmlspecialchars(Lang::translate('saturday.empty.text'), ENT_QUOTES, 'UTF-8') ?></p>
+                        <a href="/menu" class="day-feature-card__button"><?= htmlspecialchars(Lang::translate('saturday.empty.button'), ENT_QUOTES, 'UTF-8') ?></a>
                     </section>
                 <?php endif; ?>
 
