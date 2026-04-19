@@ -33,7 +33,7 @@ $heroSubtitle = "";
 
     <?php include __DIR__ . '/component/navbar.php'; ?>
 
-    <main>
+    <main class="menu-page">
         <section class="contact-page">
             <div class="contact-page__container">
 

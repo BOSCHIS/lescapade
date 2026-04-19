@@ -50,7 +50,7 @@ main {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 10px 0;
+    padding: 30px 0;
 }
 
 img {
@@ -74,7 +74,7 @@ img {
     left: 0;
     width: 100%;
     height: 110px;
-    z-index: 1000;
+    z-index: 3000;
 
     display: flex;
     align-items: center;
@@ -312,7 +312,6 @@ img {
     position: relative;
     width: 100%;
     height: var(--hero-height, 900px);
-    margin-top: 78px;
     overflow: hidden;
     box-shadow: 0 3px 18px black;
 }
@@ -383,7 +382,7 @@ img {
     line-height: 1.25;
     font-weight: 700;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-    margin: 0;
+    margin-bottom: 20px;
 }
 
 /* =========================
@@ -547,17 +546,16 @@ img {
     }
 
     .hero {
-        margin-top: 78px;
         height: 460px;
     }
 
     .hero__content {
-        padding: 20px 16px;
+        padding: 90px 16px 20px;
     }
 
     .hero__title-box {
-        max-width: 100%;
-        margin-top: 38px;
+        max-width: min(100%, 520px);
+        margin-top: 30px;
         padding: 14px 18px;
         margin-left: 16px;
         margin-right: 16px;
@@ -569,7 +567,7 @@ img {
     }
 
     .hero__subtitle {
-        align-self: flex-start;
+        align-self: flex-end;
         text-align: left;
         max-width: 320px;
         margin-bottom: 10px;
@@ -578,7 +576,7 @@ img {
     }
 
     .hero__subtitle p {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
     }
 
     .navbar__actions {
@@ -603,6 +601,17 @@ img {
     .language-switcher:hover .language-switcher__menu,
     .language-switcher:focus-within .language-switcher__menu {
         transform: translate(50%, 0);
+    }
+}
+
+@media (max-width:850px) {
+    .hero__subtitle {
+        align-self: flex-start;
+        text-align: left;
+        max-width: 320px;
+        margin-bottom: 10px;
+        margin-left: 16px;
+        margin-right: 16px;
     }
 }
 
@@ -642,7 +651,6 @@ img {
     }
 
     .hero {
-        margin-top: 70px;
         height: 390px;
     }
 
@@ -657,11 +665,12 @@ img {
     }
 
     .hero__subtitle {
-        max-width: 260px;
+        margin-top: auto;
+        margin-bottom: -12px;
     }
 
     .hero__subtitle p {
-        font-size: 1rem;
+        font-size: 1.1rem;
         line-height: 1.35;
     }
 }
@@ -1488,7 +1497,7 @@ img {
     }
 
     .philosophy-card__content p {
-        font-size: 1rem;
+        font-size: 1.4rem;
         line-height: 1.8;
     }
 
@@ -1863,6 +1872,7 @@ img {
 @media (max-width: 900px) {
     .site-footer {
         padding: 65px 20px 30px;
+        /* margin-top: 20px; */
     }
 
     .footer__content {
@@ -1874,6 +1884,7 @@ img {
     }
 
     .footer__col {
+        margin-top: 10px;
         width: 100%;
         text-align: center;
     }
@@ -1896,9 +1907,14 @@ img {
 }
 
 @media (max-width: 520px) {
+
+    .footer__logo {
+        top: -60px;
+    }
+
     .footer__logo img {
-        width: 78px;
-        height: 78px;
+        width: 120px;
+        height: 120px;
     }
 
     .footer__brand h2 {
@@ -2254,6 +2270,7 @@ img {
     border-radius: 14px;
     transition: 0.2s ease;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
+    z-index: 2000;
 }
 
 .day-feature-card__button:hover {
@@ -2358,6 +2375,7 @@ img {
 }
 
 .saturday-feature-card__button {
+    z-index: 2000;
     background: #d9a227;
     color: #3f2416;
 }
@@ -2572,12 +2590,13 @@ img {
 
     .contact-intro-card__actions {
         flex-direction: column;
+        align-items: center;
     }
 
     .contact-intro-card__phone,
     .contact-intro-card__mail,
     .contact-info-card__button {
-        width: 100%;
+        width: auto;
     }
 }
 

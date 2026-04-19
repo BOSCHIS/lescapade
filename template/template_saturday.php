@@ -44,7 +44,7 @@ $intlLocale = $dateLocales[$locale] ?? 'fr_FR';
 
     <?php include __DIR__ . '/component/navbar.php'; ?>
 
-    <main>
+    <main class="menu-page">
         <section class="day-page">
             <div class="day-page__container">
 
