@@ -41,6 +41,7 @@ use App\Utils\Lang;
     <div class="footer__legal">
         <a href="/mentions-legales"><?= htmlspecialchars(Lang::translate('footer.legal'), ENT_QUOTES, 'UTF-8') ?></a>
         <a href="/confidentialite"><?= htmlspecialchars(Lang::translate('footer.privacy'), ENT_QUOTES, 'UTF-8') ?></a>
+        <p>© 2026 L'Escapade — Tous droits réservés.</p>
     </div>
 
     <button id="scrollTopBtn" class="scroll-top-btn" aria-label="<?= htmlspecialchars(Lang::translate('footer.back_to_top'), ENT_QUOTES, 'UTF-8') ?>">

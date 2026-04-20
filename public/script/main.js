@@ -9,10 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
-// =========================
-// CARROUSELS MULTIPLES
-// =========================
+/* =========================
+      CARROUSELS MULTIPLES
+   ========================= */
 const carouselContainers = document.querySelectorAll(".multi-carousel-container[data-carousel]");
 
 carouselContainers.forEach((carousel) => {
@@ -24,10 +23,11 @@ carouselContainers.forEach((carousel) => {
         return;
     }
 
-    let itemsPerSlide = window.innerWidth < 720 ? 1 : 3;
+    let itemsPerSlide = 3;
     let slideBy = 1;
     let isAnimating = false;
     let isDragging = false;
+    let dragMoved = false;
     let startX = 0;
     let startPosition = 0;
     let position = 0;
@@ -44,7 +44,7 @@ carouselContainers.forEach((carousel) => {
     }
 
     function updateConfig() {
-        itemsPerSlide = window.innerWidth < 720 ? 1 : 3;
+        itemsPerSlide = window.innerWidth <= 992 ? 1 : 3;
         slideBy = 1;
     }
 
@@ -80,12 +80,7 @@ carouselContainers.forEach((carousel) => {
     }
 
     function updateCarouselPosition(animate = true) {
-        if (animate) {
-            carouselInner.style.transition = "transform 0.5s ease";
-        } else {
-            carouselInner.style.transition = "none";
-        }
-
+        carouselInner.style.transition = animate ? "transform 0.5s ease" : "none";
         const translateX = (position * -100) / itemsPerSlide;
         carouselInner.style.transform = `translateX(${translateX}%)`;
     }
@@ -105,7 +100,7 @@ carouselContainers.forEach((carousel) => {
         const carouselImages = carousel.querySelectorAll("img");
         carouselImages.forEach((img) => {
             img.addEventListener("dragstart", (e) => e.preventDefault());
-            img.style.pointerEvents = "none";
+            // IMPORTANT : on ne met PAS pointerEvents = "none"
         });
     }
 
@@ -142,25 +137,39 @@ carouselContainers.forEach((carousel) => {
         resetAutoAdvanceTimer();
     }
 
+    function getClientX(e) {
+        if (e.type.includes("mouse")) return e.clientX;
+        if (e.touches && e.touches[0]) return e.touches[0].clientX;
+        if (e.changedTouches && e.changedTouches[0]) return e.changedTouches[0].clientX;
+        return startX;
+    }
+
     function startDrag(e) {
         if (isAnimating || getTotalItems() === 0) return;
 
         isDragging = true;
-        startX = e.type.includes("mouse") ? e.clientX : e.touches[0].clientX;
+        dragMoved = false;
+        startX = getClientX(e);
         startPosition = position;
 
         carousel.classList.add("dragging");
         carouselInner.style.transition = "none";
         document.body.style.cursor = "grabbing";
         document.body.style.userSelect = "none";
+
         registerUserActivity();
     }
 
     function drag(e) {
         if (!isDragging) return;
 
-        const x = e.type.includes("mouse") ? e.clientX : e.touches[0].clientX;
+        const x = getClientX(e);
         const walk = ((x - startX) / carousel.offsetWidth) * itemsPerSlide;
+
+        if (Math.abs(x - startX) > 8) {
+            dragMoved = true;
+        }
+
         const newPosition = startPosition - walk;
         const translateX = (newPosition * -100) / itemsPerSlide;
         carouselInner.style.transform = `translateX(${translateX}%)`;
@@ -175,12 +184,7 @@ carouselContainers.forEach((carousel) => {
         document.body.style.userSelect = "";
         carouselInner.style.transition = "transform 0.5s ease";
 
-        const x = e.type?.includes("mouse")
-            ? e.clientX
-            : e.changedTouches
-                ? e.changedTouches[0].clientX
-                : startX;
-
+        const x = getClientX(e);
         const walk = ((x - startX) / carousel.offsetWidth) * itemsPerSlide;
 
         if (walk > 0.2) {
@@ -213,12 +217,16 @@ carouselContainers.forEach((carousel) => {
         currentIndex = ((position - itemsPerSlide) % totalItems + totalItems) % totalItems;
     });
 
-    nextBtn.addEventListener("click", () => {
+    nextBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         next();
         registerUserActivity();
     });
 
-    prevBtn.addEventListener("click", () => {
+    prevBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         prev();
         registerUserActivity();
     });
@@ -282,7 +290,31 @@ carouselContainers.forEach((carousel) => {
             updateCarouselPosition(false);
         }
     });
+
+    // Expose dragMoved pour la lightbox
+    carousel.dataset.dragMoved = "false";
+
+    carousel.addEventListener("mousedown", () => {
+        carousel.dataset.dragMoved = "false";
+    });
+
+    carousel.addEventListener("mousemove", () => {
+        if (isDragging && dragMoved) {
+            carousel.dataset.dragMoved = "true";
+        }
+    });
+
+    carousel.addEventListener("touchstart", () => {
+        carousel.dataset.dragMoved = "false";
+    });
+
+    carousel.addEventListener("touchmove", () => {
+        if (isDragging && dragMoved) {
+            carousel.dataset.dragMoved = "true";
+        }
+    });
 });
+
 
 // Scroll to top button
 const scrollTopBtn = document.getElementById("scrollTopBtn");
@@ -329,6 +361,60 @@ if (navbarToggle && navbarContent) {
         if (window.innerWidth > 980) {
             navbarContent.classList.remove("open");
             navbarToggle.setAttribute("aria-expanded", "false");
+        }
+    });
+}
+/* =========================
+       LIGHTBOX
+    ========================= */
+const lightbox = document.getElementById("imageLightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const lightboxClose = document.querySelector(".lightbox__close");
+
+if (lightbox && lightboxImg && lightboxClose) {
+    function openLightbox(src, alt = "") {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt;
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxImg.src = "";
+        lightboxImg.alt = "";
+        document.body.style.overflow = "";
+    }
+
+    document.addEventListener("click", (e) => {
+        const img = e.target.closest(".multi-carousel-item img, .special-ticket__dish-image img");
+        if (!img) return;
+
+        const parentCarousel = img.closest(".multi-carousel-container");
+
+        if (parentCarousel && parentCarousel.dataset.dragMoved === "true") {
+            return;
+        }
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        openLightbox(img.currentSrc || img.src, img.alt || "");
+    });
+
+    lightboxClose.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && lightbox.classList.contains("open")) {
+            closeLightbox();
         }
     });
 }

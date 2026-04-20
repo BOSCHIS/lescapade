@@ -80,7 +80,7 @@ if (!empty($currentSaturday['date_saturday'])) {
                 <!-- PLAT DU JOUR -->
                 <article class="special-ticket special-ticket--day">
                     <div class="special-ticket__background">
-                        <img src="/assets/images/deco/card2.png" alt="Identité visuelle du plat du jour">
+                        <img src="/assets/images/deco/card2 copie.png" alt="Identité visuelle du plat du jour">
                     </div>
 
                     <div class="special-ticket__content">
@@ -131,7 +131,7 @@ if (!empty($currentSaturday['date_saturday'])) {
                 <!-- PLAT DU SAMEDI -->
                 <article class="special-ticket special-ticket--saturday">
                     <div class="special-ticket__background">
-                        <img src="/assets/images/deco/card2.png" alt="Identité visuelle du plat du samedi">
+                        <img src="/assets/images/deco/card2 copie.png" alt="Identité visuelle du plat du samedi">
                     </div>
 
                     <div class="special-ticket__content">
@@ -379,12 +379,19 @@ if (!empty($currentSaturday['date_saturday'])) {
         </section>
         <!-- fin philosophie -->
 
+
     </main>
 
     <?php include __DIR__ . '/component/footer.php'; ?>
 
+    <div class="lightbox" id="imageLightbox" aria-hidden="true">
+        <button class="lightbox__close" type="button" aria-label="Fermer">&times;</button>
+        <img class="lightbox__img" id="lightboxImg" src="" alt="">
+    </div>
+
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/script/main.js"></script>
+
 </body>
 
 </html>
