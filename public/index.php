@@ -31,6 +31,8 @@ use App\Controller\Admin\AdminMenuController;
 use App\Controller\Admin\AdminDayController;
 use App\Controller\Admin\AdminSaturdayController;
 use App\Utils\Lang;
+use App\Controller\LegalController;
+use App\Controller\PrivacyController;
 
 if (empty($_SESSION['locale'])) {
     Lang::setLocale('fr');
@@ -40,6 +42,8 @@ $url = parse_url($_SERVER['REQUEST_URI']);
 $path = $url['path'] ?? '/';
 
 $homeController = new HomeController();
+$legalController = new LegalController();
+$privacyController = new PrivacyController();
 $menuController = new MenuController();
 $dayController = new DayController();
 $saturdayController = new SaturdayController();
@@ -59,6 +63,18 @@ switch ($path) {
     case '/LESCAPADE/public/':
     case '/LESCAPADE/public/index.php':
         $homeController->index();
+        break;
+
+    case '/mentions-legales':
+    case '/lescapade/public/mentions-legales':
+    case '/LESCAPADE/public/mentions-legales':
+        $legalController->index();
+        break;
+
+    case '/confidentialite':
+    case '/lescapade/public/confidentialite':
+    case '/LESCAPADE/public/confidentialite':
+        $privacyController->index();
         break;
 
     case '/menu':

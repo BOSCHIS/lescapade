@@ -2939,3 +2939,93 @@ img {
     line-height: 1.85;
     color: #4c392f;
 }
+
+/* /page mentions légales */
+.legal-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.legal-logo img {
+    width: 100px;
+    /* taille du logo */
+    height: auto;
+}
+
+
+
+
+
+/* =========================
+   PAGES LÉGALES
+========================= */
+
+.legal-page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    line-height: 1.7;
+
+    li {
+        margin-left: 2.5rem;
+    }
+}
+
+/* FOND GLOBAL DE LA PAGE */
+body.legal {
+    background: #f5f5f5;
+}
+
+/* LOGO */
+.legal-logo {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.legal-logo img {
+    max-width: 180px;
+    height: auto;
+    opacity: 0.9;
+}
+
+.mentions__brand-text {
+    font-family: "Great Vibes", cursive;
+    font-size: 2.6rem;
+    color: rgb(48, 48, 48);
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+    margin-bottom: 40px;
+}
+
+/* TITRES */
+.legal-page h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.legal-page h2 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1035px) {
+    .legal-page {
+        padding: 25px 15px;
+        margin: 0 30px;
+
+        p,
+        li {
+            font-size: 0.9rem;
+        }
+    }
+
+    .legal-logo img {
+        max-width: 110px;
+    }
+}
