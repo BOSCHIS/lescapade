@@ -41,7 +41,6 @@
                             <table class="table table-hover align-middle mb-0">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Date</th>
                                         <th>Image</th>
                                         <th>Titre</th>
@@ -52,16 +51,15 @@
                                 <tbody>
                                     <?php foreach ($days as $day) : ?>
                                         <tr>
-                                            <td><?= (int) $day['id_day'] ?></td>
 
-                                            <td>
+                                            <td data-label="Date">
                                                 <?php
                                                 $date = !empty($day['date_day']) ? strtotime($day['date_day']) : false;
                                                 ?>
                                                 <?= $date ? htmlspecialchars(date('d/m/Y', $date), ENT_QUOTES, 'UTF-8') : '—' ?>
                                             </td>
 
-                                            <td>
+                                            <td data-label="Image">
                                                 <?php if (!empty($day['image_day'])) : ?>
                                                     <img
                                                         src="<?= htmlspecialchars($day['image_day'], ENT_QUOTES, 'UTF-8') ?>"
@@ -72,7 +70,7 @@
                                                 <?php endif; ?>
                                             </td>
 
-                                            <td>
+                                            <td data-label="Titre">
                                                 <div class="fw-semibold">
                                                     <?= htmlspecialchars($day['title_day'], ENT_QUOTES, 'UTF-8') ?>
                                                 </div>
@@ -84,13 +82,13 @@
                                                 <?php endif; ?>
                                             </td>
 
-                                            <td>
+                                            <td data-label="Prix">
                                                 <span class="text-nowrap">
                                                     <?= number_format((float) $day['price_day'], 2, ',', ' ') ?> €
                                                 </span>
                                             </td>
 
-                                            <td class="text-end">
+                                            <td data-label="Actions" class="text-end">
                                                 <div class="d-flex justify-content-end gap-2 flex-wrap">
                                                     <a href="/admin/day/edit?id=<?= (int) $day['id_day'] ?>" class="btn btn-sm btn-outline-secondary">
                                                         Modifier

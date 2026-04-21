@@ -115,17 +115,9 @@
 
             <h2>9. Cookies</h2>
             <p>
-                Le site utilise des cookies afin :
-            </p>
-            <ul>
-                <li>d’assurer son bon fonctionnement</li>
-                <li>de mesurer l’audience</li>
-            </ul>
-
-            <p>
-                Certains cookies nécessitent votre consentement préalable.
-                <br>
-                Vous pouvez les accepter, les refuser ou les paramétrer à tout moment.
+                Le site utilise uniquement des cookies strictement nécessaires à son fonctionnement,
+                notamment pour la gestion de session et la sécurité.
+                Ces cookies ne nécessitent pas de consentement préalable.
             </p>
 
             <h2>10. Transfert hors UE</h2>

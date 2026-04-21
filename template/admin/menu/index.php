@@ -41,7 +41,6 @@
                             <table class="table table-hover align-middle mb-0">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Titre</th>
                                         <th>Catégorie</th>
                                         <th>Prix</th>
@@ -52,9 +51,8 @@
                                 <tbody>
                                     <?php foreach ($menus as $menu) : ?>
                                         <tr>
-                                            <td><?= (int) $menu['id_menu'] ?></td>
 
-                                            <td>
+                                            <td data-label="Titre">
                                                 <?php if (!empty($menu['title_menu'])) : ?>
                                                     <div class="fw-semibold">
                                                         <?= htmlspecialchars($menu['title_menu'], ENT_QUOTES, 'UTF-8') ?>
@@ -72,9 +70,11 @@
                                                 <?php endif; ?>
                                             </td>
 
-                                            <td><?= htmlspecialchars($menu['name_category'], ENT_QUOTES, 'UTF-8') ?></td>
+                                            <td data-label="Catégorie">
+                                                <?= htmlspecialchars($menu['name_category'], ENT_QUOTES, 'UTF-8') ?>
+                                            </td>
 
-                                            <td>
+                                            <td data-label="Prix">
                                                 <?php if ($menu['price_menu'] !== null) : ?>
                                                     <span class="text-nowrap">
                                                         <?= number_format((float) $menu['price_menu'], 2, ',', ' ') ?> €
@@ -84,7 +84,7 @@
                                                 <?php endif; ?>
                                             </td>
 
-                                            <td>
+                                            <td data-label="Ordre">
                                                 <?php if ($menu['order_menu'] !== null) : ?>
                                                     <?= (int) $menu['order_menu'] ?>
                                                 <?php else : ?>
@@ -92,7 +92,7 @@
                                                 <?php endif; ?>
                                             </td>
 
-                                            <td class="text-end">
+                                            <td data-label="Actions" class="text-end">
                                                 <div class="d-flex justify-content-end gap-2 flex-wrap">
                                                     <form method="POST" action="/admin/menu/move-up" class="d-inline">
                                                         <?= \App\Utils\Csrf::input() ?>

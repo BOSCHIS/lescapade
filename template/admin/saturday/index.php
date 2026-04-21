@@ -41,7 +41,6 @@
                             <table class="table table-hover align-middle mb-0">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Date</th>
                                         <th>Image</th>
                                         <th>Titre</th>
@@ -52,9 +51,10 @@
                                 <tbody>
                                     <?php foreach ($saturdays as $saturday) : ?>
                                         <tr>
-                                            <td><?= (int) $saturday['id_saturday'] ?></td>
-                                            <td><?= htmlspecialchars(date('d/m/Y', strtotime($saturday['date_saturday'])), ENT_QUOTES, 'UTF-8') ?></td>
-                                            <td>
+                                            <td data-label="Date">
+                                                <?= htmlspecialchars(date('d/m/Y', strtotime($saturday['date_saturday'])), ENT_QUOTES, 'UTF-8') ?>
+                                            </td>
+                                            <td data-label="Image">
                                                 <?php if (!empty($saturday['image_saturday'])) : ?>
                                                     <img
                                                         src="<?= htmlspecialchars($saturday['image_saturday'], ENT_QUOTES, 'UTF-8') ?>"
@@ -64,7 +64,7 @@
                                                     <span class="text-muted">Aucune image</span>
                                                 <?php endif; ?>
                                             </td>
-                                            <td>
+                                            <td data-label="Titre">
                                                 <div class="fw-semibold">
                                                     <?= htmlspecialchars($saturday['title_saturday'], ENT_QUOTES, 'UTF-8') ?>
                                                 </div>
@@ -75,12 +75,12 @@
                                                     </div>
                                                 <?php endif; ?>
                                             </td>
-                                            <td>
+                                            <td data-label="Prix">
                                                 <span class="text-nowrap">
                                                     <?= number_format((float) $saturday['price_saturday'], 2, ',', ' ') ?> €
                                                 </span>
                                             </td>
-                                            <td class="text-end">
+                                            <td data-label="Actions" class="text-end">
                                                 <div class="d-flex justify-content-end gap-2 flex-wrap">
                                                     <a href="/admin/saturday/edit?id=<?= (int) $saturday['id_saturday'] ?>" class="btn btn-sm btn-outline-secondary">
                                                         Modifier
