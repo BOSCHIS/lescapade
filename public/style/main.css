@@ -2458,9 +2458,6 @@ img {
     }
 }
 
-
-
-
 @media (max-width: 600px) {
     .table-responsive {
         overflow-x: visible !important;
@@ -2497,6 +2494,15 @@ img {
         padding: 0.55rem 0;
         border: 0 !important;
         text-align: left !important;
+        min-width: 0;
+        flex-wrap: wrap;
+    }
+
+    .table-responsive tbody td>* {
+        min-width: 0;
+        max-width: 100%;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
 
     .table-responsive tbody td::before {
@@ -2527,10 +2533,6 @@ img {
         height: auto;
     }
 }
-
-
-
-
 
 /* =========================
    PAGE PLAT DU JOUR
@@ -3024,6 +3026,13 @@ img {
     width: 100px;
     /* taille du logo */
     height: auto;
+}
+
+#link_mentions {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: rgb(182, 124, 17);
+
 }
 
 

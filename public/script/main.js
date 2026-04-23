@@ -100,7 +100,6 @@ carouselContainers.forEach((carousel) => {
         const carouselImages = carousel.querySelectorAll("img");
         carouselImages.forEach((img) => {
             img.addEventListener("dragstart", (e) => e.preventDefault());
-            // IMPORTANT : on ne met PAS pointerEvents = "none"
         });
     }
 

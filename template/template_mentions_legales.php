@@ -31,19 +31,19 @@
 
             <h2>1. Éditeur du site</h2>
             <p>
-                Le site internet accessible à l’adresse [URL DU SITE] est édité par :
+                Le site internet accessible à l’adresse <a href="https://www.lescapadecahors.fr" target="_blank" rel="noopener noreferrer" id="link_mentions">www.lescapadecahors.fr</a> est édité par :
             </p>
 
             <ul>
-                <li><strong>Dénomination sociale :</strong> L’Escapade</li>
-                <li><strong>Forme juridique :</strong> [SARL / SAS / EI...]</li>
-                <li><strong>Capital social :</strong> [montant €]</li>
-                <li><strong>Siège social :</strong> [adresse complète]</li>
-                <li><strong>Numéro SIRET :</strong> [SIRET]</li>
-                <li><strong>Numéro RCS :</strong> [ville + numéro]</li>
-                <li><strong>Numéro de TVA intracommunautaire :</strong> [TVA]</li>
-                <li><strong>Directeur de la publication :</strong> [Nom Prénom, fonction]</li>
-                <li><strong>Contact :</strong> [email] – [téléphone]</li>
+                <li><strong>Dénomination sociale :</strong> MARTIN'S (L'ESCAPADE)</li>
+                <li><strong>Forme juridique :</strong> SARL (société à responsabilité limitée)</li>
+                <li><strong>Capital social :</strong> 5 000,00 €</li>
+                <li><strong>Siège social :</strong> 233 RUE DU PRESIDENT WILSON, 46000 CAHORS</li>
+                <li><strong>Numéro SIRET :</strong> 939 533 519 00012</li>
+                <li><strong>Numéro RCS :</strong> 939 533 519 R.C.S. Cahors</li>
+                <li><strong>Numéro de TVA intracommunautaire :</strong> FR80939533519</li>
+                <li><strong>Directeur de la publication :</strong> Thomas MARTIN, Dirigeant</li>
+                <li><strong>Contact :</strong> lescapade46@outlook.fr - 05 65 22 11 52</li>
             </ul>
 
             <h2>2. Hébergement</h2>
@@ -52,9 +52,9 @@
             </p>
 
             <ul>
-                <li><strong>Hébergeur :</strong> [Nom hébergeur]</li>
-                <li><strong>Adresse :</strong> [adresse]</li>
-                <li><strong>Téléphone :</strong> [numéro]</li>
+                <li><strong>Hébergeur :</strong> OVHcloud</li>
+                <li><strong>Adresse :</strong> 2 rue Kellermann, 59100 Roubaix, France</li>
+                <li><strong>Téléphone :</strong> 1007 (depuis la France)</li>
             </ul>
 
             <h2>3. Accès au site</h2>
@@ -90,9 +90,13 @@
 
             <h2>8. Cookies</h2>
             <p>
-                Le site utilise des cookies et traceurs permettant d’améliorer l’expérience utilisateur et de mesurer l’audience.
+                Le site utilise uniquement des cookies strictement nécessaires à son fonctionnement, notamment pour la gestion des sessions utilisateur et la sécurité.
                 <br><br>
-                Conformément à la réglementation en vigueur, le dépôt de certains cookies est soumis au consentement préalable de l’utilisateur.
+                Ces cookies ne permettent pas de suivre la navigation des utilisateurs ni d’établir des statistiques de fréquentation.
+            </p>
+
+            <p>
+                Conformément à la réglementation en vigueur, ces cookies ne nécessitent pas de consentement préalable.
             </p>
 
             <h2>9. Droit applicable et juridiction compétente</h2>
@@ -104,7 +108,7 @@
 
             <h2>10. Contact</h2>
             <p>
-                Pour toute question, vous pouvez contacter l’éditeur du site à l’adresse suivante : [email]
+                Pour toute question, vous pouvez contacter l’éditeur du site à l’adresse suivante : lescapade46@outlook.fr
             </p>
 
         </section>

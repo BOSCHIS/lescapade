@@ -6,7 +6,7 @@ $currentPage = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $currentLocale = Lang::getLocale();
 
 $heroImage = $heroImage ?? '/assets/images/header/restaurant_header.webp';
-$heroTitle = $heroTitle ?? "Bienvenue au<br />restaurant l'Escapade";
+$heroTitle = $heroTitle ?? "Bienvenue au<br />Restaurant L'Escapade";
 $heroSubtitle = $heroSubtitle ?? "Cuisine traditionnelle<br />au plein coeur de Cahors";
 
 $heroHeight = $heroHeight ?? '900px';

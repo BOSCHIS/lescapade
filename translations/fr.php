@@ -12,7 +12,7 @@ return [
     'lang.english' => 'English',
     'lang.spanish' => 'Español',
 
-    'home.hero_title' => "Bienvenue au<br />restaurant l'Escapade",
+    'home.hero_title' => "Bienvenue au<br />Restaurant L'Escapade",
     'home.hero_subtitle' => 'Cuisine traditionnelle au <br />plein coeur de Cahors',
 
     'home.day.badge' => 'Le plat du jour',
