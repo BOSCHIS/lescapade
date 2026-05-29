@@ -81,7 +81,6 @@ if (!empty($currentSaturday['date_saturday'])) {
 
             <section class="home-specials">
 
-                <!-- PLAT DU JOUR -->
                 <article class="special-ticket special-ticket--day">
                     <div class="special-ticket__background">
                         <img src="/assets/images/deco/card.webp" alt="Identité visuelle du plat du jour">
@@ -132,7 +131,6 @@ if (!empty($currentSaturday['date_saturday'])) {
                     </div>
                 </article>
 
-                <!-- PLAT DU SAMEDI -->
                 <article class="special-ticket special-ticket--saturday">
                     <div class="special-ticket__background">
                         <img src="/assets/images/deco/card.webp" alt="Identité visuelle du plat du samedi">
@@ -187,7 +185,6 @@ if (!empty($currentSaturday['date_saturday'])) {
 
         </section>
 
-        <!-- Carrousel avec des éléments dynamiques (exemple de plats du menu)---------------------------- -->
         <div class="container-fluid">
             <div class="multi-carousel-container" data-carousel="home-dishes">
                 <h2><?= htmlspecialchars(Lang::translate('home.carousel.dishes'), ENT_QUOTES, 'UTF-8') ?></h2>
@@ -253,8 +250,6 @@ if (!empty($currentSaturday['date_saturday'])) {
             </div>
         </div>
 
-        <!-- début caroussel carte -->
-
         <div class="multi-carousel-container" data-carousel="menu-preview">
             <h2>
                 <?= htmlspecialchars(Lang::translate('home.carousel.menu'), ENT_QUOTES, 'UTF-8') ?>
@@ -319,9 +314,6 @@ if (!empty($currentSaturday['date_saturday'])) {
             <a href="/menu" class="button_menu"><?= htmlspecialchars(Lang::translate('home.menu.button'), ENT_QUOTES, 'UTF-8') ?></a>
         </div>
 
-        <!-- fin caroussel -->
-
-        <!-- Carrousel photos restaurant---------------------------- -->
         <div class="container-fluid">
             <div class="multi-carousel-container" data-carousel="restaurant-photos">
                 <h2><?= htmlspecialchars(Lang::translate('home.carousel.restaurant'), ENT_QUOTES, 'UTF-8') ?></h2>
@@ -356,7 +348,6 @@ if (!empty($currentSaturday['date_saturday'])) {
             </div>
         </div>
 
-        <!-- philosophie -->
         <section class="home-philosophy">
             <div class="container">
                 <article class="philosophy-card">
@@ -381,8 +372,6 @@ if (!empty($currentSaturday['date_saturday'])) {
                 </article>
             </div>
         </section>
-        <!-- fin philosophie -->
-
 
     </main>
 

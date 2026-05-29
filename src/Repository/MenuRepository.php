@@ -272,7 +272,6 @@ class MenuRepository
         try {
             if ($categoryId === $currentCategoryId) {
                 if ($orderMenu < $currentOrderMenu) {
-                    // Le plat monte
                     $sql = "
                         UPDATE menu
                         SET order_menu = order_menu + 1
@@ -289,7 +288,6 @@ class MenuRepository
                     $stmt->bindValue(':current_order', $currentOrderMenu, PDO::PARAM_INT);
                     $stmt->execute();
                 } elseif ($orderMenu > $currentOrderMenu) {
-                    // Le plat descend
                     $sql = "
                         UPDATE menu
                         SET order_menu = order_menu - 1
@@ -307,7 +305,6 @@ class MenuRepository
                     $stmt->execute();
                 }
             } else {
-                // On referme le trou dans l’ancienne catégorie
                 $closeOldSql = "
                     UPDATE menu
                     SET order_menu = order_menu - 1
@@ -320,7 +317,6 @@ class MenuRepository
                 $closeOldStmt->bindValue(':old_order_menu', $currentOrderMenu, PDO::PARAM_INT);
                 $closeOldStmt->execute();
 
-                // On décale les éléments de la nouvelle catégorie
                 $openNewSql = "
                     UPDATE menu
                     SET order_menu = order_menu + 1

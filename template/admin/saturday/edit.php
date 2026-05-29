@@ -1,3 +1,9 @@
+<?php
+
+/** @var array $old */
+/** @var array $errors */
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 

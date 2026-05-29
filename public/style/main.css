@@ -1,6 +1,3 @@
-/* =========================
-   VARIABLES
-========================= */
 :root {
     --color-gold: #d9a227;
     --color-gold-dark: #b98312;
@@ -13,8 +10,6 @@
     --color-text-box: rgba(177, 126, 33, 0.72);
 }
 
-
-/* FONTS */
 @font-face {
     font-family: "CormorantGaramond";
     src: url("/assets/fonts/CormorantGaramond.ttf") format("truetype");
@@ -23,10 +18,6 @@
     font-display: swap;
 }
 
-
-/* =========================
-   RESET
-========================= */
 * {
     margin: 0;
     padding: 0;
@@ -59,16 +50,10 @@ img {
     max-width: 100%;
 }
 
-/* =========================
-   HEADER GLOBAL
-========================= */
 .site-header {
     width: 100%;
 }
 
-/* =========================
-   NAVBAR
-========================= */
 .navbar {
     position: fixed;
     top: 0;
@@ -91,9 +76,6 @@ img {
     box-shadow: 0 4px 12px black;
 }
 
-/* =========================
-   BRANDING
-========================= */
 .navbar__branding {
     display: flex;
     align-items: center;
@@ -129,9 +111,6 @@ img {
     text-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
 }
 
-/* =========================
-   CONTENU NAVBAR
-========================= */
 .navbar__content {
     flex: 1;
     min-width: 0;
@@ -171,9 +150,6 @@ img {
     color: var(--color-gold);
 }
 
-/* =========================
-   ACTIONS NAVBAR (langue + CTA)
-========================= */
 .navbar__actions {
     display: flex;
     align-items: center;
@@ -181,9 +157,6 @@ img {
     flex-shrink: 0;
 }
 
-/* =========================
-   LANGUAGE SWITCHER
-========================= */
 .language-switcher {
     position: relative;
     flex-shrink: 0;
@@ -266,9 +239,6 @@ img {
     border-radius: 50%;
 }
 
-/* =========================
-   CTA NAVBAR
-========================= */
 .navbar__cta {
     flex-shrink: 0;
     text-decoration: none;
@@ -291,9 +261,6 @@ img {
     color: #1d1208;
 }
 
-/* =========================
-   BOUTON BURGER
-========================= */
 .navbar__toggle {
     display: none;
     background: none;
@@ -306,9 +273,6 @@ img {
     padding: 6px 8px;
 }
 
-/* =========================
-   HERO
-========================= */
 .hero {
     position: relative;
     width: 100%;
@@ -340,9 +304,6 @@ img {
     justify-content: space-between;
 }
 
-/* =========================
-   TITRE HERO
-========================= */
 .hero__title-box {
     max-width: var(--hero-title-max-width, 390px);
     background: var(--color-text-box);
@@ -365,9 +326,6 @@ img {
     margin: 0;
 }
 
-/* =========================
-   SOUS-TITRE HERO
-========================= */
 .hero__subtitle {
     align-self: var(--hero-subtitle-align, flex-end);
     text-align: center;
@@ -386,17 +344,11 @@ img {
     margin-bottom: 20px;
 }
 
-/* =========================
-   CONTENU DE PAGE
-========================= */
 .page-content {
     max-width: 100%;
     margin: 0 auto;
 }
 
-/* =========================
-   ÉCRANS MOYENS
-========================= */
 @media (max-width: 1700px) {
     .navbar__content {
         margin-left: 50px;
@@ -460,9 +412,6 @@ img {
     }
 }
 
-/* =========================
-   TABLETTE / BURGER
-========================= */
 @media (max-width: 1520px) {
     .navbar {
         height: 78px;
@@ -616,9 +565,6 @@ img {
     }
 }
 
-/* =========================
-   MOBILE
-========================= */
 @media (max-width: 520px) {
     .navbar {
         height: 70px;
@@ -676,9 +622,6 @@ img {
     }
 }
 
-/* =========================
-   HOME SPECIALS
-========================= */
 .home-specials {
     width: 100%;
     max-width: 1700px;
@@ -690,7 +633,7 @@ img {
     flex-wrap: nowrap;
 }
 
-/* CARD */
+
 .special-ticket {
     display: grid;
     grid-template-columns: 240px 1fr;
@@ -704,7 +647,6 @@ img {
     box-shadow: 0 6px 12px rgb(49, 49, 49);
 }
 
-/* IMAGE IDENTITE GAUCHE */
 .special-ticket__background {
     width: 240px;
     min-height: 280px;
@@ -721,7 +663,6 @@ img {
     transform: scale(2.4);
 }
 
-/* CONTENU DROITE */
 .special-ticket__content {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 220px;
@@ -732,7 +673,6 @@ img {
     background: #f8f3ec;
 }
 
-/* COLONNE PRINCIPALE */
 .special-ticket__main {
     display: flex;
     flex-direction: column;
@@ -742,7 +682,6 @@ img {
     padding-bottom: 8px;
 }
 
-/* COLONNE DROITE */
 .special-ticket__side {
     display: flex;
     flex-direction: column;
@@ -753,12 +692,10 @@ img {
     padding-bottom: 6px;
 }
 
-/* VARIANTE SAMEDI */
 .special-ticket--saturday .special-ticket__content {
     background: #f6efe7;
 }
 
-/* BADGE */
 .special-ticket__badge {
     display: inline-block;
     align-self: flex-start;
@@ -778,7 +715,6 @@ img {
     color: #ffffff;
 }
 
-/* TITRE */
 .special-ticket__title {
     font-size: 1.95rem;
     line-height: 1.12;
@@ -789,7 +725,6 @@ img {
     word-break: break-word;
 }
 
-/* PRIX */
 .special-ticket__price {
     font-size: 1.9rem;
     font-weight: 700;
@@ -797,7 +732,6 @@ img {
     line-height: 1.1;
 }
 
-/* DATE */
 .special-ticket__date {
     font-size: 1.05rem;
     font-weight: 700;
@@ -807,7 +741,6 @@ img {
     line-height: 1.35;
 }
 
-/* IMAGE PLAT A DROITE */
 .special-ticket__dish-image {
     width: 100%;
     max-width: 220px;
@@ -831,7 +764,6 @@ img {
     background: transparent;
 }
 
-/* BOUTON */
 .special-ticket__button {
     display: inline-block;
     text-decoration: none;
@@ -861,9 +793,6 @@ img {
     }
 }
 
-/* =========================
-   TABLETTE
-========================= */
 @media (max-width: 1450px) {
     .home-specials {
         max-width: 94%;
@@ -923,9 +852,6 @@ img {
     }
 }
 
-/* =========================
-   MOBILE
-========================= */
 @media (max-width: 760px) {
     .home-specials {
         width: 100%;
@@ -1060,9 +986,6 @@ img {
     }
 }
 
-/* =========================
-   CAROUSEL GENERAL
-========================= */
 .multi-carousel-container h2 {
     font-size: 2.4rem;
     font-family: "Great Vibes", cursive;
@@ -1106,7 +1029,6 @@ img {
     font-family: Arial, sans-serif;
 
     box-shadow: none;
-    /* padding-bottom: 4px; */
 }
 
 .carousel-arrow:hover {
@@ -1117,7 +1039,6 @@ img {
     background: rgba(0, 0, 0, 0.7);
 }
 
-/* Conteneur général */
 .multi-carousel-container {
     position: relative;
     overflow: hidden;
@@ -1132,14 +1053,12 @@ img {
     cursor: grabbing;
 }
 
-/* Ligne des slides */
 .multi-carousel-inner {
     display: flex;
     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: transform;
 }
 
-/* Une slide */
 .multi-carousel-item,
 .clone {
     box-sizing: border-box;
@@ -1149,7 +1068,6 @@ img {
     position: relative;
 }
 
-/* Sécurité pour les boutons */
 .multi-carousel-control-prev,
 .multi-carousel-control-next {
     position: absolute;
@@ -1185,7 +1103,6 @@ img {
     right: 18px;
 }
 
-/* Curseur carousel */
 #multiCarousel {
     cursor: grab;
     touch-action: pan-y;
@@ -1196,9 +1113,6 @@ img {
     -webkit-user-select: none;
 }
 
-/* =========================
-   CAROUSEL IMAGES
-========================= */
 .img-container {
     width: 100%;
     height: 600px;
@@ -1219,7 +1133,6 @@ img {
     background: #f5f5f5;
 }
 
-/* Carousel photos restaurant */
 .multi-carousel-container[data-carousel="restaurant-photos"] .img-container {
     width: 100%;
     height: 800px;
@@ -1235,14 +1148,11 @@ img {
     display: block;
 }
 
-/* Carrousel plats / dishes : éviter de couper le bas */
 .multi-carousel-container[data-carousel="home-dishes"] .img-container img {
     object-fit: contain;
     object-position: center;
     background: #f3eee7;
 }
-
-/* aperçu image  */
 
 .lightbox {
     position: fixed;
@@ -1297,9 +1207,6 @@ img {
     cursor: zoom-in;
 }
 
-/* =========================
-   CARD TEXTE DU CARROUSEL
-========================= */
 .menu-card-simple {
     height: 100%;
     min-height: 340px;
@@ -1441,9 +1348,6 @@ img {
     margin: 3rem 0;
 }
 
-/* =========================
-   RESPONSIVE CAROUSEL + MENU
-========================= */
 @media (max-width: 1680px) {
     .multi-carousel-container[data-carousel="restaurant-photos"] .img-container {
         height: 560px;
@@ -1640,9 +1544,6 @@ img {
     }
 }
 
-/* =========================================================
-   HOME - NOTRE PHILOSOPHIE
-========================================================= */
 
 .home-philosophy {
     padding: 5rem 1.5rem;
@@ -1816,12 +1717,6 @@ img {
     margin-bottom: 0;
 }
 
-
-
-/* =========================
-   Responsive
-========================= */
-
 @media (max-width: 767px) {
     .home-philosophy {
         padding: 4rem 1rem;
@@ -1877,9 +1772,6 @@ img {
     }
 }
 
-/* =========================================================
-   PAGE MENU / CARTE
-========================================================= */
 
 .menu-page {
     background: linear-gradient(180deg, #f6f0e6 0%, #efe6d7 100%);
@@ -2063,10 +1955,6 @@ img {
     }
 }
 
-
-/* =========================
-   FOOTER
-========================= */
 .site-footer {
     position: relative;
     padding: 70px 20px 15px;
@@ -2080,7 +1968,6 @@ img {
     text-align: center;
 }
 
-/* LOGO CENTRÉ QUI DÉPASSE */
 .footer__logo {
     position: absolute;
     top: -70px;
@@ -2097,7 +1984,6 @@ img {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
-/* CONTENU */
 .footer__content {
     display: flex;
     flex-wrap: wrap;
@@ -2105,7 +1991,6 @@ img {
     align-items: flex-start;
 }
 
-/* COLONNES */
 .footer__col {
     flex: 1;
 }
@@ -2122,7 +2007,6 @@ img {
     color: #f5f5f5;
 }
 
-/* MARQUE CENTRALE */
 .footer__brand h2 {
     font-family: "Great Vibes", cursive;
     font-size: 3rem;
@@ -2130,7 +2014,6 @@ img {
     margin-bottom: 8px;
     color: white;
 }
-
 
 .footer__brand {
     flex: 0 0 100%;
@@ -2212,13 +2095,9 @@ img {
     background: #b38014;
 }
 
-/* =========================
-   FOOTER RESPONSIVE
-========================= */
 @media (max-width: 900px) {
     .site-footer {
         padding: 65px 20px 30px;
-        /* margin-top: 20px; */
     }
 
     .footer__content {
@@ -2275,11 +2154,6 @@ img {
         font-size: 0.95rem;
     }
 }
-
-
-/* =========================================================
-   ADMIN AUTH
-========================================================= */
 
 .admin-auth-page {
     min-height: 100vh;
@@ -2378,10 +2252,6 @@ img {
     transform: translateY(-1px);
     opacity: 0.96;
 }
-
-/* =========================================================
-   ADMIN DASHBOARD
-========================================================= */
 
 .admin-dashboard-page {
     min-height: 100vh;
@@ -2565,9 +2435,6 @@ img {
     }
 }
 
-/* =========================
-   PAGE PLAT DU JOUR
-========================= */
 .day-page {
     padding: 80px 24px 110px;
     background:
@@ -2789,7 +2656,6 @@ img {
     }
 }
 
-/* Page SATURDAY - Plat du samedi ---------------------------- */
 .saturday-feature-card__badge {
     background: #3f2416;
     color: #ffffff;
@@ -2806,8 +2672,6 @@ img {
     color: #ffffff;
 }
 
-/* Page HISTORY - Notre histoire ---------------------------- */
-
 .container {
     h1 {
         font-size: clamp(2rem, 5vw, 2.6rem);
@@ -2818,9 +2682,6 @@ img {
     }
 }
 
-/* =========================
-   PAGE CONTACT / RÉSERVATION
-========================= */
 .contact-page {
     padding: 80px 24px 110px;
     background: linear-gradient(180deg, #f7f1ea 0%, #efe5d9 100%);
@@ -3046,7 +2907,7 @@ img {
     color: #4c392f;
 }
 
-/* /page mentions légales */
+
 .legal-logo {
     display: flex;
     justify-content: center;
@@ -3055,7 +2916,6 @@ img {
 
 .legal-logo img {
     width: 100px;
-    /* taille du logo */
     height: auto;
 }
 
@@ -3065,14 +2925,6 @@ img {
     color: rgb(182, 124, 17);
 
 }
-
-
-
-
-
-/* =========================
-   PAGES LÉGALES
-========================= */
 
 .legal-page {
     max-width: 900px;
@@ -3087,12 +2939,11 @@ img {
     }
 }
 
-/* FOND GLOBAL DE LA PAGE */
 body.legal {
     background: #f5f5f5;
 }
 
-/* LOGO */
+
 .legal-logo {
     text-align: center;
     margin-bottom: 10px;
@@ -3115,7 +2966,6 @@ body.legal {
     margin-bottom: 40px;
 }
 
-/* TITRES */
 .legal-page h1 {
     text-align: center;
     margin-bottom: 30px;
@@ -3126,7 +2976,6 @@ body.legal {
     margin-bottom: 10px;
 }
 
-/* RESPONSIVE */
 @media (max-width: 1035px) {
     .legal-page {
         padding: 25px 15px;

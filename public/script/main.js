@@ -9,9 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-/* =========================
-      CARROUSELS MULTIPLES
-   ========================= */
+
 const carouselContainers = document.querySelectorAll(".multi-carousel-container[data-carousel]");
 
 carouselContainers.forEach((carousel) => {
@@ -290,7 +288,7 @@ carouselContainers.forEach((carousel) => {
         }
     });
 
-    // Expose dragMoved pour la lightbox
+
     carousel.dataset.dragMoved = "false";
 
     carousel.addEventListener("mousedown", () => {
@@ -315,7 +313,7 @@ carouselContainers.forEach((carousel) => {
 });
 
 
-// Scroll to top button
+
 const scrollTopBtn = document.getElementById("scrollTopBtn");
 
 if (scrollTopBtn) {
@@ -335,7 +333,6 @@ if (scrollTopBtn) {
     });
 }
 
-// Menu burger
 const navbarToggle = document.querySelector(".navbar__toggle");
 const navbarContent = document.querySelector(".navbar__content");
 
@@ -363,9 +360,7 @@ if (navbarToggle && navbarContent) {
         }
     });
 }
-/* =========================
-       LIGHTBOX
-    ========================= */
+
 const lightbox = document.getElementById("imageLightbox");
 const lightboxImg = document.getElementById("lightboxImg");
 const lightboxClose = document.querySelector(".lightbox__close");
