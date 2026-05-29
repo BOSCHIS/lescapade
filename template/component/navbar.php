@@ -115,7 +115,7 @@ $localeFlags = [
         <img
             class="hero__bg"
             src="<?= htmlspecialchars($heroImage, ENT_QUOTES, 'UTF-8') ?>"
-            alt="Photo du restaurant" />
+            alt="Photo du restaurant" fetchpriority="high" />
 
         <div class="hero__overlay"></div>
 

@@ -20,6 +20,7 @@
     src: url("/assets/fonts/CormorantGaramond.ttf") format("truetype");
     font-weight: 400;
     font-style: italic;
+    font-display: swap;
 }
 
 
@@ -46,7 +47,7 @@ body {
 
 main {
     background-color: #f4eee6;
-    background-image: url("/assets/images/background/background_beige.png");
+    background-image: url("/assets/images/background/background_beige.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -82,7 +83,7 @@ img {
     gap: 24px;
     padding: 0 18px;
 
-    background-image: url("/assets/images/header/background1a.png");
+    background-image: url("/assets/images/header/background.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -496,7 +497,7 @@ img {
         gap: 18px;
         padding: 34px 16px 22px;
         margin-left: 0;
-        background-image: url("/assets/images/header/background1a.png");
+        background-image: url("/assets/images/header/background.webp");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -1084,6 +1085,38 @@ img {
     text-align: center;
 }
 
+.multi-carousel-control-prev,
+.multi-carousel-control-next {
+    box-shadow: none;
+    background: none;
+    border: none;
+
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: rgba(45, 32, 24, 0.95);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2rem;
+    line-height: 1;
+    font-family: Arial, sans-serif;
+
+    box-shadow: none;
+    /* padding-bottom: 4px; */
+}
+
+.carousel-arrow:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-arrow:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
 /* Conteneur général */
 .multi-carousel-container {
     position: relative;
@@ -1305,7 +1338,6 @@ img {
     width: 52px;
     height: 52px;
     opacity: 0.08;
-    background: url('/assets/images/deco/laurier.png') no-repeat center;
     background-size: contain;
     pointer-events: none;
 }
@@ -1319,7 +1351,7 @@ img {
     opacity: 0.40;
     border-radius: 28px;
     pointer-events: none;
-    background: url('/assets/images/deco/card2.png') no-repeat center;
+    background: url('/assets/images/deco/card_small.webp') no-repeat center;
     background-size: contain;
     z-index: 0;
 }
@@ -1716,7 +1748,6 @@ img {
     height: 90px;
     opacity: 0.90;
     pointer-events: none;
-    background: url('/assets/images/deco/laurier.png') no-repeat center;
     background-size: contain;
 }
 
@@ -2040,7 +2071,7 @@ img {
     position: relative;
     padding: 70px 20px 15px;
 
-    background-image: url("/assets/images/header/background1a.png");
+    background-image: url("/assets/images/header/background.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -2900,7 +2931,7 @@ img {
     margin-bottom: 14px;
     font-size: 0.95rem;
     font-weight: 700;
-    color: #8a6a4f;
+    color: #614d3c;
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }

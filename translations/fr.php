@@ -12,6 +12,8 @@ return [
     'lang.english' => 'English',
     'lang.spanish' => 'Español',
 
+    'meta.home.description' =>
+    'Restaurant L’Escapade à Cahors : cuisine maison, plats du jour, spécialités du samedi et ambiance conviviale.',
     'home.hero_title' => "Bienvenue au<br />Restaurant L'Escapade",
     'home.hero_subtitle' => 'Cuisine traditionnelle au <br />plein coeur de Cahors',
 
@@ -40,7 +42,7 @@ return [
     'home.philosophy.p2' => "Favoriser les circuits courts, aller à la rencontre de nos artisans, de nos éleveurs et de nos viticulteurs, telle est notre philosophie.",
     'home.philosophy.p3' => "La cuisine est un moment de convivialité au sein de notre famille, c’est ce que nous souhaitons partager avec vous.",
 
-
+    'meta.history.description' => 'Découvrez l’histoire du restaurant L’Escapade à Cahors, son identité, sa cuisine traditionnelle et son ambiance conviviale.',
     'history.heading' => 'Entre transmission, territoire et convivialité...',
     'history.philosophy.subtitle' => "L’âme de L’Escapade",
     'history.philosophy.title' => 'Notre philosophie',
@@ -64,6 +66,7 @@ return [
     'history.values.experience.p1' => "L’Escapade, c’est avant tout un lieu de vie. Nous souhaitons que chacun puisse s’y sentir bien, comme à la maison, autour d’un bon repas. La convivialité fait partie intégrante de notre identité, aussi importante que ce que l’on retrouve dans l’assiette.",
     'history.values.experience.p2' => "Que ce soit pour un déjeuner rapide ou un moment plus long entre amis ou en famille, nous mettons tout en œuvre pour vous offrir une expérience simple, chaleureuse et authentique, fidèle à l’esprit bistrot que nous défendons.",
 
+    'meta.menu.description' => 'Découvrez la carte du restaurant L’Escapade à Cahors : entrées, plats, desserts et spécialités maison préparées avec des produits de qualité.',
     'menu.subtitle' => "Restaurant L'Escapade",
     'menu.title' => 'Notre carte',
     'menu.title.extra' => '(sur place et à emporter)',
@@ -71,7 +74,7 @@ return [
     'menu.empty.title' => 'La carte arrive bientôt',
     'menu.empty.text' => 'Notre carte est en cours de préparation.',
 
-
+    'meta.day.description' => 'Consultez le plat du jour du restaurant L’Escapade à Cahors, proposé selon les produits disponibles et l’inspiration de la cuisine.',
     'day.badge' => 'Le plat du jour',
     'day.book' => 'Réserver',
     'day.image_fallback_alt' => 'Plat du jour bientôt disponible',
@@ -79,6 +82,7 @@ return [
     'day.empty.text' => 'Notre suggestion du jour sera bientôt mise en ligne.',
     'day.empty.button' => 'Voir la carte',
 
+    'meta.saturday.description' => 'Découvrez le plat du samedi du restaurant L’Escapade à Cahors, une spécialité conviviale proposée chaque semaine.',
     'saturday.badge' => 'Le plat du samedi',
     'saturday.book' => 'Réserver',
     'saturday.image_fallback_text' => "L'Escapade",
@@ -86,6 +90,7 @@ return [
     'saturday.empty.text' => 'Notre suggestion du samedi sera bientôt mise en ligne.',
     'saturday.empty.button' => 'Voir la carte',
 
+    'meta.contact.description' => 'Contactez le restaurant L’Escapade à Cahors pour réserver une table, obtenir des informations ou préparer votre venue.',
     'contact.badge' => 'Réserver votre table',
     'contact.title' => 'Contactez-nous directement',
     'contact.intro' => 'Pour réserver une table, obtenir un renseignement ou préparer votre venue, nous vous invitons à nous appeler directement. Nous serons ravis de vous répondre.',

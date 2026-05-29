@@ -18,8 +18,8 @@ $heroSubtitle = "";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars(Lang::translate('nav.contact'), ENT_QUOTES, 'UTF-8') ?> - L'Escapade</title>
+    <meta name="description" content="<?= htmlspecialchars(Lang::translate('meta.contact.description'), ENT_QUOTES, 'UTF-8') ?>">
 
-    <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style/main.css">
 
     <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
@@ -161,7 +161,6 @@ $heroSubtitle = "";
 
     <?php include __DIR__ . '/component/footer.php'; ?>
 
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/script/main.js"></script>
 </body>
 

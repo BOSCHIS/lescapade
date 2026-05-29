@@ -52,64 +52,63 @@
             </p>
 
             <ul>
-                <li><strong>Hébergeur :</strong> OVHcloud</li>
-                <li><strong>Adresse :</strong> 2 rue Kellermann, 59100 Roubaix, France</li>
-                <li><strong>Téléphone :</strong> 1007 (depuis la France)</li>
-            </ul>
+                <li><strong>Hébergeur :</strong> o2switch</li>
+                <li><strong>Adresse :</strong> Chemin des Pardiaux 63000 Clermont-Ferrand, France</li>
+                <li><strong>Téléphone :</strong> 04 44 44 60 40</li>
 
-            <h2>3. Accès au site</h2>
-            <p>
-                Le site est accessible 24h/24 et 7j/7, sauf cas de force majeure, interruption programmée ou non et pouvant découler d’une nécessité de maintenance.
-                <br><br>
-                L’éditeur ne saurait être tenu responsable de tout dommage, quelle qu’en soit la nature, résultant d’une indisponibilité du site.
-            </p>
+                <h2>3. Accès au site</h2>
+                <p>
+                    Le site est accessible 24h/24 et 7j/7, sauf cas de force majeure, interruption programmée ou non et pouvant découler d’une nécessité de maintenance.
+                    <br><br>
+                    L’éditeur ne saurait être tenu responsable de tout dommage, quelle qu’en soit la nature, résultant d’une indisponibilité du site.
+                </p>
 
-            <h2>4. Propriété intellectuelle</h2>
-            <p>
-                L’ensemble des éléments présents sur le site (textes, images, graphismes, logo, vidéos, architecture, code source, etc.) est protégé par les dispositions du Code de la propriété intellectuelle.
-                <br><br>
-                Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie du site, quel que soit le moyen ou le procédé utilisé, est interdite sans autorisation préalable écrite de l’éditeur.
-            </p>
+                <h2>4. Propriété intellectuelle</h2>
+                <p>
+                    L’ensemble des éléments présents sur le site (textes, images, graphismes, logo, vidéos, architecture, code source, etc.) est protégé par les dispositions du Code de la propriété intellectuelle.
+                    <br><br>
+                    Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie du site, quel que soit le moyen ou le procédé utilisé, est interdite sans autorisation préalable écrite de l’éditeur.
+                </p>
 
-            <h2>5. Responsabilité</h2>
-            <p>
-                L’éditeur s’efforce d’assurer l’exactitude des informations diffusées sur le site. Toutefois, il ne saurait être tenu responsable des omissions, inexactitudes ou carences dans la mise à jour.
-                <br><br>
-                L’utilisateur reconnaît utiliser les informations sous sa responsabilité exclusive.
-            </p>
+                <h2>5. Responsabilité</h2>
+                <p>
+                    L’éditeur s’efforce d’assurer l’exactitude des informations diffusées sur le site. Toutefois, il ne saurait être tenu responsable des omissions, inexactitudes ou carences dans la mise à jour.
+                    <br><br>
+                    L’utilisateur reconnaît utiliser les informations sous sa responsabilité exclusive.
+                </p>
 
-            <h2>6. Liens hypertextes</h2>
-            <p>
-                Le site peut contenir des liens vers des sites tiers. L’éditeur n’exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.
-            </p>
+                <h2>6. Liens hypertextes</h2>
+                <p>
+                    Le site peut contenir des liens vers des sites tiers. L’éditeur n’exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.
+                </p>
 
-            <h2>7. Données personnelles</h2>
-            <p>
-                Les modalités de collecte et de traitement des données personnelles sont détaillées dans la page <a href="/confidentialite">Politique de confidentialité</a>.
-            </p>
+                <h2>7. Données personnelles</h2>
+                <p>
+                    Les modalités de collecte et de traitement des données personnelles sont détaillées dans la page <a href="/confidentialite">Politique de confidentialité</a>.
+                </p>
 
-            <h2>8. Cookies</h2>
-            <p>
-                Le site utilise uniquement des cookies strictement nécessaires à son fonctionnement, notamment pour la gestion des sessions utilisateur et la sécurité.
-                <br><br>
-                Ces cookies ne permettent pas de suivre la navigation des utilisateurs ni d’établir des statistiques de fréquentation.
-            </p>
+                <h2>8. Cookies</h2>
+                <p>
+                    Le site utilise uniquement des cookies strictement nécessaires à son fonctionnement, notamment pour la gestion des sessions utilisateur et la sécurité.
+                    <br><br>
+                    Ces cookies ne permettent pas de suivre la navigation des utilisateurs ni d’établir des statistiques de fréquentation.
+                </p>
 
-            <p>
-                Conformément à la réglementation en vigueur, ces cookies ne nécessitent pas de consentement préalable.
-            </p>
+                <p>
+                    Conformément à la réglementation en vigueur, ces cookies ne nécessitent pas de consentement préalable.
+                </p>
 
-            <h2>9. Droit applicable et juridiction compétente</h2>
-            <p>
-                Les présentes mentions légales sont soumises au droit français.
-                <br><br>
-                En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.
-            </p>
+                <h2>9. Droit applicable et juridiction compétente</h2>
+                <p>
+                    Les présentes mentions légales sont soumises au droit français.
+                    <br><br>
+                    En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.
+                </p>
 
-            <h2>10. Contact</h2>
-            <p>
-                Pour toute question, vous pouvez contacter l’éditeur du site à l’adresse suivante : lescapade46@outlook.fr
-            </p>
+                <h2>10. Contact</h2>
+                <p>
+                    Pour toute question, vous pouvez contacter l’éditeur du site à l’adresse suivante : lescapade46@outlook.fr
+                </p>
 
         </section>
     </main>

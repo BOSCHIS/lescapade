@@ -12,6 +12,8 @@ return [
     'lang.english' => 'English',
     'lang.spanish' => 'Español',
 
+    'meta.home.description' =>
+    'Restaurant L’Escapade in Cahors: homemade cuisine, daily specials and friendly atmosphere.',
     'home.hero_title' => "Welcome to<br />L'Escapade restaurant",
     'home.hero_subtitle' => 'Traditional cuisine in the <br />heart of Cahors',
 
@@ -40,6 +42,7 @@ return [
     'home.philosophy.p2' => "Supporting short supply chains, meeting local artisans, farmers and winemakers — this is the philosophy that guides us.",
     'home.philosophy.p3' => "For our family, cooking is above all a moment of sharing, and that is exactly what we wish to offer you.",
 
+    'meta.menu.description' => 'Discover the menu of Restaurant L’Escapade in Cahors: starters, main courses, desserts and homemade specialties made with quality ingredients.',
     'menu.subtitle' => "L'Escapade Restaurant",
     'menu.title' => 'Our menu',
     'menu.title.extra' => '(eat in and takeaway)',
@@ -47,6 +50,7 @@ return [
     'menu.empty.title' => 'The menu is coming soon',
     'menu.empty.text' => 'Our menu is currently being prepared.',
 
+    'meta.day.description' => 'View the daily special at Restaurant L’Escapade in Cahors, prepared according to available ingredients and the chef’s inspiration.',
     'day.badge' => 'Dish of the day',
     'day.book' => 'Book',
     'day.image_fallback_alt' => 'Dish of the day coming soon',
@@ -54,6 +58,7 @@ return [
     'day.empty.text' => 'Our daily suggestion will be online soon.',
     'day.empty.button' => 'View the menu',
 
+    'meta.saturday.description' => 'Discover the Saturday special at Restaurant L’Escapade in Cahors, a friendly weekly specialty served at the restaurant.',
     'saturday.badge' => 'Saturday special',
     'saturday.book' => 'Book',
     'saturday.image_fallback_text' => "L'Escapade",
@@ -61,6 +66,7 @@ return [
     'saturday.empty.text' => 'Our Saturday suggestion will be online soon.',
     'saturday.empty.button' => 'View the menu',
 
+    'meta.history.description' => 'Learn about the story of Restaurant L’Escapade in Cahors, its identity, traditional cuisine and welcoming atmosphere.',
     'history.heading' => 'Between heritage, local roots and conviviality...',
     'history.philosophy.subtitle' => "The soul of L’Escapade",
     'history.philosophy.title' => 'Our philosophy',
@@ -84,6 +90,7 @@ return [
     'history.values.experience.p1' => "L’Escapade is above all a living place. We want everyone to feel good here, almost as if at home, gathered around a good meal. Conviviality is an essential part of our identity, just as important as what is served on the plate.",
     'history.values.experience.p2' => "Whether for a quick lunch or a longer moment with friends or family, we do everything we can to offer you a simple, warm and authentic experience, faithful to the bistro spirit we believe in.",
 
+    'meta.contact.description' => 'Contact Restaurant L’Escapade in Cahors to book a table, request information or plan your visit.',
     'contact.badge' => 'Book your table',
     'contact.title' => 'Contact us directly',
     'contact.intro' => 'To book a table, ask for information or prepare your visit, we invite you to call us directly. We will be delighted to answer you.',

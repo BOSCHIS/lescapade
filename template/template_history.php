@@ -18,8 +18,11 @@ $heroSubtitle = "";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars(Lang::translate('nav.history'), ENT_QUOTES, 'UTF-8') ?> - L'Escapade</title>
-
-    <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <meta name="description" content="<?= htmlspecialchars(Lang::translate('meta.history.description'), ENT_QUOTES, 'UTF-8') ?>">
+    <link
+        rel="preload"
+        as="image"
+        href="<?= htmlspecialchars($heroImage, ENT_QUOTES, 'UTF-8') ?>">
     <link rel="stylesheet" href="/style/main.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,7 +103,6 @@ $heroSubtitle = "";
 
     <?php include __DIR__ . '/component/footer.php'; ?>
 
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/script/main.js"></script>
 </body>
 

@@ -54,10 +54,14 @@ if (!empty($currentSaturday['date_saturday'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars(Lang::translate('nav.home'), ENT_QUOTES, 'UTF-8') ?> - Restaurant L'Escapade</title>
-
-    <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <meta
+        name="description"
+        content="<?= htmlspecialchars(Lang::translate('meta.home.description'), ENT_QUOTES, 'UTF-8') ?>">
     <link rel="stylesheet" href="/style/main.css">
-
+    <link
+        rel="preload"
+        as="image"
+        href="<?= htmlspecialchars($heroImage, ENT_QUOTES, 'UTF-8') ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -80,7 +84,7 @@ if (!empty($currentSaturday['date_saturday'])) {
                 <!-- PLAT DU JOUR -->
                 <article class="special-ticket special-ticket--day">
                     <div class="special-ticket__background">
-                        <img src="/assets/images/deco/card2 copie.png" alt="Identité visuelle du plat du jour">
+                        <img src="/assets/images/deco/card.webp" alt="Identité visuelle du plat du jour">
                     </div>
 
                     <div class="special-ticket__content">
@@ -131,7 +135,7 @@ if (!empty($currentSaturday['date_saturday'])) {
                 <!-- PLAT DU SAMEDI -->
                 <article class="special-ticket special-ticket--saturday">
                     <div class="special-ticket__background">
-                        <img src="/assets/images/deco/card2 copie.png" alt="Identité visuelle du plat du samedi">
+                        <img src="/assets/images/deco/card.webp" alt="Identité visuelle du plat du samedi">
                     </div>
 
                     <div class="special-ticket__content">
@@ -168,7 +172,7 @@ if (!empty($currentSaturday['date_saturday'])) {
                                         src="<?= htmlspecialchars($currentSaturday['image_saturday'], ENT_QUOTES, 'UTF-8') ?>"
                                         alt="<?= htmlspecialchars($currentSaturday['title_saturday'], ENT_QUOTES, 'UTF-8') ?>">
                                 <?php else : ?>
-                                    <img src="/assets/images/deco/card2.png" alt="Plat du samedi bientôt disponible">
+                                    <img src="/assets/images/deco/card.webp" alt="Plat du samedi bientôt disponible">
                                 <?php endif; ?>
                             </div>
 
@@ -205,46 +209,46 @@ if (!empty($currentSaturday['date_saturday'])) {
                     </div>
                     <div class="multi-carousel-item" data-index="3">
                         <div class="img-container">
-                            <img src="/assets/images/home/4.webp" alt="Image 4">
+                            <img src="/assets/images/home/4.webp" alt="Image 4" loading="lazy">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="4">
                         <div class="img-container">
-                            <img src="/assets/images/home/5.webp" alt="Image 5">
+                            <img src="/assets/images/home/5.webp" alt="Image 5" loading="lazy">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="5">
                         <div class="img-container">
-                            <img src="/assets/images/home/6.webp" alt="Image 6">
+                            <img src="/assets/images/home/6.webp" alt="Image 6" loading="lazy">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="6">
                         <div class="img-container">
-                            <img src="/assets/images/home/7.webp" alt="Image 7">
+                            <img src="/assets/images/home/7.webp" alt="Image 7" loading="lazy">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="7">
                         <div class="img-container">
-                            <img src="/assets/images/home/8.webp" alt="Image 8">
+                            <img src="/assets/images/home/8.webp" alt="Image 8" loading="lazy">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="8">
                         <div class="img-container">
-                            <img src="/assets/images/home/9.webp" alt="Image 9">
+                            <img src="/assets/images/home/9.webp" alt="Image 9" loading="lazy">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="10">
                         <div class="img-container">
-                            <img src="/assets/images/home/10.webp" alt="Image 10">
+                            <img src="/assets/images/home/10.webp" alt="Image 10" loading="lazy">
                         </div>
                     </div>
                 </div>
 
                 <button class="multi-carousel-control-prev" type="button" aria-label="Précédent">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="carousel-control-prev-icon" aria-hidden="true">❮</span>
                 </button>
                 <button class="multi-carousel-control-next" type="button" aria-label="Suivant">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="carousel-control-next-icon" aria-hidden="true">❯</span>
                 </button>
             </div>
         </div>
@@ -303,11 +307,11 @@ if (!empty($currentSaturday['date_saturday'])) {
             </div>
 
             <button class="multi-carousel-control-prev" type="button" aria-label="Précédent">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="carousel-control-prev-icon" aria-hidden="true">❮</span>
             </button>
 
             <button class="multi-carousel-control-next" type="button" aria-label="Suivant">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="carousel-control-next-icon" aria-hidden="true">❯</span>
             </button>
         </div>
 
@@ -324,30 +328,30 @@ if (!empty($currentSaturday['date_saturday'])) {
                 <div class="multi-carousel-inner">
                     <div class="multi-carousel-item" data-index="0">
                         <div class="img-container">
-                            <img src="/assets/images/home/restaurant1.jpg" alt="Image 1">
+                            <img src="/assets/images/home/restaurant1.webp" alt="Image 1">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="1">
                         <div class="img-container">
-                            <img src="/assets/images/home/restaurant2.jpg" alt="Image 2">
+                            <img src="/assets/images/home/restaurant2.webp" alt="Image 2">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="2">
                         <div class="img-container">
-                            <img src="/assets/images/home/restaurant3.jpg" alt="Image 3">
+                            <img src="/assets/images/home/restaurant3.webp" alt="Image 3">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="3">
                         <div class="img-container">
-                            <img src="/assets/images/home/restaurant4.jpg" alt="Image 4">
+                            <img src="/assets/images/home/restaurant4.webp" alt="Image 4" loading="lazy">
                         </div>
                     </div>
                 </div>
                 <button class="multi-carousel-control-prev" type="button" aria-label="Précédent">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="carousel-control-prev-icon" aria-hidden="true">❮</span>
                 </button>
                 <button class="multi-carousel-control-next" type="button" aria-label="Suivant">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="carousel-control-next-icon" aria-hidden="true">❯</span>
                 </button>
             </div>
         </div>
@@ -389,7 +393,6 @@ if (!empty($currentSaturday['date_saturday'])) {
         <img class="lightbox__img" id="lightboxImg" src="" alt="">
     </div>
 
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/script/main.js"></script>
 
 </body>
