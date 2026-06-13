@@ -234,9 +234,19 @@ if (!empty($currentSaturday['date_saturday'])) {
                             <img src="/assets/images/home/9.webp" alt="Image 9" loading="lazy">
                         </div>
                     </div>
-                    <div class="multi-carousel-item" data-index="10">
+                    <div class="multi-carousel-item" data-index="9">
                         <div class="img-container">
                             <img src="/assets/images/home/10.webp" alt="Image 10" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-item" data-index="10">
+                        <div class="img-container">
+                            <img src="/assets/images/home/11.webp" alt="Image 11" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-item" data-index="11">
+                        <div class="img-container">
+                            <img src="/assets/images/home/12.webp" alt="Image 12" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -336,6 +346,11 @@ if (!empty($currentSaturday['date_saturday'])) {
                     <div class="multi-carousel-item" data-index="3">
                         <div class="img-container">
                             <img src="/assets/images/home/restaurant4.webp" alt="Image 4" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="multi-carousel-item" data-index="4">
+                        <div class="img-container">
+                            <img src="/assets/images/home/restaurant5.webp" alt="Image 5" loading="lazy">
                         </div>
                     </div>
                 </div>
