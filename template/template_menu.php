@@ -18,7 +18,14 @@ $heroSubtitleMaxWidth = '460px';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars(Lang::translate('nav.menu'), ENT_QUOTES, 'UTF-8') ?> - L'Escapade</title>
     <meta name="description" content="<?= htmlspecialchars(Lang::translate('meta.menu.description'), ENT_QUOTES, 'UTF-8') ?>">
-    <link rel="stylesheet" href="/style/main.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/main.css?v=5000">
     <link
         rel="preload"
         as="image"

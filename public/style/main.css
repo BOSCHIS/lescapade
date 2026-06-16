@@ -103,11 +103,13 @@ img {
 }
 
 .navbar__brand-text {
-    font-family: "Great Vibes", cursive;
+    font-family: "Coming Soon", "Comic Sans MS", cursive !important;
+    font-weight: 900 !important;
+    font-style: italic !important;
     font-size: 2.6rem;
+    line-height: 0.9;
+    letter-spacing: 0.03em;
     color: white;
-    line-height: 1;
-    white-space: nowrap;
     text-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
 }
 
@@ -119,6 +121,7 @@ img {
     justify-content: space-between;
     gap: 24px;
     margin-left: 100px;
+    z-index: 9999;
 }
 
 .navbar__links {
@@ -305,12 +308,12 @@ img {
 }
 
 .hero__title-box {
-    max-width: var(--hero-title-max-width, 390px);
+    max-width: var(--hero-title-max-width, 460px);
     background: var(--color-text-box);
     border-radius: 24px;
-    padding: 4px 2px;
+    padding: 8px 10px;
     box-shadow: 0 8px 18px var(--color-shadow);
-    margin-top: var(--hero-title-margin-top, 130px);
+    margin-top: var(--hero-title-margin-top, 160px);
     align-self: var(--hero-title-align, flex-start);
     margin-left: var(--hero-title-offset-x, 40px);
     margin-right: var(--hero-title-offset-x, 40px);
@@ -318,28 +321,31 @@ img {
 
 .hero__title-box h1 {
     color: var(--color-white);
-    font-family: "Great Vibes", cursive;
+    font-family: "Patrick Hand", cursive;
     text-align: center;
-    font-size: 2.8rem;
+    font-size: 2.7rem;
     line-height: 1.02;
-    font-weight: 500;
-    margin: 0;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    font-style: italic;
+    margin: 10px;
 }
 
 .hero__subtitle {
     align-self: var(--hero-subtitle-align, flex-end);
     text-align: center;
     max-width: var(--hero-subtitle-max-width, 430px);
-    margin-bottom: var(--hero-subtitle-offset-y, 20px);
+    margin-bottom: var(--hero-subtitle-offset-y, 200px);
     margin-left: var(--hero-subtitle-offset-x, 40px);
     margin-right: var(--hero-subtitle-offset-x, 40px);
 }
 
 .hero__subtitle p {
     color: var(--color-white);
-    font-size: 1.6rem;
+    font-family: "Patrick Hand", cursive;
+    font-size: 1.9rem;
     line-height: 1.25;
-    font-weight: 700;
+    font-weight: 400;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
     margin-bottom: 20px;
 }
@@ -419,11 +425,23 @@ img {
         gap: 16px;
     }
 
+    .navbar__branding {
+        position: relative;
+        z-index: 7000;
+    }
+
+    .navbar__logo {
+        position: relative;
+        z-index: 7001;
+    }
+
     .navbar__logo img {
         width: 102px;
         height: 102px;
         margin-top: 8px;
         margin-bottom: -22px;
+        position: relative;
+        z-index: 7002;
     }
 
     .navbar__brand-text {
@@ -457,6 +475,7 @@ img {
         transform: translateY(-8px);
         pointer-events: none;
         transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+        z-index: 5000;
     }
 
     .navbar__content.open {
@@ -526,7 +545,7 @@ img {
     }
 
     .hero__subtitle p {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
     }
 
     .navbar__actions {
@@ -617,7 +636,7 @@ img {
     }
 
     .hero__subtitle p {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         line-height: 1.35;
     }
 }
@@ -746,7 +765,7 @@ img {
     max-width: 220px;
     height: 130px;
     overflow: hidden;
-    border-radius: 14px;
+    border-radius: 45px;
     margin-top: 4px;
     margin-bottom: 8px;
     background: transparent;
@@ -987,19 +1006,19 @@ img {
 }
 
 .multi-carousel-container h2 {
-    font-size: 2.4rem;
-    font-family: "Great Vibes", cursive;
+    font-size: 2.7rem;
+    font-family: "Patrick Hand", cursive;
     font-style: italic;
     color: #2f1d12;
     margin-top: 10px;
     margin-bottom: 28px;
-    font-weight: 700;
+    font-weight: 600;
     text-align: center;
 }
 
 .multi-carousel-container h2 span {
     font-size: 2.1rem;
-    font-family: "Great Vibes", cursive;
+    font-family: "Patrick Hand", cursive;
     color: #2f1d12;
 }
 
@@ -1071,7 +1090,7 @@ img {
 .multi-carousel-control-prev,
 .multi-carousel-control-next {
     position: absolute;
-    top: 50%;
+    top: calc(50% + 35px);
     transform: translateY(-50%);
     z-index: 30;
     width: 44px;
@@ -1737,8 +1756,16 @@ img {
         line-height: 1.8;
     }
 
+    .philosophy-card__signature {
+        text-align: center;
+        padding-right: 0;
+    }
+
     .philosophy-card__signature span {
+        display: block;
+        width: 100%;
         font-size: 1.9rem;
+        text-align: center;
     }
 
     .philosophy-card__ornament {
@@ -1998,6 +2025,7 @@ img {
 .footer__col h3 {
     font-size: 1.6rem;
     margin-bottom: 10px;
+    margin-top: 8px;
     color: var(--color-white);
 }
 
@@ -2008,11 +2036,15 @@ img {
 }
 
 .footer__brand h2 {
-    font-family: "Great Vibes", cursive;
-    font-size: 3rem;
-    font-weight: 400;
-    margin-bottom: 8px;
+    font-family: "Coming Soon", "Comic Sans MS", cursive !important;
+    font-weight: bolder !important;
+    font-style: italic !important;
+    font-size: 2.9rem;
+    line-height: 0.9;
+    letter-spacing: 0.03em;
     color: white;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+    margin-bottom: 10px;
 }
 
 .footer__brand {
@@ -2115,7 +2147,7 @@ img {
     }
 
     .footer__brand {
-        order: 0;
+        order: -1;
         margin-top: 0;
         margin-bottom: 10px;
     }
@@ -2956,7 +2988,8 @@ body.legal {
 }
 
 .mentions__brand-text {
-    font-family: "Great Vibes", cursive;
+    /* font-family: "Great Vibes", cursive; */
+    font-family: "Comic Sans MS", "Comic Neue", cursive;
     font-size: 2.6rem;
     color: rgb(48, 48, 48);
     line-height: 1;

@@ -57,19 +57,80 @@ if (!empty($currentSaturday['date_saturday'])) {
     <meta
         name="description"
         content="<?= htmlspecialchars(Lang::translate('meta.home.description'), ENT_QUOTES, 'UTF-8') ?>">
-    <link rel="stylesheet" href="/style/main.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/style/main.css?v=5000">
     <link
         rel="preload"
         as="image"
         href="<?= htmlspecialchars($heroImage, ENT_QUOTES, 'UTF-8') ?>">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 
     <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/assets/images/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "L'Escapade",
+            "url": "https://lescapadecahors.fr/",
+            "image": "https://lescapadecahors.fr/assets/images/header/restaurant_header.webp",
+            "servesCuisine": "Cuisine traditionnelle",
+            "priceRange": "€€",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "227 Rue Président Wilson",
+                "addressLocality": "Cahors",
+                "postalCode": "46000",
+                "addressCountry": "FR"
+            },
+            "telephone": "+33565221152",
+            "email": "lescapade46@outlook.fr",
+            "sameAs": [
+                "https://www.facebook.com/profile.php?id=61572417827056",
+                "https://maps.app.goo.gl/PJNke4FNg28hPDkm7"
+            ],
+            "openingHoursSpecification": [{
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday"
+                    ],
+                    "opens": "11:45",
+                    "closes": "14:30"
+                },
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": "Friday",
+                    "opens": "11:45",
+                    "closes": "14:30"
+                },
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": "Friday",
+                    "opens": "19:00",
+                    "closes": "21:00"
+                },
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": "Saturday",
+                    "opens": "12:00",
+                    "closes": "14:30"
+                }
+            ]
+        }
+    </script>
 </head>
 
 <body>
@@ -165,13 +226,13 @@ if (!empty($currentSaturday['date_saturday'])) {
                             </span>
 
                             <div class="special-ticket__dish-image">
-                                <?php if (!empty($currentSaturday['image_saturday'])) : ?>
-                                    <img
-                                        src="<?= htmlspecialchars($currentSaturday['image_saturday'], ENT_QUOTES, 'UTF-8') ?>"
-                                        alt="<?= htmlspecialchars($currentSaturday['title_saturday'], ENT_QUOTES, 'UTF-8') ?>">
-                                <?php else : ?>
-                                    <img src="/assets/images/deco/card.webp" alt="Plat du samedi bientôt disponible">
-                                <?php endif; ?>
+                                <img
+                                    src="<?= !empty($currentSaturday['image_saturday'])
+                                                ? htmlspecialchars($currentSaturday['image_saturday'], ENT_QUOTES, 'UTF-8')
+                                                : '/assets/images/deco/saturday_default.webp' ?>"
+                                    alt="<?= !empty($currentSaturday['image_saturday'])
+                                                ? htmlspecialchars($currentSaturday['title_saturday'], ENT_QUOTES, 'UTF-8')
+                                                : 'Plat du samedi bientôt disponible' ?>">
                             </div>
 
                             <a href="/plat-du-samedi" class="special-ticket__button">
@@ -191,62 +252,62 @@ if (!empty($currentSaturday['date_saturday'])) {
                 <div class="multi-carousel-inner">
                     <div class="multi-carousel-item" data-index="0">
                         <div class="img-container">
-                            <img src="/assets/images/home/1.webp" alt="Image 1">
+                            <img src="/assets/images/home/1.webp" alt="Cassoulet">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="1">
                         <div class="img-container">
-                            <img src="/assets/images/home/2.webp" alt="Image 2">
+                            <img src="/assets/images/home/2.webp" alt="Salade">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="2">
                         <div class="img-container">
-                            <img src="/assets/images/home/3.webp" alt="Image 3">
+                            <img src="/assets/images/home/3.webp" alt="Hamburger">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="3">
                         <div class="img-container">
-                            <img src="/assets/images/home/4.webp" alt="Image 4" loading="lazy">
+                            <img src="/assets/images/home/4.webp" alt="Tarte aux citrons" loading="lazy">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="4">
                         <div class="img-container">
-                            <img src="/assets/images/home/5.webp" alt="Image 5" loading="lazy">
+                            <img src="/assets/images/home/5.webp" alt="Salade" loading="lazy">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="5">
                         <div class="img-container">
-                            <img src="/assets/images/home/6.webp" alt="Image 6" loading="lazy">
+                            <img src="/assets/images/home/6.webp" alt="Hamburger" loading="lazy">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="6">
                         <div class="img-container">
-                            <img src="/assets/images/home/7.webp" alt="Image 7" loading="lazy">
+                            <img src="/assets/images/home/7.webp" alt="Salade" loading="lazy">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="7">
                         <div class="img-container">
-                            <img src="/assets/images/home/8.webp" alt="Image 8" loading="lazy">
+                            <img src="/assets/images/home/8.webp" alt="Crème brûlée" loading="lazy">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="8">
                         <div class="img-container">
-                            <img src="/assets/images/home/9.webp" alt="Image 9" loading="lazy">
+                            <img src="/assets/images/home/9.webp" alt="Riz Poulet" loading="lazy">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="9">
                         <div class="img-container">
-                            <img src="/assets/images/home/10.webp" alt="Image 10" loading="lazy">
+                            <img src="/assets/images/home/10.webp" alt="Plat à base de riz et de viande" loading="lazy">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="10">
                         <div class="img-container">
-                            <img src="/assets/images/home/11.webp" alt="Image 11" loading="lazy">
+                            <img src="/assets/images/home/11.webp" alt="Café gourmand" loading="lazy">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="11">
                         <div class="img-container">
-                            <img src="/assets/images/home/12.webp" alt="Image 12" loading="lazy">
+                            <img src="/assets/images/home/12.webp" alt="Pommes de terre et viande" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -330,27 +391,27 @@ if (!empty($currentSaturday['date_saturday'])) {
                 <div class="multi-carousel-inner">
                     <div class="multi-carousel-item" data-index="0">
                         <div class="img-container">
-                            <img src="/assets/images/home/restaurant1.webp" alt="Image 1">
+                            <img src="/assets/images/home/restaurant1.webp" alt="Première salle du restaurant côté entrée">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="1">
                         <div class="img-container">
-                            <img src="/assets/images/home/restaurant2.webp" alt="Image 2">
+                            <img src="/assets/images/home/restaurant2.webp" alt="Troisième salle du restaurant">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="2">
                         <div class="img-container">
-                            <img src="/assets/images/home/restaurant3.webp" alt="Image 3">
+                            <img src="/assets/images/home/restaurant3.webp" alt="Deuxième salle du restaurant">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="3">
                         <div class="img-container">
-                            <img src="/assets/images/home/restaurant4.webp" alt="Image 4" loading="lazy">
+                            <img src="/assets/images/home/restaurant4.webp" alt="Troisième salle du restaurant" loading="lazy">
                         </div>
                     </div>
                     <div class="multi-carousel-item" data-index="4">
                         <div class="img-container">
-                            <img src="/assets/images/home/restaurant5.webp" alt="Image 5" loading="lazy">
+                            <img src="/assets/images/home/restaurant5.webp" alt="Terrasse du restaurant" loading="lazy">
                         </div>
                     </div>
                 </div>

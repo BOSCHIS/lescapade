@@ -1,6 +1,13 @@
 # Active la réécriture d'URL pour le routeur MVC
 RewriteEngine On
 
+RewriteRule ^robots\.txt$ - [L]
+RewriteRule ^sitemap\.xml$ - [L]
+
+# Force le HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 # Si le fichier demandé existe, on le sert directement
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
@@ -9,16 +16,30 @@ RewriteRule ^ - [L]
 # Sinon, toutes les routes passent par index.php
 RewriteRule ^ index.php [QSA,L]
 
+AddType text/plain .txt
+AddType application/xml .xml
+
 
 # Sécurité + bonnes pratiques Lighthouse
 <IfModule mod_headers.c>
-    Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self';"
+Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-KLVt3Hzlwi9Sz25XNFlnl3BRr/mMTcTIBpNKm5BVeEw='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self';"
     Header set X-Content-Type-Options "nosniff"
     Header set X-Frame-Options "SAMEORIGIN"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
     Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 </IfModule>
 
+<IfModule mod_headers.c>
+    <Files "robots.txt">
+        Header set Content-Type "text/plain; charset=UTF-8"
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+    </Files>
+
+    <Files "sitemap.xml">
+        Header set Content-Type "application/xml; charset=UTF-8"
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+    </Files>
+</IfModule>
 
 # Cache navigateur pour les fichiers statiques
 <IfModule mod_expires.c>
@@ -27,6 +48,7 @@ RewriteRule ^ index.php [QSA,L]
     ExpiresByType image/jpeg "access plus 1 year"
     ExpiresByType image/png "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
+    
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 month"
 </IfModule>

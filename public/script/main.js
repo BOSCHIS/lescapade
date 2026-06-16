@@ -4,7 +4,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (toggleBtn && navContent) {
         toggleBtn.addEventListener("click", () => {
-            navContent.classList.toggle("open");
+            const isOpen = navContent.classList.toggle("open");
+            toggleBtn.innerHTML = isOpen ? "✕" : "☰";
+            toggleBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        const navLinks = navContent.querySelectorAll("a");
+        navLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                if (window.innerWidth <= 980) {
+                    navContent.classList.remove("open");
+                    toggleBtn.innerHTML = "☰";
+                    toggleBtn.setAttribute("aria-expanded", "false");
+                }
+            });
+        });
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 980) {
+                navContent.classList.remove("open");
+                toggleBtn.innerHTML = "☰";
+                toggleBtn.setAttribute("aria-expanded", "false");
+            }
+        });
+    }
+
+    const languageSwitcher = document.querySelector(".language-switcher");
+    const languageButton = document.querySelector(".language-switcher__current");
+
+    if (languageSwitcher && languageButton) {
+        languageButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+
+            const isOpen = languageSwitcher.classList.toggle("open");
+            languageButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!languageSwitcher.contains(event.target)) {
+                languageSwitcher.classList.remove("open");
+                languageButton.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                languageSwitcher.classList.remove("open");
+                languageButton.setAttribute("aria-expanded", "false");
+            }
         });
     }
 });
@@ -32,6 +79,7 @@ carouselContainers.forEach((carousel) => {
     let currentIndex = 0;
     let autoAdvanceInterval = null;
     let userActivityTimeout = null;
+    let animationFallbackTimeout = null;
 
     function getOriginalItems() {
         return Array.from(carouselInner.querySelectorAll(".multi-carousel-item:not(.clone)"));
@@ -101,11 +149,21 @@ carouselContainers.forEach((carousel) => {
         });
     }
 
+    function unlockAnimationAfterDelay() {
+        clearTimeout(animationFallbackTimeout);
+
+        animationFallbackTimeout = setTimeout(() => {
+            isAnimating = false;
+        }, 700);
+    }
+
     function next() {
         if (isAnimating || getTotalItems() === 0) return;
+
         isAnimating = true;
         position += slideBy;
         updateCarouselPosition(true);
+        unlockAnimationAfterDelay();
     }
 
     function prev() {
@@ -195,7 +253,11 @@ carouselContainers.forEach((carousel) => {
         registerUserActivity();
     }
 
-    carouselInner.addEventListener("transitionend", () => {
+    carouselInner.addEventListener("transitionend", (event) => {
+        if (event.target !== carouselInner) return;
+
+        clearTimeout(animationFallbackTimeout);
+
         const totalItems = getTotalItems();
         isAnimating = false;
 
@@ -228,6 +290,24 @@ carouselContainers.forEach((carousel) => {
         registerUserActivity();
     });
 
+    [prevBtn, nextBtn].forEach((btn) => {
+        btn.addEventListener("mousedown", (e) => {
+            e.stopPropagation();
+        });
+
+        btn.addEventListener("touchstart", (e) => {
+            e.stopPropagation();
+        }, { passive: true });
+
+        btn.addEventListener("touchmove", (e) => {
+            e.stopPropagation();
+        }, { passive: true });
+
+        btn.addEventListener("touchend", (e) => {
+            e.stopPropagation();
+        });
+    });
+
     carousel.addEventListener("mousedown", startDrag);
     carousel.addEventListener("touchstart", startDrag, { passive: true });
 
@@ -247,7 +327,7 @@ carouselContainers.forEach((carousel) => {
     });
 
     carousel.addEventListener("click", registerUserActivity);
-    carousel.addEventListener("wheel", registerUserActivity);
+    carousel.addEventListener("wheel", registerUserActivity, { passive: true });
 
     document.addEventListener("keydown", (e) => {
         if (carousel.offsetParent === null) return;
@@ -303,13 +383,13 @@ carouselContainers.forEach((carousel) => {
 
     carousel.addEventListener("touchstart", () => {
         carousel.dataset.dragMoved = "false";
-    });
+    }, { passive: true });
 
     carousel.addEventListener("touchmove", () => {
         if (isDragging && dragMoved) {
             carousel.dataset.dragMoved = "true";
         }
-    });
+    }, { passive: true });
 });
 
 
@@ -330,34 +410,6 @@ if (scrollTopBtn) {
             top: 0,
             behavior: "smooth"
         });
-    });
-}
-
-const navbarToggle = document.querySelector(".navbar__toggle");
-const navbarContent = document.querySelector(".navbar__content");
-
-if (navbarToggle && navbarContent) {
-    navbarToggle.addEventListener("click", () => {
-        const isOpen = navbarContent.classList.toggle("open");
-        navbarToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    });
-
-    const navbarLinks = navbarContent.querySelectorAll("a");
-
-    navbarLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-            if (window.innerWidth <= 980) {
-                navbarContent.classList.remove("open");
-                navbarToggle.setAttribute("aria-expanded", "false");
-            }
-        });
-    });
-
-    window.addEventListener("resize", () => {
-        if (window.innerWidth > 980) {
-            navbarContent.classList.remove("open");
-            navbarToggle.setAttribute("aria-expanded", "false");
-        }
     });
 }
 
