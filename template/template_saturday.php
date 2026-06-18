@@ -60,6 +60,7 @@ $intlLocale = $dateLocales[$locale] ?? 'fr_FR';
                 <?php if (!empty($saturdays)) : ?>
                     <div class="day-list">
                         <?php foreach ($saturdays as $saturday) : ?>
+                            <?php $isPast = $saturday['date_saturday'] < date('Y-m-d'); ?>
                             <?php
                             $timestamp = !empty($saturday['date_saturday']) ? strtotime($saturday['date_saturday']) : false;
                             $dateFormatted = '';
@@ -79,7 +80,7 @@ $intlLocale = $dateLocales[$locale] ?? 'fr_FR';
                                 $dateFormatted = $formattedDate !== false ? ucfirst($formattedDate) : '';
                             }
                             ?>
-                            <article class="day-feature-card day-feature-card--list saturday-feature-card">
+                            <article class="day-feature-card day-feature-card--list saturday-feature-card <?= $isPast ? 'day-feature-card--past' : '' ?>">
                                 <div class="day-feature-card__visual">
                                     <?php if (!empty($saturday['image_saturday'])) : ?>
                                         <img
@@ -87,7 +88,10 @@ $intlLocale = $dateLocales[$locale] ?? 'fr_FR';
                                             alt="<?= htmlspecialchars($saturday['title_saturday'], ENT_QUOTES, 'UTF-8') ?>">
                                     <?php else : ?>
                                         <div class="day-feature-card__visual-placeholder">
-                                            <?= htmlspecialchars(Lang::translate('saturday.image_fallback_text'), ENT_QUOTES, 'UTF-8') ?>
+                                            <img
+                                                class="day-feature-card__default-img day-feature-card__default-img--saturday"
+                                                src="/assets/images/deco/saturday_default.webp"
+                                                alt="<?= htmlspecialchars(Lang::translate('saturday.image_fallback_text'), ENT_QUOTES, 'UTF-8') ?>">
                                         </div>
                                     <?php endif; ?>
                                 </div>

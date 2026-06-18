@@ -134,13 +134,40 @@ class DayRepository
 
     public function findCurrentOrLatest(string $dateDay): array|false
     {
-        $day = $this->findByDate($dateDay);
+        $sql = "
+        SELECT
+            id_day,
+            date_day,
+            image_day,
+            title_day,
+            description_day,
+            price_day,
+            administrator_id
+        FROM day
+        ORDER BY
+            CASE
+                WHEN date_day >= :today_case THEN 0
+                ELSE 1
+            END ASC,
+            CASE
+                WHEN date_day >= :today_future THEN date_day
+                ELSE NULL
+            END ASC,
+            CASE
+                WHEN date_day < :today_past THEN date_day
+                ELSE NULL
+            END DESC,
+            id_day DESC
+        LIMIT 1
+    ";
 
-        if ($day) {
-            return $day;
-        }
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':today_case', $dateDay, PDO::PARAM_STR);
+        $stmt->bindValue(':today_future', $dateDay, PDO::PARAM_STR);
+        $stmt->bindValue(':today_past', $dateDay, PDO::PARAM_STR);
+        $stmt->execute();
 
-        return $this->findLatest();
+        return $stmt->fetch();
     }
 
     public function insert(

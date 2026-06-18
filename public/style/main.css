@@ -2490,6 +2490,11 @@ img {
     border-radius: 20px;
 }
 
+.day-feature-card.day-feature-card--past {
+    opacity: 0.45;
+    filter: grayscale(55%);
+}
+
 .day-feature-card__visual {
     position: relative;
     min-height: 600px;
@@ -2501,6 +2506,14 @@ img {
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.day-feature-card__default-img--day {
+    object-position: 75% center;
+}
+
+.day-feature-card__default-img--saturday {
+    object-position: 25% center;
 }
 
 .day-feature-card__visual-placeholder {

@@ -61,6 +61,7 @@ $intlLocale = $dateLocales[$locale] ?? 'fr_FR';
                 <?php if (!empty($days)) : ?>
                     <div class="day-list">
                         <?php foreach ($days as $day) : ?>
+                            <?php $isPast = $day['date_day'] < date('Y-m-d'); ?>
                             <?php
                             $timestamp = !empty($day['date_day']) ? strtotime($day['date_day']) : false;
                             $dayDateFormatted = '';
@@ -81,7 +82,7 @@ $intlLocale = $dateLocales[$locale] ?? 'fr_FR';
                             }
                             ?>
 
-                            <article class="day-feature-card day-feature-card--list">
+                            <article class="day-feature-card day-feature-card--list <?= $isPast ? 'day-feature-card--past' : '' ?>">
                                 <div class="day-feature-card__visual">
                                     <?php if (!empty($day['image_day'])) : ?>
                                         <img
@@ -89,7 +90,10 @@ $intlLocale = $dateLocales[$locale] ?? 'fr_FR';
                                             alt="<?= htmlspecialchars($day['title_day'], ENT_QUOTES, 'UTF-8') ?>">
                                     <?php else : ?>
                                         <div class="day-feature-card__visual-placeholder">
-                                            <img src="/assets/images/deco/day_default.webp" alt="<?= htmlspecialchars(Lang::translate('day.image_fallback_alt'), ENT_QUOTES, 'UTF-8') ?>">
+                                            <img
+                                                class="day-feature-card__default-img day-feature-card__default-img--day"
+                                                src="/assets/images/deco/day_default.webp"
+                                                alt="<?= htmlspecialchars(Lang::translate('day.image_fallback_alt'), ENT_QUOTES, 'UTF-8') ?>">
                                         </div>
                                     <?php endif; ?>
                                 </div>
